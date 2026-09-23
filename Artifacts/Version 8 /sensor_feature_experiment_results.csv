@@ -1,0 +1,5 @@
+sensor_channel_config,n_channels,accuracy,macro_f1,balanced_accuracy,macro_auroc,train_seconds,channels,best_val_macro_f1,best_epoch,n_test_windows,seed,run_seconds,note,finished_at
+raw6,6,0.9008849557522124,0.8966282623313516,0.8939868230556638,0.9883861098069874,216.6,accel_x|accel_y|accel_z|gyro_x|gyro_y|gyro_z,0.909973,17,1130,42,388.4,reproduces v7 (all 4 metrics within 0.0005),2026-09-23 16:45:13
+raw6_accelmag,7,0.8787610619469026,0.8739692304584376,0.8704018122139325,0.9839381541695793,305.4,accel_x|accel_y|accel_z|gyro_x|gyro_y|gyro_z|accel_magnitude,0.903825,18,1130,42,361.0,,2026-09-23 16:51:14
+raw6_gyromag,7,0.8619469026548673,0.8566071201179577,0.8537005201607736,0.9847925796534416,238.3,accel_x|accel_y|accel_z|gyro_x|gyro_y|gyro_z|gyro_magnitude,0.900266,12,1130,42,314.0,,2026-09-23 16:56:28
+raw6_bothmag,8,0.8690265486725663,0.8623288632440257,0.8591925088049089,0.9842459115367277,277.0,accel_x|accel_y|accel_z|gyro_x|gyro_y|gyro_z|accel_magnitude|gyro_magnitude,0.894303,11,1130,42,342.8,,2026-09-23 17:02:10
