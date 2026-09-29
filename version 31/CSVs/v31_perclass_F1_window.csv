@@ -1,0 +1,6 @@
+,precision,recall,F1
+0 (Normal),needs .npz,1.0,needs .npz
+1 Broken,needs .npz,0.870201096892139,needs .npz
+2 Broken,needs .npz,0.7258726899383984,needs .npz
+3 Broken,needs .npz,0.8246869409660107,needs .npz
+4 Broken,needs .npz,0.9266727772685608,needs .npz

@@ -1,0 +1,5 @@
+model,level,missed-fault share,false-alarm share,adjacent-error share,missed faults (n / faulty),false alarms (n / normal)
+F1,window,0.000467617488894,0.0,1.0,needs .npz,needs .npz
+F1,mission,0.0,0.0,1.0,needs .npz,needs .npz
+D,window,0.0,0.0,0.9970282317979198,needs .npz,needs .npz
+D,mission,0.0,0.0,1.0,needs .npz,needs .npz
