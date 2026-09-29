@@ -1,0 +1,27 @@
+WHAT v30 TELLS US
+
+Protocol identical to v29: paired-window sha1 44c04ca18ec7a131 (v29 44c04ca18ec7a131), 95 missions, 5 day-out folds, inner validation fallback_2026, seeds [42, 123]. v29's six models LOADED from gated_fusion_results.csv / v29_results_table.csv (not retrained). v30 runs logged: 20/20, training time 37 min.
+
+Pooled day-out macro-F1 [95% mission-bootstrap CI] — window | mission:
+  A    0.795 [0.738, 0.850] | 0.864 [0.793, 0.927]   (1,012,358 params)
+  I    0.893 [0.865, 0.917] | 0.968 [0.934, 1.000]   (977,350 params)
+  D    0.871 [0.823, 0.917] | 0.893 [0.832, 0.948]   (1,692,884 params)
+  F0   0.838 [0.784, 0.890] | 0.873 [0.807, 0.937]   (1,067,554 params)
+  F1   0.869 [0.821, 0.913] | 0.894 [0.832, 0.948]   (1,100,516 params)
+  F2   0.853 [0.802, 0.901] | 0.883 [0.817, 0.946]   (1,133,348 params)
+  CA   0.849 [0.798, 0.896] | 0.884 [0.820, 0.946]   (1,693,222 params)  <- v30
+  CAG  0.853 [0.802, 0.899] | 0.872 [0.806, 0.937]   (1,726,184 params)  <- v30
+
+Paired comparisons (5 folds; both methods):
+  CA − F0 [window] — pooled-probability: UNAVAILABLE | seed-averaged-F1: Δ -0.0037, wins 2/5, p 0.764 -> no reliable difference   [⚠️ ONE METHOD ONLY (pooled-probability unavailable: npz/rows missing)]
+  CA − D [window] — pooled-probability: UNAVAILABLE | seed-averaged-F1: Δ -0.0180, wins 1/5, p 0.128 -> WORSE   [⚠️ ONE METHOD ONLY (pooled-probability unavailable: npz/rows missing)]
+  CAG − CA [window] — pooled-probability: Δ +0.0046, wins 3/5, p 0.287 -> no reliable difference | seed-averaged-F1: Δ -0.0074, wins 2/5, p 0.300 -> no reliable difference   [⚠️ METHOD DISAGREEMENT (win count or sign differs) — report both]
+  CAG − F1 [window] — pooled-probability: UNAVAILABLE | seed-averaged-F1: Δ -0.0270, wins 0/5, p 0.039 -> WORSE   [⚠️ ONE METHOD ONLY (pooled-probability unavailable: npz/rows missing)]
+  D − I [window] — pooled-probability: UNAVAILABLE | seed-averaged-F1: Δ -0.0019, wins 2/5, p 0.952 -> no reliable difference   [⚠️ ONE METHOD ONLY (pooled-probability unavailable: npz/rows missing)]
+
+v29 comparisons re-checked: F1 − F0 [window]: ⚠️ ONE METHOD ONLY (pooled-probability unavailable: npz/rows missing); F0 − D [window]: ⚠️ ONE METHOD ONLY (pooled-probability unavailable: npz/rows missing); F2 − F1 [window]: ⚠️ ONE METHOD ONLY (pooled-probability unavailable: npz/rows missing); F1 − I [window]: ⚠️ ONE METHOD ONLY (pooled-probability unavailable: npz/rows missing)
+CA attention: row entropy a2i 0.728, i2a 0.846 of uniform; gamma_as 0.521, gamma_sa 0.534; tau-invariant 10/10.
+CAG attention: row entropy a2i 0.762, i2a 0.888 of uniform; gamma_as 0.527, gamma_sa 0.525; tau-invariant 10/10.
+
+Determinism: established in v29 (mamba_ssm CUDA backward jitter ~1e-11 in gradients, 0.00 effect on validation macro-F1); not re-run.
+Caveats: 5 folds x 2 seeds -> paired tests have df = 4 and are weak; BEST vs I picks BEST on the test folds (descriptive); CA − D isolates the encoder change (cross-attention on both sides), unlike v29's F0 − D.
