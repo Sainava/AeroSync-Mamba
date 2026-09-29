@@ -1,0 +1,28 @@
+WHAT v29 TELLS US
+
+Protocol: 95 missions, 5238 paired windows (v24 CORRECTED_ALIGNMENT; audio 64x80 + IMU 128x6 file order, same span), 5 day-out folds, inner validation fallback_2026, seeds per model {'A': [42, 123], 'I': [42, 123], 'D': [42, 123], 'F0': [42, 123], 'F1': [42, 123], 'F2': [42, 123]}. Runs logged: 60 of 60; total logged training time 74 min.
+
+Pooled day-out macro-F1 [95% mission-bootstrap CI] — window | mission:
+  A   0.795 [0.738, 0.850] | 0.864 [0.793, 0.927]   (1,012,358 params)
+  I   0.893 [0.865, 0.917] | 0.968 [0.934, 1.000]   (977,350 params)
+  D   0.871 [0.823, 0.917] | 0.893 [0.832, 0.948]   (1,692,884 params)
+  F0  0.838 [0.784, 0.890] | 0.873 [0.807, 0.937]   (1,067,554 params)
+  F1  0.869 [0.821, 0.913] | 0.894 [0.832, 0.948]   (1,100,516 params)
+  F2  0.853 [0.802, 0.901] | 0.883 [0.817, 0.946]   (1,133,348 params)
+
+Paired comparisons (5 folds):
+  F1 BEATS F0 (mean Δ window macro-F1 +0.0243, SD 0.0224, wins 5/5, paired t p = 0.072)   <- does content-adaptive gating beat plain concatenation?
+  F0 is WORSE than D (mean Δ window macro-F1 -0.0237, SD 0.0306, wins 1/5, paired t p = 0.158)   <- CAUTION: conflates new encoders AND removal of LACA cross-attention
+  no reliable difference between F2 and F1 (mean Δ window macro-F1 -0.0134, SD 0.0183, wins 1/5, paired t p = 0.177)
+  no reliable difference between F1 and I (mean Δ window macro-F1 -0.0077, SD 0.0620, wins 2/5, paired t p = 0.795)   <- best new model vs the better single modality
+F1 gates: mean g_a 0.408, across-window SD 0.240 (threshold 0.05); 8/10 runs vary; replacing per-window gates by their mean changes 0.080 of predictions (mean |dp| 0.0333).
+F2: 'both ambiguous' (g_a<0.5 and g_i<0.5) fraction 0.000 of test windows.
+
+Determinism: FAIL persists with every available flag. Component isolation shows ONLY the mamba_ssm block is non-deterministic (gradients differ between identical passes), so the run-to-run variation comes from mamba_ssm's CUDA kernels (the selective-scan / causal-conv backward, non-deterministic by default), not from an unseeded component of this codebase: initial weights are identical (True) and the data order is seeded. Size: max |d val macro-F1| 0.00e+00 vs noise floor 0.016.
+
+Caveats:
+- D vs F0 is NOT a pure encoder comparison: it changes the encoders AND removes LACA's content-only cross-attention (and D's SEP token). Accepted simplification given time constraints, not an oversight.
+- D here takes the 80 de-interleaved audio features (z-scored), not v24's 64 mono bins, so it is not v27's 0.819.
+- Pre-norm Mamba blocks make each token's Mamba input scale-invariant, so the gates act through the residual stream only; see the constant-gate effect above for how much they actually change predictions.
+- This table supersedes the earlier cross-notebook numbers (D 0.819, audio 0.845, IMU 0.958).
+- 95 missions, 5 folds, 2 seeds: per-fold paired tests are weak (df = 4).
