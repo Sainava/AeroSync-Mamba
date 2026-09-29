@@ -1,0 +1,31 @@
+WHAT THIS NOTEBOOK TELLS US
+
+Dataset
+- 95 missions after excluding the 4 with corrupt recording_started_time; classes [18, 19, 18, 20, 20]; days [10, 36, 17, 15, 17].
+- Each AudioBuffer record = 256 frames x 6 interleaved slots. Slot 6 is identically zero in 95/95 missions, and slot 1 is the loudest in 95/95. So the audio is 5 channels + 1 empty slot.
+- There is no sample rate and no per-chunk timestamp. The ~16 kHz per channel (16 ms per buffer) rate is an UNVERIFIED hypothesis, used only for axis labels.
+- Spin-up chunks are much quieter than flight (median start/steady RMS ratio 0.27).
+- Day effect: day-within-class explains 0.12 of the standardized spectral variance (chance 0.21); class explains 0.74 (chance 0.04).
+- Descriptively, 536 of 640 channel x bin cells pass the within-day permutation family-wise ANOVA threshold, and 480 cells are monotone in class (|rho| >= 0.7).
+
+Representation (fixed a priori)
+- sqrt|rFFT| of per-channel bins 1-16 x 5 channels = 80 features per chunk, no per-chunk normalization; 128-chunk windows, stride 64, 64 tokens; fold-train z-scoring; v28's 2-block real-Mamba model (1,012,358 parameters).
+
+Standalone strength
+- STANDARD split: NOT RUN (v24's split could not be read).
+- DAY-OUT (unseen recording days), pooled out-of-fold: window macro-F1 0.807 [95% CI 0.754, 0.859], mission macro-F1 0.845 [0.772, 0.915]; seed-to-seed SD of pooled macro-F1 0.013.
+- Day-out per-class recall: c0 1.00 [0.99, 1.00], c1 0.82 [0.70, 0.92], c2 0.70 [0.54, 0.83], c3 0.72 [0.60, 0.83], c4 0.80 [0.65, 0.92].
+- Context: v28 A1 was 0.741 [0.689, 0.791]; this run is in that neighbourhood.
+
+Where it fails
+- Worst unseen day: 2022-01-04 (macro-F1 0.753); best: 2022-01-05 (0.935).
+- By phase: best steady (macro-F1 0.812), worst end (0.769).
+- Most confused pairs: 2<->3 (492 windows); 3<->4 (486 windows).
+- Safety: 0.002 of faulty windows are called Normal; 0.003 of Normal windows are called faulty; 0.99 of errors are adjacent-class.
+- Evidence accumulation: mission macro-F1 0.647 from the first window, 0.845 with all windows.
+
+Limits
+- 95 missions, ~19 per class: per-class recall is only known to about ±0.1 (see the CIs above).
+- 3 seeds; the 2021-12-22 fold has only 10 missions.
+- The per-channel sample rate is an unverified assumption, and no frequency is stated in Hz.
+- This is characterization, not hypothesis testing. Section 3 is descriptive and did not choose the model's inputs.
