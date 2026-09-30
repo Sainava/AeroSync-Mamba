@@ -1,0 +1,41 @@
+comparison,level,analysis,n_folds,mean_delta,sd,wins,p,per_fold,v32_rule,noise_rule
+PART A (global) − I (cal),window,seed 42,4,0.034833148782745765,0.027839738351507746,3,0.08752093476476999,"[0.0354, 0.038, 0.0669, -0.001]",no reliable difference,clear gain (mean > SD)
+PART A (global) − I (cal),window,seed 123,4,0.0032982923460166402,0.007962871594925775,3,0.4681861374745527,"[0.0103, -0.0071, 0.0014, 0.0086]",no reliable difference,within noise
+PART A (global) − I (cal),window,pooled-probability,5,0.01700217593059312,0.017193073477030935,4,0.0914996559170586,"[0.0103, 0.0354, 0.0254, 0.0231, -0.0093]",BEATS,within noise
+PART A (global) − I (cal),window,seed-averaged-F1,5,0.01982613544835843,0.014259813293076821,5,0.03590949603442585,"[0.0103, 0.0354, 0.0154, 0.0341, 0.0038]",BEATS,clear gain (mean > SD)
+PART A (global) − I (cal),mission,seed 42,4,-0.020392156862745092,0.05872060712728455,1,0.5372945606854308,"[0.0251, 0.0, 0.0, -0.1067]",no reliable difference,within noise
+PART A (global) − I (cal),mission,seed 123,4,-0.012698412698412709,0.025396825396825418,0,0.39100221895577053,"[0.0, 0.0, 0.0, -0.0508]",no reliable difference,within noise
+PART A (global) − I (cal),mission,pooled-probability,5,-0.005139122315592904,0.027739203496794703,1,0.6999301880422877,"[0.0, 0.0251, 0.0, 0.0, -0.0508]",no reliable difference,within noise
+PART A (global) − I (cal),mission,seed-averaged-F1,5,-0.010726423902894489,0.03953817338163585,1,0.5768420128016534,"[0.0, 0.0251, 0.0, 0.0, -0.0787]",no reliable difference,within noise
+PART A (global) − TUNED,window,seed 42,4,-0.003059290510392443,0.003464808563080687,0,0.17558557695598626,"[-0.001, 0.0, -0.0035, -0.0078]",no reliable difference,within noise
+PART A (global) − TUNED,window,seed 123,4,0.0011531183195046257,0.0012131081252820725,3,0.15346548551532124,"[0.0016, 0.0003, 0.0, 0.0026]",no reliable difference,within noise
+PART A (global) − TUNED,window,pooled-probability,5,-0.00038495676434406877,0.002501926230891619,3,0.7481336933298954,"[0.0016, -0.001, 0.001, -0.0045, 0.0009]",no reliable difference,within noise
+PART A (global) − TUNED,window,seed-averaged-F1,5,-0.000697077740653107,0.0016454916998110323,2,0.3971433090228385,"[0.0016, -0.001, 0.0002, -0.0017, -0.0026]",no reliable difference,within noise
+PART A (global) − TUNED,mission,seed 42,4,-0.026666666666666672,0.053333333333333344,0,0.39100221895577053,"[0.0, 0.0, 0.0, -0.1067]",WORSE,within noise
+PART A (global) − TUNED,mission,seed 123,4,0.0,0.0,0,,"[0.0, 0.0, 0.0, 0.0]",no reliable difference,identical on every fold
+PART A (global) − TUNED,mission,pooled-probability,5,0.0,0.0,0,,"[0.0, 0.0, 0.0, 0.0, 0.0]",no reliable difference,identical on every fold
+PART A (global) − TUNED,mission,seed-averaged-F1,5,-0.010666666666666668,0.02385139175999776,0,0.373900966300059,"[0.0, 0.0, 0.0, 0.0, -0.0533]",no reliable difference,within noise
+PART B (class-aware) − PART A (global),window,seed 42,4,0.008937212708801157,0.024308662080033114,2,0.5154192251228783,"[-0.0051, -0.0166, 0.0371, 0.0203]",no reliable difference,within noise
+PART B (class-aware) − PART A (global),window,seed 123,4,0.0018136297923055655,0.01525770449540183,3,0.8273995443528006,"[0.0106, -0.0209, 0.0071, 0.0105]",no reliable difference,within noise
+PART B (class-aware) − PART A (global),window,pooled-probability,5,0.0036788720195445102,0.02404115731064478,3,0.7494442497766503,"[0.0106, -0.0051, -0.0338, 0.025, 0.0218]",no reliable difference,within noise
+PART B (class-aware) − PART A (global),window,seed-averaged-F1,5,0.004846153969445122,0.016578204542709394,3,0.549008596845179,"[0.0106, -0.0051, -0.0188, 0.0221, 0.0154]",no reliable difference,within noise
+PART B (class-aware) − PART A (global),mission,seed 42,4,-0.006117216117216134,0.08601844326416379,1,0.8959129229087772,"[-0.0311, -0.1, 0.0, 0.1067]",no reliable difference,within noise
+PART B (class-aware) − PART A (global),mission,seed 123,4,-0.012301587301587286,0.06317879064051228,1,0.7229626307867321,"[0.0, -0.1, 0.0, 0.0508]",no reliable difference,within noise
+PART B (class-aware) − PART A (global),mission,pooled-probability,5,-0.016068376068376078,0.055358948492238304,1,0.5516974074124978,"[0.0, -0.0311, -0.1, 0.0, 0.0508]",WORSE,within noise
+PART B (class-aware) − PART A (global),mission,seed-averaged-F1,5,-0.010481074481074493,0.06445656402062258,1,0.7345592779952188,"[0.0, -0.0311, -0.1, 0.0, 0.0787]",no reliable difference,within noise
+PART B (class-aware) − I (cal),window,seed 42,4,0.04377036149154692,0.040454508235667236,4,0.11913417421051944,"[0.0303, 0.0214, 0.104, 0.0193]",BEATS,clear gain (mean > SD)
+PART B (class-aware) − I (cal),window,seed 123,4,0.005111922138322206,0.022791913413583022,3,0.684159473920506,"[0.0209, -0.0281, 0.0084, 0.0192]",no reliable difference,within noise
+PART B (class-aware) − I (cal),window,pooled-probability,5,0.020681047950137633,0.020943953395141945,4,0.09183050460224813,"[0.0209, 0.0303, -0.0084, 0.0481, 0.0125]",BEATS,within noise
+PART B (class-aware) − I (cal),window,seed-averaged-F1,5,0.02467228941780355,0.021536653446691367,4,0.06253013254969066,"[0.0209, 0.0303, -0.0033, 0.0562, 0.0193]",BEATS,clear gain (mean > SD)
+PART B (class-aware) − I (cal),mission,seed 42,4,-0.026509372979961227,0.04907634829365158,0,0.3591005550962064,"[-0.006, -0.1, 0.0, 0.0]",WORSE,within noise
+PART B (class-aware) − I (cal),mission,seed 123,4,-0.024999999999999994,0.04999999999999999,0,0.39100221895577053,"[0.0, -0.1, 0.0, 0.0]",WORSE,within noise
+PART B (class-aware) − I (cal),mission,pooled-probability,5,-0.02120749838396898,0.04412386364018894,0,0.3430019511365789,"[0.0, -0.006, -0.1, 0.0, 0.0]",WORSE,within noise
+PART B (class-aware) − I (cal),mission,seed-averaged-F1,5,-0.02120749838396898,0.04412386364018894,0,0.3430019511365789,"[0.0, -0.006, -0.1, 0.0, 0.0]",WORSE,within noise
+PART B (class-aware) − ORACLE,window,seed 42,4,-0.05718732498790666,0.023475187083003463,0,0.01652247374856268,"[-0.0888, -0.0593, -0.0467, -0.034]",WORSE,clear loss (-mean > SD)
+PART B (class-aware) − ORACLE,window,seed 123,4,-0.07223980908037328,0.03233341775957379,0,0.020881565009273514,"[-0.0661, -0.1192, -0.0574, -0.0462]",WORSE,clear loss (-mean > SD)
+PART B (class-aware) − ORACLE,window,pooled-probability,5,-0.05953148006816618,0.02876352937130577,0,0.00982223923991535,"[-0.0661, -0.0888, -0.0836, -0.0257, -0.0334]",WORSE,clear loss (-mean > SD)
+PART B (class-aware) − ORACLE,window,seed-averaged-F1,5,-0.0672653167512958,0.02188805738674078,0,0.0023492047645356693,"[-0.0661, -0.0888, -0.0892, -0.0521, -0.0401]",WORSE,clear loss (-mean > SD)
+PART B (class-aware) − ORACLE,mission,seed 42,4,-0.04047619047619047,0.0492575258704219,0,0.1988342935639936,"[-0.0619, -0.1, 0.0, 0.0]",WORSE,within noise
+PART B (class-aware) − ORACLE,mission,seed 123,4,-0.051666666666666666,0.05972157622389639,0,0.18202116931026627,"[-0.1067, -0.1, 0.0, 0.0]",WORSE,within noise
+PART B (class-aware) − ORACLE,mission,pooled-probability,5,-0.053714285714285714,0.051922670567112215,0,0.08174228951717073,"[-0.1067, -0.0619, -0.1, 0.0, 0.0]",WORSE,clear loss (-mean > SD)
+PART B (class-aware) − ORACLE,mission,seed-averaged-F1,5,-0.053714285714285714,0.051922670567112215,0,0.08174228951717073,"[-0.1067, -0.0619, -0.1, 0.0, 0.0]",WORSE,clear loss (-mean > SD)
