@@ -1,0 +1,25 @@
+WHAT v33 TELLS US
+
+Files: 28/30 found in /kaggle/working/AeroSync-Mamba/version 32/v32_npz; missing: I_0_42.npz, I_1_123.npz. version 29/Npz never read.
+Evaluated pairs (8): [(0, 123), (1, 42), (2, 42), (2, 123), (3, 42), (3, 123), (4, 42), (4, 123)]; excluded from everything: [(0, 42), (1, 123)].
+Pools: 0/123: 3 days (excl. 2021-12-31); 1/42: 3 days (excl. 2021-12-22); 2/42: 3 days (excl. 2021-12-22); 2/123: 3 days (excl. 2021-12-31); 3/42: 3 days (excl. 2021-12-22); 3/123: 3 days (excl. 2021-12-31); 4/42: 3 days (excl. 2021-12-22); 4/123: 3 days (excl. 2021-12-31)
+
+Sanity (Part A vs TUNED): Part A vs TUNED re-fit on the same reduced pool: median L1 0.039 (max 0.060); Part A's ROUTER_HALF NLL minus TUNED's: max -0.00001 (no implementation failures). Part A vs v32's printed TUNED (4-day pool): median L1 0.114 (max 0.367); v33's own TUNED refit vs v32's: median L1 0.100.
+
+Pooled window macro-F1 [95% CI] — pooled over 8 of 10 fold/seed pairs (NOT 10); fold 0 windows by seed [123]; fold 1 windows by seed [42]; fold 2 windows by seeds [42, 123]; fold 3 windows by seeds [42, 123]; fold 4 windows by seeds [42, 123]:
+  A (cal) 0.786 [0.729, 0.839]; I (cal) 0.872 [0.840, 0.902]; F1 (cal) 0.860 [0.810, 0.905]; EQUAL 0.882 [0.837, 0.923]; TUNED 0.890 [0.855, 0.921]; PART A (global) 0.890 [0.855, 0.920]; PART B (class-aware) 0.891 [0.853, 0.924]; ORACLE 0.958 [0.934, 0.977]
+Pooled mission macro-F1 (context): A (cal) 0.832; I (cal) 0.947; F1 (cal) 0.894; EQUAL 0.915; TUNED 0.945; PART A (global) 0.945; PART B (class-aware) 0.926; ORACLE 0.979
+
+Paired (window):
+  PART A (global) − I (cal) [window]: pooled-probability Δ +0.0170 SD 0.0172 (wins 4/5, p 0.091) -> BEATS; within noise | seed-averaged-F1 Δ +0.0198 SD 0.0143 (wins 5/5, p 0.036) -> BEATS; clear gain (mean > SD)  [⚠️ METHOD DISAGREEMENT (wins or sign differ) — both shown]  | per seed: 42: Δ +0.0348 SD 0.0278 (3/4); 123: Δ +0.0033 SD 0.0080 (3/4)
+  PART A (global) − TUNED [window]: pooled-probability Δ -0.0004 SD 0.0025 (wins 3/5, p 0.748) -> no reliable difference; within noise | seed-averaged-F1 Δ -0.0007 SD 0.0016 (wins 2/5, p 0.397) -> no reliable difference; within noise  [⚠️ METHOD DISAGREEMENT (wins or sign differ) — both shown]  | per seed: 42: Δ -0.0031 SD 0.0035 (0/4); 123: Δ +0.0012 SD 0.0012 (3/4)
+  PART B (class-aware) − PART A (global) [window]: pooled-probability Δ +0.0037 SD 0.0240 (wins 3/5, p 0.749) -> no reliable difference; within noise | seed-averaged-F1 Δ +0.0048 SD 0.0166 (wins 3/5, p 0.549) -> no reliable difference; within noise  [methods agree]  | per seed: 42: Δ +0.0089 SD 0.0243 (2/4); 123: Δ +0.0018 SD 0.0153 (3/4)
+  PART B (class-aware) − I (cal) [window]: pooled-probability Δ +0.0207 SD 0.0209 (wins 4/5, p 0.092) -> BEATS; within noise | seed-averaged-F1 Δ +0.0247 SD 0.0215 (wins 4/5, p 0.063) -> BEATS; clear gain (mean > SD)  [methods agree]  | per seed: 42: Δ +0.0438 SD 0.0405 (4/4); 123: Δ +0.0051 SD 0.0228 (3/4)
+  PART B (class-aware) − ORACLE [window]: pooled-probability Δ -0.0595 SD 0.0288 (wins 0/5, p 0.010) -> WORSE; clear loss (-mean > SD) | seed-averaged-F1 Δ -0.0673 SD 0.0219 (wins 0/5, p 0.002) -> WORSE; clear loss (-mean > SD)  [methods agree]  | per seed: 42: Δ -0.0572 SD 0.0235 (0/4); 123: Δ -0.0722 SD 0.0323 (0/4)
+
+Capacity: A 1,012,358; D 1,692,884; F0 1,067,554; F1 1,100,516; F2 1,133,348; I 977,350; CA 1,693,222; CAG 1,726,184; ROUTER (v32) 995; EQUAL 0; TUNED 3; PART A (global) 3; PART B (class-aware) 15
+CAPACITY DISCIPLINE: Part B is a deliberate small step (3 -> 15 parameters) up from Part A; it is credited only if mean Δ over Part A exceeds its own SD across folds under both combined methods.
+
+VERDICT: On this reduced set (pooled over 8 of 10 fold/seed pairs (NOT 10); fold 0 windows by seed [123]; fold 1 windows by seed [42]; fold 2 windows by seeds [42, 123]; fold 3 windows by seeds [42, 123]; fold 4 windows by seeds [42, 123]), class-aware weighting (Part B, 15 parameters) does NOT clearly beat flat global weighting (Part A, 3 parameters): window macro-F1 0.891 vs 0.890; paired Δ +0.0037 (SD 0.0240, pooled-probability) / +0.0048 (SD 0.0166, seed-averaged-F1). This is CONSISTENT with the project's established pattern: more flexible combination mechanisms (the per-window router, cross-attention, independent gates) have repeatedly failed to beat simple fixed weights on this dataset, and per-class granularity is not rewarded either — it is not an unexpected failure. Against I alone (0.872): Part A BEATS it, and Part B BEATS it. Part A reproduces TUNED on the test folds (TUNED 0.890 vs Part A 0.890). Caveats: every evaluated pair used a fitting pool with at most 3 of 4 other days; folds 0 and 1 are represented by a single seed; with n = 4 folds per seed and n = 5 combined, the paired tests have little power; CAL/ROUTER halves come from other days' saved test windows (not a nested CV). These numbers are not comparable to v32's 10-pair results.
+
+Total notebook time: 1.3 min.
