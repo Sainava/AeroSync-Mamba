@@ -1,0 +1,13 @@
+modality,arch,level,bearings,seeds,accuracy,macro_f1,balanced_accuracy,recall_Q1,recall_Q2,recall_Q3,recall_Q4
+vibration,mamba,POOLED (3 folds),17 of 17,2,0.3958 ± 0.0141,0.3675 ± 0.0123,0.3956 ± 0.0141,0.4320 ± 0.0169,0.2365 ± 0.0001,0.1286 ± 0.0080,0.7853 ± 0.0477
+vibration,cnn,POOLED (3 folds),17 of 17,2,0.3638 ± 0.0179,0.3388 ± 0.0161,0.3637 ± 0.0179,0.3524 ± 0.0530,0.1808 ± 0.0566,0.1404 ± 0.0525,0.7810 ± 0.0145
+temperature,mamba,POOLED (3 folds),13 of 13,2,0.3378 ± 0.0122,0.3463 ± 0.0134,0.3377 ± 0.0123,0.4841 ± 0.0590,0.2650 ± 0.1431,0.2394 ± 0.0320,0.3622 ± 0.0029
+temperature,mamba,test C1 (~1800 rpm / 4.0 kN),6 of 13 (Bearing1_1 Bearing1_2 Bearing1_4 Bearing1_5 Bearing1_6 Bearing1_7),2,0.3255 ± 0.0070,0.3432 ± 0.0048,0.3254 ± 0.0070,0.3982 ± 0.0650,0.2780 ± 0.1792,0.2849 ± 0.0639,0.3406 ± 0.0224
+temperature,mamba,test C2 (~1650 rpm / 4.2 kN),5 of 13 (Bearing2_1 Bearing2_4 Bearing2_5 Bearing2_6 Bearing2_7),2,0.3611 ± 0.0183,0.3354 ± 0.0209,0.3609 ± 0.0186,0.6324 ± 0.0555,0.2649 ± 0.0875,0.1010 ± 0.0104,0.4453 ± 0.0528
+temperature,mamba,test C3 (~1500 rpm / 5.0 kN),2 of 13 (Bearing3_1 Bearing3_3),2,0.3766 ± 0.0492,0.3675 ± 0.0357,0.3745 ± 0.0481,0.8250 ± 0.0000,0.1000 ± 0.0354,0.3625 ± 0.2652,0.2105 ± 0.0372
+vibration,cnn,test C1 (~1800 rpm / 4.0 kN),7 of 17 (Bearing1_1 Bearing1_2 Bearing1_3 Bearing1_4 Bearing1_5 Bearing1_6 Bearing1_7),2,0.3090 ± 0.0103,0.2102 ± 0.0245,0.3090 ± 0.0103,0.1747 ± 0.0305,0.0660 ± 0.0690,0.0085 ± 0.0097,0.9866 ± 0.0069
+vibration,cnn,test C2 (~1650 rpm / 4.2 kN),7 of 17 (Bearing2_1 Bearing2_2 Bearing2_3 Bearing2_4 Bearing2_5 Bearing2_6 Bearing2_7),2,0.4150 ± 0.0422,0.4071 ± 0.0140,0.4149 ± 0.0421,0.6739 ± 0.2352,0.2306 ± 0.0041,0.2484 ± 0.1755,0.5065 ± 0.1048
+vibration,cnn,test C3 (~1500 rpm / 5.0 kN),3 of 17 (Bearing3_1 Bearing3_2 Bearing3_3),2,0.5224 ± 0.0109,0.5302 ± 0.0198,0.5226 ± 0.0108,0.4065 ± 0.0131,0.6845 ± 0.1414,0.5689 ± 0.0405,0.4306 ± 0.1309
+vibration,mamba,test C1 (~1800 rpm / 4.0 kN),7 of 17 (Bearing1_1 Bearing1_2 Bearing1_3 Bearing1_4 Bearing1_5 Bearing1_6 Bearing1_7),2,0.3401 ± 0.0150,0.2633 ± 0.0179,0.3401 ± 0.0150,0.1545 ± 0.0513,0.1844 ± 0.0273,0.0214 ± 0.0187,1.0000 ± 0.0000
+vibration,mamba,test C2 (~1650 rpm / 4.2 kN),7 of 17 (Bearing2_1 Bearing2_2 Bearing2_3 Bearing2_4 Bearing2_5 Bearing2_6 Bearing2_7),2,0.4707 ± 0.0274,0.4406 ± 0.0389,0.4705 ± 0.0274,0.9339 ± 0.0402,0.2673 ± 0.0463,0.3122 ± 0.0381,0.3688 ± 0.1579
+vibration,mamba,test C3 (~1500 rpm / 5.0 kN),3 of 17 (Bearing3_1 Bearing3_2 Bearing3_3),2,0.4890 ± 0.0298,0.4790 ± 0.0375,0.4887 ± 0.0298,0.5178 ± 0.0087,0.4411 ± 0.0186,0.1920 ± 0.0832,0.8040 ± 0.0087
