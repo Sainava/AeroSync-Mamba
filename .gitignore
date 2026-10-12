@@ -1,4 +1,12 @@
 .DS_Store
 .archify
+./path
+E16/e16_cache
+E16/e16_probs
+E16/e16_mission_means
+ExternalAudio/audio_zeroshot_cache
+ExternalAudio/audio_zeroshot_checkpoints
+ExternalAudio/audio_zeroshot_probs
+tii
 *.pt
 

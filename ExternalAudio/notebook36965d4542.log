@@ -1,0 +1,941 @@
+[{"stream_name":"stderr","time":6.312529421,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.31259998,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.312606513,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.312610299,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":6.889123962,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.889174857,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.889180282,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.8891843040000005,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":7.9628148450000005,"data":"Environment: Kaggle | outputs -\u003e /kaggle/working | raw clones -\u003e /tmp/audio_zeroshot_raw\n"}
+,{"stream_name":"stdout","time":7.96284891,"data":"QUICK_MODE = False\n"}
+,{"stream_name":"stdout","time":14.889177325,"data":"Installing mamba-ssm (torch 2.11.0+cu128, CUDA 12.8, python 3.13) ...\n"}
+,{"stream_name":"stdout","time":14.889212794,"data":"  pip install packaging ninja\n"}
+,{"stream_name":"stdout","time":18.64281545,"data":"  pip install causal-conv1d\u003e=1.2.0 --no-build-isolation\n"}
+,{"stream_name":"stdout","time":1034.867601474,"data":"  pip install mamba-ssm --no-build-isolation\n"}
+,{"stream_name":"stdout","time":3217.787768528,"data":"mamba_ssm 2.3.2.post1 (mamba_ssm.modules.mamba_simple.Mamba) | torch 2.11.0+cu128 | CUDA 12.8 | GPU Tesla T4\n"}
+,{"stream_name":"stdout","time":3217.815868926,"data":"Seeds [42, 123] | feature sets ['LEVEL', 'SHAPE'] | frame 256 | features: bins at 62.5-1000.0 Hz | windows 128 frames, stride 64, 64 tokens x 16\n"}
+,{"stream_name":"stdout","time":3217.815930007,"data":"Headline arm (pre-registered): {'model': 'EXT_LEVEL', 'gain': 'NORMCAL', 'channels': 'MEAN5', 'rate': 16000}\n"}
+,{"stream_name":"stdout","time":3217.982850291,"data":"$ git clone --depth 1 https://github.com/tiiuae/UAV-Propeller-Anomaly-Audio-Dataset.git /tmp/audio_zeroshot_raw/UAV-Propeller-Anomaly-Audio-Dataset\n"}
+,{"stream_name":"stdout","time":3240.895162513,"data":"External dataset: /tmp/audio_zeroshot_raw/UAV-Propeller-Anomaly-Audio-Dataset/Dataset | 293 .wav files | 599 MB\n"}
+,{"stream_name":"stdout","time":3241.09622807,"data":"$ git clone --depth 1 --filter=blob:none --no-checkout https://github.com/tiiuae/UAV-Realistic-Fault-Dataset.git /tmp/audio_zeroshot_raw/UAV-Realistic-Fault-Dataset\n"}
+,{"stream_name":"stdout","time":3242.052055578,"data":"$ git -C /tmp/audio_zeroshot_raw/UAV-Realistic-Fault-Dataset sparse-checkout set --no-cone /Dataset/*/*/*AudioBuffer*.jsonl\n"}
+,{"stream_name":"stdout","time":3242.052130702,"data":"$ git -C /tmp/audio_zeroshot_raw/UAV-Realistic-Fault-Dataset checkout\n"}
+,{"stream_name":"stdout","time":3310.232220833,"data":"TII download: blob-less shallow clone + sparse checkout of /Dataset/*/*/*AudioBuffer*.jsonl\n"}
+,{"stream_name":"stdout","time":3310.232278762,"data":"TII AudioBuffer files found: 99 | 2.93 GB\n"}
+,{"stream_name":"stdout","time":3311.648671482,"data":"  50/293 files | 1 s\n"}
+,{"stream_name":"stdout","time":3312.907709318,"data":"  100/293 files | 2 s\n"}
+,{"stream_name":"stdout","time":3314.012019569,"data":"  150/293 files | 4 s\n"}
+,{"stream_name":"stdout","time":3317.264782895,"data":"  200/293 files | 7 s\n"}
+,{"stream_name":"stdout","time":3318.593107666,"data":"  250/293 files | 8 s\n"}
+,{"stream_name":"stdout","time":3320.894117094,"data":"  293/293 files | 11 s\n"}
+,{"stream_name":"stdout","time":3320.894153682,"data":"Saved /kaggle/working/external_metadata.csv (293 rows)\n"}
+,{"stream_name":"stdout","time":3320.894159499,"data":"Folder levels discovered: extra levels [''] | file names ['ch1.wav'] | configurations per class {0: 1, 1: 4, 2: 6, 3: 4, 4: 1}\n"}
+,{"stream_name":"stdout","time":3321.111181284,"data":"[HOOK HARD] PASS — external: file count + class counts: 293 files, classes [78, 72, 71, 48, 24] (expected 293, [78, 72, 71, 48, 24])\n"}
+,{"stream_name":"stdout","time":3321.111236868,"data":"[HOOK HARD] PASS — external: formats mono / 16 kHz / 16-bit, every file decoded: (channels, rate, bytes) -\u003e files: {(1, 16000, 2): 293}; status {'ok': 293}\n"}
+,{"stream_name":"stdout","time":3321.111243636,"data":"[HOOK soft] PASS — external: configuration bits match the class (number of 1s = broken propellers): configurations ['0000', '0001', '0010', '0011', '0100', '0101', '0110', '0111', '1000', '1001', '1010', '1011', '1100', '1101', '1110', '1111']\n"}
+,{"stream_name":"stdout","time":3321.111248979,"data":"[HOOK soft] PASS — external: total duration: 5.199 h (expected 5.2 ± 0.05)\n"}
+,{"stream_name":"stdout","time":3321.111253408,"data":"[HOOK soft] PASS — external: duration range and median: 37.6–108.7 s, median 60.6 s (expected 37.6–108.7, median 60.6)\n"}
+,{"stream_name":"stdout","time":3321.111257285,"data":"[HOOK soft] PASS — external: no duplicate files (sha1 of the audio bytes): 0 files share a hash\n"}
+,{"stream_name":"stdout","time":3321.111261053,"data":"[HOOK soft] PASS — external: no clipping, no dead files, |DC| \u003c= 0.6 LSB, \u003c= 0.8% exact-zero samples: clipped samples 0, dead 0, max |DC| 0.53 LSB, max zero fraction 0.78%\n"}
+,{"stream_name":"stdout","time":3321.111264571,"data":"[HOOK soft] PASS — external: already trimmed (quiet lead-in median ~1 s / max ~6 s; tail median ~2 s / max ~9 s): lead-in median 1.0 s (max 6.0), tail median 2.0 s (max 8.9); quiet = 1-s blocks below 0.5 x the file's steady RMS\n"}
+,{"stream_name":"stdout","time":3321.111268423,"data":"[HOOK soft] PASS — external: class median steady RMS within 10% of the earlier audit: 0 normal 74 (exp 75, -1%) | 1 broken 164 (exp 168, -2%) | 2 broken 420 (exp 415, +1%) | 3 broken 452 (exp 454, -0%) | 4 broken 477 (exp 472, +1%)\n"}
+,{"stream_name":"stdout","time":3321.111272364,"data":"\n"}
+,{"stream_name":"stdout","time":3321.111275982,"data":"Per-configuration steady-flight RMS (int16 units; steady = median 1-s block RMS over the middle 50% of the file):\n"}
+,{"stream_name":"stdout","time":3321.111279944,"data":"                      n   median      q25      q75      min      max  IQR/median  expected  dev vs expected\n"}
+,{"stream_name":"stdout","time":3321.111283538,"data":"class configuration                                                                                        \n"}
+,{"stream_name":"stdout","time":3321.111286979,"data":"0     0000           78   74.358   71.397   77.465   65.661   82.068       0.082       NaN              NaN\n"}
+,{"stream_name":"stdout","time":3321.111290381,"data":"1     0001           18  107.355  102.231  110.073   97.466  117.480       0.073     107.0            0.003\n"}
+,{"stream_name":"stdout","time":3321.111310813,"data":"      0010           18  454.276  446.741  461.236  402.306  516.833       0.032     456.0           -0.004\n"}
+,{"stream_name":"stdout","time":3321.111314496,"data":"      0100           18  114.531  109.782  120.085  100.700  136.636       0.090     116.0           -0.013\n"}
+,{"stream_name":"stdout","time":3321.111319928,"data":"      1000           18  276.056  234.016  320.557  191.821  441.695       0.313     279.0           -0.011\n"}
+,{"stream_name":"stdout","time":3321.111451043,"data":"2     0011           12  440.728  428.978  499.462  402.607  505.178       0.160     438.0            0.006\n"}
+,{"stream_name":"stdout","time":3321.111568376,"data":"      0101           12  156.037  151.422  158.508  147.314  164.884       0.045     155.0            0.007\n"}
+,{"stream_name":"stdout","time":3321.111600546,"data":"      0110           12  458.548  446.389  488.528  423.704  556.703       0.092     457.0            0.003\n"}
+,{"stream_name":"stdout","time":3321.111620796,"data":"      1001           11  315.007  284.208  333.795  267.441  401.699       0.157     314.0            0.003\n"}
+,{"stream_name":"stdout","time":3321.111642604,"data":"      1010           12  473.847  469.629  485.540  401.624  501.080       0.034     475.0           -0.002\n"}
+,{"stream_name":"stdout","time":3321.111703679,"data":"      1100           12  406.144  388.748  418.423  366.586  436.267       0.073     406.0            0.000\n"}
+,{"stream_name":"stdout","time":3321.111738804,"data":"3     0111           12  443.748  440.400  460.612  428.532  504.224       0.046       NaN              NaN\n"}
+,{"stream_name":"stdout","time":3321.111787219,"data":"      1011           12  464.665  454.434  486.979  428.752  499.773       0.070       NaN              NaN\n"}
+,{"stream_name":"stdout","time":3321.111851624,"data":"      1101           12  282.576  277.539  297.089  267.196  309.438       0.069       NaN              NaN\n"}
+,{"stream_name":"stdout","time":3321.111926544,"data":"      1110           12  472.356  460.206  483.598  423.075  503.037       0.050       NaN              NaN\n"}
+,{"stream_name":"stdout","time":3321.112000584,"data":"4     1111           24  477.074  460.192  490.835  442.184  563.676       0.064       NaN              NaN\n"}
+,{"stream_name":"stdout","time":3321.112048629,"data":"[HOOK soft] PASS — external: per-configuration median steady RMS within 10% of the earlier audit: max deviation 1% over 10 configurations with a recorded value\n"}
+,{"stream_name":"stdout","time":3321.112099327,"data":"\n"}
+,{"stream_name":"stdout","time":3321.112156152,"data":"Drift across runs (Spearman of run number vs steady RMS within configuration x mission type, groups with \u003e= 4 files): median rho -0.20, |rho| \u003e 0.7 in 13/35 groups (descriptive only)\n"}
+,{"stream_name":"stdout","time":3321.112207333,"data":"[HOOK soft] PASS — external: loudness overlap facts: 15% of 2_broken files are quieter than the median 1_broken file (expected 17%); a random 4_broken file is louder than a random 3_broken file 74% of the time (expected 75%)\n"}
+,{"stream_name":"stdout","time":3322.608905808,"data":"  saved /kaggle/working/figures/1b_external_steady_rms_by_configuration.png\n"}
+,{"stream_name":"stdout","time":3322.899428616,"data":"Mission folders with an AudioBuffer file: 99 | excluded by name: 4 ['rosbag2_2021_12_29-09_10_31', 'rosbag2_2021_12_31-09_58_13', 'rosbag2_2021_12_31-10_04_22', 'rosbag2_2021_12_31-10_12_31'] | kept: 95 | kept folders without an AudioBuffer file: []\n"}
+,{"stream_name":"stdout","time":3340.406672387,"data":"  10/95 missions | {'parsed': 10} | 17 s\n"}
+,{"stream_name":"stdout","time":3357.084350096,"data":"  20/95 missions | {'parsed': 20} | 34 s\n"}
+,{"stream_name":"stdout","time":3373.708963556,"data":"  30/95 missions | {'parsed': 30} | 51 s\n"}
+,{"stream_name":"stdout","time":3389.453130649,"data":"  40/95 missions | {'parsed': 40} | 67 s\n"}
+,{"stream_name":"stdout","time":3405.581289995,"data":"  50/95 missions | {'parsed': 50} | 83 s\n"}
+,{"stream_name":"stdout","time":3422.017844926,"data":"  60/95 missions | {'parsed': 60} | 99 s\n"}
+,{"stream_name":"stdout","time":3438.38977432,"data":"  70/95 missions | {'parsed': 70} | 115 s\n"}
+,{"stream_name":"stdout","time":3453.796360158,"data":"  80/95 missions | {'parsed': 80} | 131 s\n"}
+,{"stream_name":"stdout","time":3470.437496931,"data":"  90/95 missions | {'parsed': 90} | 147 s\n"}
+,{"stream_name":"stdout","time":3478.259714201,"data":"  95/95 missions | {'parsed': 95} | 156 s\n"}
+,{"stream_name":"stdout","time":3478.323463955,"data":"[HOOK HARD] PASS — TII: 95 missions, class counts, exclusion set: 95 missions, classes [18, 19, 18, 20, 20], excluded found 4/4 (expected 95, [18, 19, 18, 20, 20])\n"}
+,{"stream_name":"stdout","time":3478.323539857,"data":"[HOOK HARD] PASS — TII: day counts: {'2021-12-22': 10, '2021-12-31': 36, '2022-01-04': 17, '2022-01-05': 15, '2022-01-10': 17} (expected [10, 36, 17, 15, 17])\n"}
+,{"stream_name":"stdout","time":3478.323548977,"data":"[HOOK HARD] PASS — TII: slot index 5 identically zero: 95/95 missions\n"}
+,{"stream_name":"stdout","time":3478.323555326,"data":"[HOOK soft] PASS — TII: slot 0 has the largest std (earlier: 94/95): 95/95 missions\n"}
+,{"stream_name":"stdout","time":3478.323560901,"data":"Saved /kaggle/working/tii_audio_missions.csv\n"}
+,{"stream_name":"stdout","time":3478.323567178,"data":"Non-modal chunks dropped: 0 | undecodable lines: 0 | chunks per mission: median 5080, range 4279–6464\n"}
+,{"stream_name":"stdout","time":3478.323572503,"data":"Trim (assumed 16 kHz): quiet lead-in median 1.0 s (max 4.0), tail median 2.0 s (max 3.0)\n"}
+,{"stream_name":"stdout","time":3478.323577246,"data":"\n"}
+,{"stream_name":"stdout","time":3478.323581786,"data":"TII sample range per slot over all missions (raw integers; int16 is NOT assumed):\n"}
+,{"stream_name":"stdout","time":3478.323586729,"data":"  slot 0 (c1): min -32768, max 32767\n"}
+,{"stream_name":"stdout","time":3478.323591825,"data":"  slot 1 (c2): min -3459, max 2759\n"}
+,{"stream_name":"stdout","time":3478.323597216,"data":"  slot 2 (c3): min -1947, max 2755\n"}
+,{"stream_name":"stdout","time":3478.323602038,"data":"  slot 3 (c4): min -1498, max 1784\n"}
+,{"stream_name":"stdout","time":3478.323606804,"data":"  slot 4 (c5): min -2660, max 2128\n"}
+,{"stream_name":"stdout","time":3478.323611422,"data":"  slot 5 (dropped): min 0, max 0\n"}
+,{"stream_name":"stdout","time":3478.323616067,"data":"Median steady RMS of Normal (class 0) missions per channel (TII units): c1 924.5, c2 99.7, c3 91.5, c4 65.0, c5 64.3\n"}
+,{"stream_name":"stdout","time":3478.323620938,"data":"Day x class (missions):\n"}
+,{"stream_name":"stdout","time":3478.323625528,"data":"class       0  1  2  3  4\n"}
+,{"stream_name":"stdout","time":3478.323630349,"data":"day                      \n"}
+,{"stream_name":"stdout","time":3478.323634968,"data":"2021-12-22  2  2  2  2  2\n"}
+,{"stream_name":"stdout","time":3478.3236399,"data":"2021-12-31  7  7  6  8  8\n"}
+,{"stream_name":"stdout","time":3478.323644895,"data":"2022-01-04  3  2  4  4  4\n"}
+,{"stream_name":"stdout","time":3478.32365023,"data":"2022-01-05  3  4  2  2  4\n"}
+,{"stream_name":"stdout","time":3478.323655324,"data":"2022-01-10  3  4  4  4  2\n"}
+,{"stream_name":"stdout","time":3478.460538206,"data":"Steady-flight median RMS per class divided by the class-0 median:\n"}
+,{"stream_name":"stdout","time":3478.460599652,"data":"          external ch1  TII c1  TII c2  TII c3  TII c4  TII c5\n"}
+,{"stream_name":"stdout","time":3478.46061438,"data":"0 normal          1.00    1.00    1.00    1.00    1.00    1.00\n"}
+,{"stream_name":"stdout","time":3478.460645367,"data":"1 broken          2.21    0.76    2.06    1.80    2.14    1.79\n"}
+,{"stream_name":"stdout","time":3478.460652225,"data":"2 broken          5.65    0.84    3.52    2.43    2.90    2.44\n"}
+,{"stream_name":"stdout","time":3478.460658406,"data":"3 broken          6.08    0.83    3.52    2.87    3.42    2.61\n"}
+,{"stream_name":"stdout","time":3478.460692594,"data":"4 broken          6.42    0.90    3.78    2.99    3.74    2.67\n"}
+,{"stream_name":"stdout","time":3478.460698192,"data":"  external ch1  monotone increasing: True  | saturating (rise 2-\u003e4 \u003c rise 0-\u003e2, log scale): True\n"}
+,{"stream_name":"stdout","time":3478.460703647,"data":"  TII c1        monotone increasing: False | saturating (rise 2-\u003e4 \u003c rise 0-\u003e2, log scale): False\n"}
+,{"stream_name":"stdout","time":3478.460708447,"data":"  TII c2        monotone increasing: False | saturating (rise 2-\u003e4 \u003c rise 0-\u003e2, log scale): True\n"}
+,{"stream_name":"stdout","time":3478.460713356,"data":"  TII c3        monotone increasing: True  | saturating (rise 2-\u003e4 \u003c rise 0-\u003e2, log scale): True\n"}
+,{"stream_name":"stdout","time":3478.460718428,"data":"  TII c4        monotone increasing: True  | saturating (rise 2-\u003e4 \u003c rise 0-\u003e2, log scale): True\n"}
+,{"stream_name":"stdout","time":3478.460723445,"data":"  TII c5        monotone increasing: True  | saturating (rise 2-\u003e4 \u003c rise 0-\u003e2, log scale): True\n"}
+,{"stream_name":"stdout","time":3478.460728329,"data":"\n"}
+,{"stream_name":"stdout","time":3478.46073261,"data":"STATEMENT: the external data is monotone and saturating. TII channels with the same qualitative pattern: ['TII c3', 'TII c4', 'TII c5'].\n"}
+,{"stream_name":"stdout","time":3479.251128598,"data":"  saved /kaggle/working/figures/3a_relative_loudness.png\n"}
+,{"stream_name":"stdout","time":3479.458103289,"data":"Pearson r between TII Normal mean log-power and external Normal mean log-power, 100-2000 Hz grid:\n"}
+,{"stream_name":"stdout","time":3479.458171923,"data":"channel     c1     c2     c3     c4     c5  mean of best 3 channels\n"}
+,{"stream_name":"stdout","time":3479.458179306,"data":"rate_hz                                                            \n"}
+,{"stream_name":"stdout","time":3479.458183571,"data":"8000     0.906  0.886  0.900  0.876  0.828                    0.898\n"}
+,{"stream_name":"stdout","time":3479.458187597,"data":"10000    0.908  0.900  0.874  0.922  0.844                    0.910\n"}
+,{"stream_name":"stdout","time":3479.458191215,"data":"12000    0.911  0.908  0.884  0.891  0.896                    0.905\n"}
+,{"stream_name":"stdout","time":3479.458194883,"data":"14000    0.899  0.919  0.892  0.834  0.940                    0.919\n"}
+,{"stream_name":"stdout","time":3479.458198526,"data":"16000    0.912  0.923  0.913  0.853  0.931                    0.923\n"}
+,{"stream_name":"stdout","time":3479.458202453,"data":"18000    0.852  0.850  0.859  0.833  0.859                    0.857\n"}
+,{"stream_name":"stdout","time":3479.458206178,"data":"20000    0.780  0.761  0.812  0.777  0.794                    0.795\n"}
+,{"stream_name":"stdout","time":3479.458209953,"data":"24000    0.629  0.594  0.766  0.608  0.750                    0.715\n"}
+,{"stream_name":"stdout","time":3479.458213776,"data":"32000    0.295  0.251  0.584  0.307  0.579                    0.490\n"}
+,{"stream_name":"stdout","time":3479.458217374,"data":"\n"}
+,{"stream_name":"stdout","time":3479.458220839,"data":"RATE_EST = inconclusive (best 16000 Hz r 0.923, second 14000 Hz r 0.919; margin \u003c 0.05). The assumed 16000 Hz is kept.\n"}
+,{"stream_name":"stdout","time":3479.458225303,"data":"This scan is EXPLORATORY. It assumes the two datasets' Normal flights have a similar drone state (rotor speed, load). It is NOT a verification of the TII sample rate.\n"}
+,{"stream_name":"stdout","time":3479.458229571,"data":"Rate variants used for TII inputs: [16000]\n"}
+,{"stream_name":"stdout","time":3481.173327493,"data":"  saved /kaggle/working/figures/3b_rate_scan.png\n"}
+,{"stream_name":"stdout","time":3481.208736425,"data":"TII channels ranked by similarity to external ch1 (1 = most similar). DESCRIPTIVE ONLY: no arm is chosen from this.\n"}
+,{"stream_name":"stdout","time":3481.20878712,"data":"         loudness pattern distance (mean |log ratio diff|, classes 1-4)  spectral r at 16000 Hz  rank: loudness  rank: spectrum  mean rank\n"}
+,{"stream_name":"stdout","time":3481.208794004,"data":"channel                                                                                                                                   \n"}
+,{"stream_name":"stdout","time":3481.208799607,"data":"c2                                                                0.406                   0.923               1               2        1.5\n"}
+,{"stream_name":"stdout","time":3481.208804279,"data":"c5                                                                0.694                   0.931               4               1        2.5\n"}
+,{"stream_name":"stdout","time":3481.208808448,"data":"c3                                                                0.641                   0.913               3               3        3.0\n"}
+,{"stream_name":"stdout","time":3481.208813206,"data":"c4                                                                0.453                   0.853               2               5        3.5\n"}
+,{"stream_name":"stdout","time":3481.208817303,"data":"c1                                                                1.735                   0.912               5               4        4.5\n"}
+,{"stream_name":"stdout","time":3481.398964157,"data":"       max r vs external (same class)  max r vs other TII (same class, baseline)\n"}
+,{"stream_name":"stdout","time":3481.399027795,"data":"class                                                                           \n"}
+,{"stream_name":"stdout","time":3481.399032732,"data":"0                               0.236                                      0.567\n"}
+,{"stream_name":"stdout","time":3481.399036583,"data":"1                               0.294                                      0.776\n"}
+,{"stream_name":"stdout","time":3481.399040269,"data":"2                               0.382                                      0.925\n"}
+,{"stream_name":"stdout","time":3481.399044003,"data":"3                               0.374                                      0.904\n"}
+,{"stream_name":"stdout","time":3481.39904765,"data":"4                               0.344                                      0.930\n"}
+,{"stream_name":"stdout","time":3481.399051295,"data":"\n"}
+,{"stream_name":"stdout","time":3481.399054681,"data":"Median over missions: max r vs external 0.345 | baseline (other TII) 0.850\n"}
+,{"stream_name":"stdout","time":3481.400078387,"data":"TII-external pairs with r \u003e 0.98: 0\n"}
+,{"stream_name":"stdout","time":3481.400091609,"data":"SOFT SCREEN ONLY: shared flight shapes (take-off, waypoints, landing) alone produce high correlations, so a flag is a reason to look, not evidence of a shared recording.\n"}
+,{"stream_name":"stdout","time":3482.180870636,"data":"  saved /kaggle/working/figures/3d_overlap_screen.png\n"}
+,{"stream_name":"stdout","time":3482.207722654,"data":"COMPATIBILITY FINDINGS\n"}
+,{"stream_name":"stdout","time":3482.20775082,"data":"- Loudness pattern: external is monotone and saturating; TII channels with the same pattern: ['TII c3', 'TII c4', 'TII c5'].\n"}
+,{"stream_name":"stdout","time":3482.207756324,"data":"- Sample-rate scan (exploratory): RATE_EST = inconclusive; rate variants used: [16000].\n"}
+,{"stream_name":"stdout","time":3482.207765114,"data":"- Channel ranking (most to least similar to external ch1): ['c2', 'c5', 'c3', 'c4', 'c1'].\n"}
+,{"stream_name":"stdout","time":3482.207769494,"data":"- Overlap screen: median max r vs external 0.345 (baseline vs other TII 0.850); 0 TII-external pairs above 0.98 (soft screen).\n"}
+,{"stream_name":"stdout","time":3482.255386173,"data":"rate 16000 Hz: target bins at cached-bin positions [1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 14.0, 15.0, 16.0]\n"}
+,{"stream_name":"stdout","time":3482.255431275,"data":"At 16 kHz the mapping is the identity on bins 1..16 (checked).\n"}
+,{"stream_name":"stdout","time":3484.559307095,"data":"External windows: 16566 ({0: 4654, 1: 3990, 2: 3897, 3: 2722, 4: 1303} per class) | shape (16566, 64, 16) | finite: True\n"}
+,{"stream_name":"stdout","time":3484.55936581,"data":"Windows per recording: median 53, min 31\n"}
+,{"stream_name":"stdout","time":3484.559372942,"data":"Validation group kind per class: 0 normal: mission_type (4 groups), 1 broken: configuration (4 groups), 2 broken: configuration (6 groups), 3 broken: configuration (4 groups), 4 broken: mission_type (4 groups)\n"}
+,{"stream_name":"stdout","time":3484.559379386,"data":"[HOOK HARD] PASS — external seed 42: no validation group (or recording) also in training: held out: 0 normal ['cw_f8'] (13/78 files); 1 broken ['1000'] (18/72 files); 2 broken ['1010'] (12/71 files); 3 broken ['1110'] (12/48 files); 4 broken ['ccw_square'] (8/24 files)\n"}
+,{"stream_name":"stdout","time":3484.559385512,"data":"[HOOK HARD] PASS — external seed 123: no validation group (or recording) also in training: held out: 0 normal ['ccw_f8'] (13/78 files); 1 broken ['0001'] (18/72 files); 2 broken ['0101'] (12/71 files); 3 broken ['1011'] (12/48 files); 4 broken ['cw_square'] (8/24 files)\n"}
+,{"stream_name":"stdout","time":3484.637181497,"data":"[HOOK HARD] PASS — TII: every mission has \u003e= 1 window inside its trimmed span: 7133 windows (x 5 channels); per mission median 74, min 64\n"}
+,{"stream_name":"stdout","time":3484.63722892,"data":"[HOOK HARD] PASS — NORMCAL gains use other-day Normal missions only: 2021-12-22: 16 Normal missions from other days; 2021-12-31: 11 Normal missions from other days; 2022-01-04: 15 Normal missions from other days; 2022-01-05: 15 Normal missions from other days; 2022-01-10: 15 Normal missions from other days\n"}
+,{"stream_name":"stdout","time":3484.637233776,"data":"External Normal steady RMS = 74.4 (int16 units)\n"}
+,{"stream_name":"stdout","time":3484.63723615,"data":"NORMCAL power scale (rms_ext_normal / g)^2 per held-out day and channel:\n"}
+,{"stream_name":"stdout","time":3484.637238664,"data":"                 c1     c2     c3    c4    c5\n"}
+,{"stream_name":"stdout","time":3484.637241022,"data":"2021-12-22 0.006564 0.5622 0.6737 1.309 1.353\n"}
+,{"stream_name":"stdout","time":3484.637243581,"data":"2021-12-31 0.006505 0.5719 0.6841 1.309 1.351\n"}
+,{"stream_name":"stdout","time":3484.637246095,"data":"2022-01-04 0.005875 0.5527 0.6565  1.31 1.351\n"}
+,{"stream_name":"stdout","time":3484.637248713,"data":"2022-01-05 0.006701 0.5439 0.6565 1.294 1.315\n"}
+,{"stream_name":"stdout","time":3484.637268186,"data":"2022-01-10 0.005875 0.5594 0.6565 1.294 1.324\n"}
+,{"stream_name":"stdout","time":3484.637271927,"data":"NORMCAL is a SEMI-SUPERVISED gain calibration (it uses TII Normal-class loudness from training days), not pure zero-shot.\n"}
+,{"stream_name":"stdout","time":3484.637276248,"data":"[HOOK HARD] PASS — TII scratch: no test-day mission in any fold's training/validation; test days partition the 95 missions: fold 0 (2021-12-22): train 72 / val 13 / test 10 | fold 1 (2021-12-31): train 49 / val 10 / test 36 | fold 2 (2022-01-04): train 67 / val 11 / test 17 | fold 3 (2022-01-05): train 69 / val 11 / test 15 | fold 4 (2022-01-10): train 67 / val 11 / test 17\n"}
+,{"stream_name":"stdout","time":3485.495498293,"data":"[HOOK HARD] PASS — real mamba_ssm model: every block is mamba_ssm.modules.mamba_simple.Mamba (d_state 16, d_conv 2); Mamba params 874,496 (expected 874,496); total 995,974\n"}
+,{"stream_name":"stdout","time":3485.49556302,"data":"[HOOK soft] PASS — v28 A1 hyperparameters printed: D_MODEL=256, DROPOUT=0.15, MAMBA_NUM_BLOCKS=2, MAMBA_D_STATE=16, MAMBA_D_CONV=2, MAMBA_EXPAND=2, EPOCHS=20, BATCH_SIZE=32, LEARNING_RATE=0.0001, WEIGHT_DECAY=0.0001, LR_MIN=1e-06, GRAD_CLIP_NORM=1.0 | optimizer AdamW, CosineAnnealingLR stepped per epoch | v28 checkpoint rule: 20 fixed epochs, no early stopping; keep the epoch with the highest validation macro-F1 | used here: 20 fixed epochs (as v28); keep the epoch with the LOWEST class-weighted validation loss\n"}
+,{"stream_name":"stdout","time":3485.69318615,"data":"24 training runs planned | already logged with the same config tag: 0 | to train now: 24\n"}
+,{"stream_name":"stdout","time":3485.693228545,"data":"Config tags: EXT_LEVEL 679c89ee4574, TII_LEVEL 84c9b5872bb5, EXT_SHAPE 26da2da9a8be, TII_SHAPE dd88ded677f8\n"}
+,{"stream_name":"stdout","time":3485.693233641,"data":"[HOOK HARD] PASS — EXT_LEVEL seed 42: model trained without TII data: external .wav windows only (230 train / 63 val recordings); no TII data\n"}
+,{"stream_name":"stdout","time":3485.87135364,"data":"[EXT_LEVEL fold -1 seed 42] init ec0302d13149 | 995,974 params | windows train 12825 / val 3741 | z-score 6a21d36997fa517c | class weights [0.7110000252723694, 0.8550000190734863, 0.7820000052452087, 1.2649999856948853, 2.822000026702881]\n"}
+,{"stream_name":"stdout","time":3493.660524957,"data":"[EXT_LEVEL fold -1 seed 42] epoch 01/20 | train CE 0.5514 | val CE 0.8072 | val macro-F1 0.6297  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":3500.799697707,"data":"[EXT_LEVEL fold -1 seed 42] epoch 02/20 | train CE 0.2698 | val CE 0.3170 | val macro-F1 0.8643  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":3507.94231422,"data":"[EXT_LEVEL fold -1 seed 42] epoch 03/20 | train CE 0.1815 | val CE 0.8144 | val macro-F1 0.7009\n"}
+,{"stream_name":"stdout","time":3515.114014405,"data":"[EXT_LEVEL fold -1 seed 42] epoch 04/20 | train CE 0.1373 | val CE 0.7606 | val macro-F1 0.7301\n"}
+,{"stream_name":"stdout","time":3522.376817866,"data":"[EXT_LEVEL fold -1 seed 42] epoch 05/20 | train CE 0.0996 | val CE 0.8506 | val macro-F1 0.7399\n"}
+,{"stream_name":"stdout","time":3529.344993552,"data":"[EXT_LEVEL fold -1 seed 42] epoch 06/20 | train CE 0.0869 | val CE 0.7325 | val macro-F1 0.7846\n"}
+,{"stream_name":"stdout","time":3536.47520317,"data":"[EXT_LEVEL fold -1 seed 42] epoch 07/20 | train CE 0.0717 | val CE 1.2444 | val macro-F1 0.6903\n"}
+,{"stream_name":"stdout","time":3543.636196575,"data":"[EXT_LEVEL fold -1 seed 42] epoch 08/20 | train CE 0.0605 | val CE 1.3381 | val macro-F1 0.6799\n"}
+,{"stream_name":"stdout","time":3550.519971413,"data":"[EXT_LEVEL fold -1 seed 42] epoch 09/20 | train CE 0.0510 | val CE 1.8298 | val macro-F1 0.6834\n"}
+,{"stream_name":"stdout","time":3557.550430252,"data":"[EXT_LEVEL fold -1 seed 42] epoch 10/20 | train CE 0.0484 | val CE 2.2194 | val macro-F1 0.6661\n"}
+,{"stream_name":"stdout","time":3564.63827621,"data":"[EXT_LEVEL fold -1 seed 42] epoch 11/20 | train CE 0.0336 | val CE 1.9572 | val macro-F1 0.7117\n"}
+,{"stream_name":"stdout","time":3571.386355351,"data":"[EXT_LEVEL fold -1 seed 42] epoch 12/20 | train CE 0.0282 | val CE 2.7581 | val macro-F1 0.6606\n"}
+,{"stream_name":"stdout","time":3578.251972034,"data":"[EXT_LEVEL fold -1 seed 42] epoch 13/20 | train CE 0.0142 | val CE 3.7954 | val macro-F1 0.6352\n"}
+,{"stream_name":"stdout","time":3585.12293807,"data":"[EXT_LEVEL fold -1 seed 42] epoch 14/20 | train CE 0.0169 | val CE 2.7470 | val macro-F1 0.6827\n"}
+,{"stream_name":"stdout","time":3592.050271659,"data":"[EXT_LEVEL fold -1 seed 42] epoch 15/20 | train CE 0.0122 | val CE 3.0179 | val macro-F1 0.6736\n"}
+,{"stream_name":"stdout","time":3598.995618994,"data":"[EXT_LEVEL fold -1 seed 42] epoch 16/20 | train CE 0.0067 | val CE 3.4097 | val macro-F1 0.6651\n"}
+,{"stream_name":"stdout","time":3605.913215313,"data":"[EXT_LEVEL fold -1 seed 42] epoch 17/20 | train CE 0.0053 | val CE 3.3655 | val macro-F1 0.6671\n"}
+,{"stream_name":"stdout","time":3612.764730276,"data":"[EXT_LEVEL fold -1 seed 42] epoch 18/20 | train CE 0.0044 | val CE 3.5659 | val macro-F1 0.6639\n"}
+,{"stream_name":"stdout","time":3619.643144578,"data":"[EXT_LEVEL fold -1 seed 42] epoch 19/20 | train CE 0.0029 | val CE 3.4641 | val macro-F1 0.6718\n"}
+,{"stream_name":"stdout","time":3626.941326804,"data":"[EXT_LEVEL fold -1 seed 42] epoch 20/20 | train CE 0.0029 | val CE 3.5016 | val macro-F1 0.6684\n"}
+,{"stream_name":"stdout","time":3627.242828938,"data":"[EXT_LEVEL fold -1 seed 42] VALIDATION (within-external, held-out configurations): window macro-F1 0.8643 | recording macro-F1 0.9596 (best epoch 2)\n"}
+,{"stream_name":"stdout","time":3627.242869963,"data":"[run 01/24] EXT_LEVEL fold -1 seed 42 done in 141 s\n"}
+,{"stream_name":"stdout","time":3627.242875228,"data":"⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱\n"}
+,{"stream_name":"stdout","time":3627.242880737,"data":"ESTIMATED TOTAL RUNTIME: ~156 min (elapsed so far 60 min + remaining training 96 min for 23 runs, scaled by training-window count from this run). Evaluation adds a few minutes.\n"}
+,{"stream_name":"stdout","time":3627.242885644,"data":"⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱⏱\n"}
+,{"stream_name":"stdout","time":3627.448146465,"data":"[HOOK HARD] PASS — EXT_LEVEL seed 123: model trained without TII data: external .wav windows only (230 train / 63 val recordings); no TII data\n"}
+,{"stream_name":"stdout","time":3627.510741351,"data":"[EXT_LEVEL fold -1 seed 123] init 7cfacc243665 | 995,974 params | windows train 12835 / val 3731 | z-score c9157bf1c960e7ce | class weights [0.7170000076293945, 0.8410000205039978, 0.8109999895095825, 1.2289999723434448, 2.6989998817443848]\n"}
+,{"stream_name":"stdout","time":3634.634637955,"data":"[EXT_LEVEL fold -1 seed 123] epoch 01/20 | train CE 0.5372 | val CE 0.5913 | val macro-F1 0.7234  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":3641.649758005,"data":"[EXT_LEVEL fold -1 seed 123] epoch 02/20 | train CE 0.2454 | val CE 1.4264 | val macro-F1 0.5734\n"}
+,{"stream_name":"stdout","time":3648.606223902,"data":"[EXT_LEVEL fold -1 seed 123] epoch 03/20 | train CE 0.1852 | val CE 1.0588 | val macro-F1 0.6300\n"}
+,{"stream_name":"stdout","time":3655.741716489,"data":"[EXT_LEVEL fold -1 seed 123] epoch 04/20 | train CE 0.1446 | val CE 1.3564 | val macro-F1 0.5875\n"}
+,{"stream_name":"stdout","time":3662.976431168,"data":"[EXT_LEVEL fold -1 seed 123] epoch 05/20 | train CE 0.1172 | val CE 1.7752 | val macro-F1 0.5555\n"}
+,{"stream_name":"stdout","time":3670.211116465,"data":"[EXT_LEVEL fold -1 seed 123] epoch 06/20 | train CE 0.1034 | val CE 1.3670 | val macro-F1 0.5900\n"}
+,{"stream_name":"stdout","time":3677.434007045,"data":"[EXT_LEVEL fold -1 seed 123] epoch 07/20 | train CE 0.0861 | val CE 2.2269 | val macro-F1 0.6332\n"}
+,{"stream_name":"stdout","time":3684.672931868,"data":"[EXT_LEVEL fold -1 seed 123] epoch 08/20 | train CE 0.0953 | val CE 2.3644 | val macro-F1 0.5747\n"}
+,{"stream_name":"stdout","time":3692.025949034,"data":"[EXT_LEVEL fold -1 seed 123] epoch 09/20 | train CE 0.0663 | val CE 2.7402 | val macro-F1 0.5888\n"}
+,{"stream_name":"stdout","time":3699.305097284,"data":"[EXT_LEVEL fold -1 seed 123] epoch 10/20 | train CE 0.0601 | val CE 3.3754 | val macro-F1 0.5442\n"}
+,{"stream_name":"stdout","time":3706.505754628,"data":"[EXT_LEVEL fold -1 seed 123] epoch 11/20 | train CE 0.0493 | val CE 3.4196 | val macro-F1 0.5408\n"}
+,{"stream_name":"stdout","time":3713.809628965,"data":"[EXT_LEVEL fold -1 seed 123] epoch 12/20 | train CE 0.0398 | val CE 2.7628 | val macro-F1 0.5757\n"}
+,{"stream_name":"stdout","time":3721.041940291,"data":"[EXT_LEVEL fold -1 seed 123] epoch 13/20 | train CE 0.0345 | val CE 4.1427 | val macro-F1 0.5656\n"}
+,{"stream_name":"stdout","time":3728.450360898,"data":"[EXT_LEVEL fold -1 seed 123] epoch 14/20 | train CE 0.0223 | val CE 4.2519 | val macro-F1 0.5836\n"}
+,{"stream_name":"stdout","time":3735.825546302,"data":"[EXT_LEVEL fold -1 seed 123] epoch 15/20 | train CE 0.0168 | val CE 4.4381 | val macro-F1 0.5968\n"}
+,{"stream_name":"stdout","time":3743.223160372,"data":"[EXT_LEVEL fold -1 seed 123] epoch 16/20 | train CE 0.0123 | val CE 4.0653 | val macro-F1 0.5875\n"}
+,{"stream_name":"stdout","time":3750.388413829,"data":"[EXT_LEVEL fold -1 seed 123] epoch 17/20 | train CE 0.0092 | val CE 4.3404 | val macro-F1 0.5883\n"}
+,{"stream_name":"stdout","time":3757.726056526,"data":"[EXT_LEVEL fold -1 seed 123] epoch 18/20 | train CE 0.0063 | val CE 4.4582 | val macro-F1 0.5866\n"}
+,{"stream_name":"stdout","time":3765.057682982,"data":"[EXT_LEVEL fold -1 seed 123] epoch 19/20 | train CE 0.0046 | val CE 4.7025 | val macro-F1 0.5848\n"}
+,{"stream_name":"stdout","time":3772.568736664,"data":"[EXT_LEVEL fold -1 seed 123] epoch 20/20 | train CE 0.0049 | val CE 4.6870 | val macro-F1 0.5916\n"}
+,{"stream_name":"stdout","time":3772.863545528,"data":"[EXT_LEVEL fold -1 seed 123] VALIDATION (within-external, held-out configurations): window macro-F1 0.7234 | recording macro-F1 0.8427 (best epoch 1)\n"}
+,{"stream_name":"stdout","time":3772.863605181,"data":"[run 02/24] EXT_LEVEL fold -1 seed 123 done in 145 s\n"}
+,{"stream_name":"stdout","time":3773.068594251,"data":"[HOOK HARD] PASS — EXT_SHAPE seed 42: model trained without TII data: external .wav windows only (230 train / 63 val recordings); no TII data\n"}
+,{"stream_name":"stdout","time":3773.136423834,"data":"[EXT_SHAPE fold -1 seed 42] init ec0302d13149 | 995,974 params | windows train 12825 / val 3741 | z-score bf65eac7598b9234 | class weights [0.7110000252723694, 0.8550000190734863, 0.7820000052452087, 1.2649999856948853, 2.822000026702881]\n"}
+,{"stream_name":"stdout","time":3780.341355118,"data":"[EXT_SHAPE fold -1 seed 42] epoch 01/20 | train CE 0.6166 | val CE 0.7974 | val macro-F1 0.6234  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":3787.601918092,"data":"[EXT_SHAPE fold -1 seed 42] epoch 02/20 | train CE 0.3267 | val CE 1.1745 | val macro-F1 0.5749\n"}
+,{"stream_name":"stdout","time":3794.868062646,"data":"[EXT_SHAPE fold -1 seed 42] epoch 03/20 | train CE 0.2165 | val CE 1.2553 | val macro-F1 0.6150\n"}
+,{"stream_name":"stdout","time":3801.997783448,"data":"[EXT_SHAPE fold -1 seed 42] epoch 04/20 | train CE 0.1684 | val CE 1.2123 | val macro-F1 0.6347\n"}
+,{"stream_name":"stdout","time":3809.256368904,"data":"[EXT_SHAPE fold -1 seed 42] epoch 05/20 | train CE 0.1285 | val CE 2.0542 | val macro-F1 0.5843\n"}
+,{"stream_name":"stdout","time":3816.465022092,"data":"[EXT_SHAPE fold -1 seed 42] epoch 06/20 | train CE 0.1223 | val CE 1.4216 | val macro-F1 0.6587\n"}
+,{"stream_name":"stdout","time":3823.692352602,"data":"[EXT_SHAPE fold -1 seed 42] epoch 07/20 | train CE 0.0926 | val CE 1.8852 | val macro-F1 0.6336\n"}
+,{"stream_name":"stdout","time":3830.860747488,"data":"[EXT_SHAPE fold -1 seed 42] epoch 08/20 | train CE 0.0877 | val CE 2.0255 | val macro-F1 0.6580\n"}
+,{"stream_name":"stdout","time":3838.254784283,"data":"[EXT_SHAPE fold -1 seed 42] epoch 09/20 | train CE 0.0671 | val CE 2.0357 | val macro-F1 0.6530\n"}
+,{"stream_name":"stdout","time":3845.509225597,"data":"[EXT_SHAPE fold -1 seed 42] epoch 10/20 | train CE 0.0470 | val CE 2.7995 | val macro-F1 0.6427\n"}
+,{"stream_name":"stdout","time":3852.650807637,"data":"[EXT_SHAPE fold -1 seed 42] epoch 11/20 | train CE 0.0462 | val CE 2.5769 | val macro-F1 0.6544\n"}
+,{"stream_name":"stdout","time":3859.948291794,"data":"[EXT_SHAPE fold -1 seed 42] epoch 12/20 | train CE 0.0290 | val CE 3.4107 | val macro-F1 0.6563\n"}
+,{"stream_name":"stdout","time":3867.183566421,"data":"[EXT_SHAPE fold -1 seed 42] epoch 13/20 | train CE 0.0268 | val CE 4.0667 | val macro-F1 0.6585\n"}
+,{"stream_name":"stdout","time":3874.32908623,"data":"[EXT_SHAPE fold -1 seed 42] epoch 14/20 | train CE 0.0140 | val CE 4.9828 | val macro-F1 0.6323\n"}
+,{"stream_name":"stdout","time":3881.641293234,"data":"[EXT_SHAPE fold -1 seed 42] epoch 15/20 | train CE 0.0096 | val CE 4.9609 | val macro-F1 0.6418\n"}
+,{"stream_name":"stdout","time":3888.902443422,"data":"[EXT_SHAPE fold -1 seed 42] epoch 16/20 | train CE 0.0079 | val CE 5.5950 | val macro-F1 0.6396\n"}
+,{"stream_name":"stdout","time":3896.257720394,"data":"[EXT_SHAPE fold -1 seed 42] epoch 17/20 | train CE 0.0050 | val CE 5.5821 | val macro-F1 0.6413\n"}
+,{"stream_name":"stdout","time":3903.680117992,"data":"[EXT_SHAPE fold -1 seed 42] epoch 18/20 | train CE 0.0024 | val CE 5.4406 | val macro-F1 0.6473\n"}
+,{"stream_name":"stdout","time":3910.999121838,"data":"[EXT_SHAPE fold -1 seed 42] epoch 19/20 | train CE 0.0023 | val CE 5.7178 | val macro-F1 0.6389\n"}
+,{"stream_name":"stdout","time":3918.453671823,"data":"[EXT_SHAPE fold -1 seed 42] epoch 20/20 | train CE 0.0012 | val CE 5.7024 | val macro-F1 0.6417\n"}
+,{"stream_name":"stdout","time":3918.743170176,"data":"[EXT_SHAPE fold -1 seed 42] VALIDATION (within-external, held-out configurations): window macro-F1 0.6234 | recording macro-F1 0.5500 (best epoch 1)\n"}
+,{"stream_name":"stdout","time":3918.743219469,"data":"[run 03/24] EXT_SHAPE fold -1 seed 42 done in 145 s\n"}
+,{"stream_name":"stdout","time":3918.94809445,"data":"[HOOK HARD] PASS — EXT_SHAPE seed 123: model trained without TII data: external .wav windows only (230 train / 63 val recordings); no TII data\n"}
+,{"stream_name":"stdout","time":3919.016525573,"data":"[EXT_SHAPE fold -1 seed 123] init 7cfacc243665 | 995,974 params | windows train 12835 / val 3731 | z-score bec0800c271514c9 | class weights [0.7170000076293945, 0.8410000205039978, 0.8109999895095825, 1.2289999723434448, 2.6989998817443848]\n"}
+,{"stream_name":"stdout","time":3926.29072023,"data":"[EXT_SHAPE fold -1 seed 123] epoch 01/20 | train CE 0.5787 | val CE 3.3609 | val macro-F1 0.5671  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":3933.584787557,"data":"[EXT_SHAPE fold -1 seed 123] epoch 02/20 | train CE 0.2374 | val CE 2.6347 | val macro-F1 0.5387  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":3941.018027623,"data":"[EXT_SHAPE fold -1 seed 123] epoch 03/20 | train CE 0.1973 | val CE 2.4540 | val macro-F1 0.5468  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":3948.420027137,"data":"[EXT_SHAPE fold -1 seed 123] epoch 04/20 | train CE 0.1577 | val CE 2.2832 | val macro-F1 0.5860  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":3955.697041297,"data":"[EXT_SHAPE fold -1 seed 123] epoch 05/20 | train CE 0.1373 | val CE 1.7911 | val macro-F1 0.6081  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":3962.975742324,"data":"[EXT_SHAPE fold -1 seed 123] epoch 06/20 | train CE 0.1305 | val CE 2.1022 | val macro-F1 0.5866\n"}
+,{"stream_name":"stdout","time":3970.19214214,"data":"[EXT_SHAPE fold -1 seed 123] epoch 07/20 | train CE 0.0968 | val CE 2.1643 | val macro-F1 0.6019\n"}
+,{"stream_name":"stdout","time":3977.447295317,"data":"[EXT_SHAPE fold -1 seed 123] epoch 08/20 | train CE 0.0890 | val CE 2.8220 | val macro-F1 0.5766\n"}
+,{"stream_name":"stdout","time":3984.786035346,"data":"[EXT_SHAPE fold -1 seed 123] epoch 09/20 | train CE 0.0812 | val CE 2.4566 | val macro-F1 0.6046\n"}
+,{"stream_name":"stdout","time":3992.016645811,"data":"[EXT_SHAPE fold -1 seed 123] epoch 10/20 | train CE 0.0641 | val CE 3.5272 | val macro-F1 0.5540\n"}
+,{"stream_name":"stdout","time":3999.118767706,"data":"[EXT_SHAPE fold -1 seed 123] epoch 11/20 | train CE 0.0563 | val CE 2.7562 | val macro-F1 0.5887\n"}
+,{"stream_name":"stdout","time":4006.374125924,"data":"[EXT_SHAPE fold -1 seed 123] epoch 12/20 | train CE 0.0435 | val CE 2.8098 | val macro-F1 0.6290\n"}
+,{"stream_name":"stdout","time":4013.566134182,"data":"[EXT_SHAPE fold -1 seed 123] epoch 13/20 | train CE 0.0304 | val CE 3.1923 | val macro-F1 0.6049\n"}
+,{"stream_name":"stdout","time":4020.719123291,"data":"[EXT_SHAPE fold -1 seed 123] epoch 14/20 | train CE 0.0249 | val CE 3.5936 | val macro-F1 0.5906\n"}
+,{"stream_name":"stdout","time":4028.195447527,"data":"[EXT_SHAPE fold -1 seed 123] epoch 15/20 | train CE 0.0164 | val CE 3.4324 | val macro-F1 0.6129\n"}
+,{"stream_name":"stdout","time":4035.426291076,"data":"[EXT_SHAPE fold -1 seed 123] epoch 16/20 | train CE 0.0107 | val CE 3.6728 | val macro-F1 0.6195\n"}
+,{"stream_name":"stdout","time":4042.939615268,"data":"[EXT_SHAPE fold -1 seed 123] epoch 17/20 | train CE 0.0107 | val CE 3.9184 | val macro-F1 0.6125\n"}
+,{"stream_name":"stdout","time":4050.310146069,"data":"[EXT_SHAPE fold -1 seed 123] epoch 18/20 | train CE 0.0077 | val CE 4.0061 | val macro-F1 0.6026\n"}
+,{"stream_name":"stdout","time":4057.643450409,"data":"[EXT_SHAPE fold -1 seed 123] epoch 19/20 | train CE 0.0068 | val CE 3.8171 | val macro-F1 0.6168\n"}
+,{"stream_name":"stdout","time":4065.154747844,"data":"[EXT_SHAPE fold -1 seed 123] epoch 20/20 | train CE 0.0059 | val CE 3.9373 | val macro-F1 0.6157\n"}
+,{"stream_name":"stdout","time":4065.450518305,"data":"[EXT_SHAPE fold -1 seed 123] VALIDATION (within-external, held-out configurations): window macro-F1 0.6081 | recording macro-F1 0.6770 (best epoch 5)\n"}
+,{"stream_name":"stdout","time":4065.450569122,"data":"[run 04/24] EXT_SHAPE fold -1 seed 123 done in 146 s\n"}
+,{"stream_name":"stdout","time":4067.965721693,"data":"[HOOK HARD] PASS — TII_LEVEL fold 0 seed 42: no test-day mission in training: TII days ['2021-12-31', '2022-01-04', '2022-01-05', '2022-01-10'] only (72 train / 13 val missions, all 5 channels as separate samples); test day 2021-12-22\n"}
+,{"stream_name":"stdout","time":4068.311189538,"data":"[TII_LEVEL fold 0 seed 42] init ec0302d13149 | 995,974 params | windows train 26760 / val 4815 | z-score a9b316d02c32061a | class weights [1.0509999990463257, 1.003999948501587, 1.0369999408721924, 0.9649999737739563, 0.949999988079071]\n"}
+,{"stream_name":"stdout","time":4082.599877538,"data":"[TII_LEVEL fold 0 seed 42] epoch 01/20 | train CE 0.6450 | val CE 0.4614 | val macro-F1 0.7833  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4096.806695634,"data":"[TII_LEVEL fold 0 seed 42] epoch 02/20 | train CE 0.3793 | val CE 0.5210 | val macro-F1 0.7726\n"}
+,{"stream_name":"stdout","time":4111.161962822,"data":"[TII_LEVEL fold 0 seed 42] epoch 03/20 | train CE 0.3034 | val CE 0.4431 | val macro-F1 0.8241  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4125.603197232,"data":"[TII_LEVEL fold 0 seed 42] epoch 04/20 | train CE 0.2505 | val CE 0.5507 | val macro-F1 0.7928\n"}
+,{"stream_name":"stdout","time":4139.770371762,"data":"[TII_LEVEL fold 0 seed 42] epoch 05/20 | train CE 0.2113 | val CE 0.4277 | val macro-F1 0.8309  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4154.083683456,"data":"[TII_LEVEL fold 0 seed 42] epoch 06/20 | train CE 0.1745 | val CE 0.6046 | val macro-F1 0.8328\n"}
+,{"stream_name":"stdout","time":4168.255860422,"data":"[TII_LEVEL fold 0 seed 42] epoch 07/20 | train CE 0.1480 | val CE 0.4357 | val macro-F1 0.8510\n"}
+,{"stream_name":"stdout","time":4182.665767537,"data":"[TII_LEVEL fold 0 seed 42] epoch 08/20 | train CE 0.1260 | val CE 0.5905 | val macro-F1 0.8465\n"}
+,{"stream_name":"stdout","time":4196.998242918,"data":"[TII_LEVEL fold 0 seed 42] epoch 09/20 | train CE 0.1042 | val CE 0.5745 | val macro-F1 0.8655\n"}
+,{"stream_name":"stdout","time":4211.369887771,"data":"[TII_LEVEL fold 0 seed 42] epoch 10/20 | train CE 0.0914 | val CE 0.5599 | val macro-F1 0.8694\n"}
+,{"stream_name":"stdout","time":4225.596747448,"data":"[TII_LEVEL fold 0 seed 42] epoch 11/20 | train CE 0.0766 | val CE 0.5823 | val macro-F1 0.8758\n"}
+,{"stream_name":"stdout","time":4239.601364193,"data":"[TII_LEVEL fold 0 seed 42] epoch 12/20 | train CE 0.0621 | val CE 0.6807 | val macro-F1 0.8711\n"}
+,{"stream_name":"stdout","time":4253.318028242,"data":"[TII_LEVEL fold 0 seed 42] epoch 13/20 | train CE 0.0504 | val CE 0.8461 | val macro-F1 0.8723\n"}
+,{"stream_name":"stdout","time":4267.01629357,"data":"[TII_LEVEL fold 0 seed 42] epoch 14/20 | train CE 0.0395 | val CE 1.0358 | val macro-F1 0.8736\n"}
+,{"stream_name":"stdout","time":4280.763594719,"data":"[TII_LEVEL fold 0 seed 42] epoch 15/20 | train CE 0.0321 | val CE 1.0721 | val macro-F1 0.8748\n"}
+,{"stream_name":"stdout","time":4294.450916409,"data":"[TII_LEVEL fold 0 seed 42] epoch 16/20 | train CE 0.0235 | val CE 1.1768 | val macro-F1 0.8715\n"}
+,{"stream_name":"stdout","time":4308.160975822,"data":"[TII_LEVEL fold 0 seed 42] epoch 17/20 | train CE 0.0170 | val CE 1.3719 | val macro-F1 0.8691\n"}
+,{"stream_name":"stdout","time":4321.909252112,"data":"[TII_LEVEL fold 0 seed 42] epoch 18/20 | train CE 0.0110 | val CE 1.3015 | val macro-F1 0.8789\n"}
+,{"stream_name":"stdout","time":4335.854986158,"data":"[TII_LEVEL fold 0 seed 42] epoch 19/20 | train CE 0.0080 | val CE 1.4610 | val macro-F1 0.8747\n"}
+,{"stream_name":"stdout","time":4350.317382104,"data":"[TII_LEVEL fold 0 seed 42] epoch 20/20 | train CE 0.0064 | val CE 1.4684 | val macro-F1 0.8754\n"}
+,{"stream_name":"stdout","time":4351.087044032,"data":"[run 05/24] TII_LEVEL fold 0 seed 42 done in 282 s\n"}
+,{"stream_name":"stdout","time":4351.303787865,"data":"[HOOK HARD] PASS — TII_LEVEL fold 1 seed 42: no test-day mission in training: TII days ['2021-12-22', '2022-01-04', '2022-01-05', '2022-01-10'] only (49 train / 10 val missions, all 5 channels as separate samples); test day 2021-12-31\n"}
+,{"stream_name":"stdout","time":4351.478397217,"data":"[TII_LEVEL fold 1 seed 42] init ec0302d13149 | 995,974 params | windows train 18360 / val 3825 | z-score dd3a610b34bee309 | class weights [1.128000020980835, 0.9599999785423279, 0.9879999756813049, 0.9449999928474426, 0.9980000257492065]\n"}
+,{"stream_name":"stdout","time":4361.618659461,"data":"[TII_LEVEL fold 1 seed 42] epoch 01/20 | train CE 0.7092 | val CE 0.4133 | val macro-F1 0.8133  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4371.619702363,"data":"[TII_LEVEL fold 1 seed 42] epoch 02/20 | train CE 0.4133 | val CE 0.3744 | val macro-F1 0.8180  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4381.755979215,"data":"[TII_LEVEL fold 1 seed 42] epoch 03/20 | train CE 0.3339 | val CE 0.3859 | val macro-F1 0.8243\n"}
+,{"stream_name":"stdout","time":4391.794441858,"data":"[TII_LEVEL fold 1 seed 42] epoch 04/20 | train CE 0.2972 | val CE 0.3742 | val macro-F1 0.8105  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4401.877314466,"data":"[TII_LEVEL fold 1 seed 42] epoch 05/20 | train CE 0.2589 | val CE 0.3815 | val macro-F1 0.8285\n"}
+,{"stream_name":"stdout","time":4411.889201032,"data":"[TII_LEVEL fold 1 seed 42] epoch 06/20 | train CE 0.2213 | val CE 0.4438 | val macro-F1 0.8310\n"}
+,{"stream_name":"stdout","time":4421.943775041,"data":"[TII_LEVEL fold 1 seed 42] epoch 07/20 | train CE 0.1994 | val CE 0.2436 | val macro-F1 0.9052  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4431.934374209,"data":"[TII_LEVEL fold 1 seed 42] epoch 08/20 | train CE 0.1709 | val CE 0.2161 | val macro-F1 0.9082  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4441.848499366,"data":"[TII_LEVEL fold 1 seed 42] epoch 09/20 | train CE 0.1488 | val CE 0.2701 | val macro-F1 0.9056\n"}
+,{"stream_name":"stdout","time":4451.839091644,"data":"[TII_LEVEL fold 1 seed 42] epoch 10/20 | train CE 0.1301 | val CE 0.3210 | val macro-F1 0.8925\n"}
+,{"stream_name":"stdout","time":4461.867885116,"data":"[TII_LEVEL fold 1 seed 42] epoch 11/20 | train CE 0.1086 | val CE 0.2374 | val macro-F1 0.9175\n"}
+,{"stream_name":"stdout","time":4471.749922663,"data":"[TII_LEVEL fold 1 seed 42] epoch 12/20 | train CE 0.0902 | val CE 0.3109 | val macro-F1 0.9021\n"}
+,{"stream_name":"stdout","time":4481.732558083,"data":"[TII_LEVEL fold 1 seed 42] epoch 13/20 | train CE 0.0842 | val CE 0.2443 | val macro-F1 0.9240\n"}
+,{"stream_name":"stdout","time":4491.737141983,"data":"[TII_LEVEL fold 1 seed 42] epoch 14/20 | train CE 0.0682 | val CE 0.3486 | val macro-F1 0.9149\n"}
+,{"stream_name":"stdout","time":4501.766582224,"data":"[TII_LEVEL fold 1 seed 42] epoch 15/20 | train CE 0.0547 | val CE 0.4639 | val macro-F1 0.9015\n"}
+,{"stream_name":"stdout","time":4511.721976384,"data":"[TII_LEVEL fold 1 seed 42] epoch 16/20 | train CE 0.0436 | val CE 0.3600 | val macro-F1 0.9208\n"}
+,{"stream_name":"stdout","time":4521.64975016,"data":"[TII_LEVEL fold 1 seed 42] epoch 17/20 | train CE 0.0359 | val CE 0.3912 | val macro-F1 0.9221\n"}
+,{"stream_name":"stdout","time":4531.63722027,"data":"[TII_LEVEL fold 1 seed 42] epoch 18/20 | train CE 0.0297 | val CE 0.4570 | val macro-F1 0.9188\n"}
+,{"stream_name":"stdout","time":4541.555687668,"data":"[TII_LEVEL fold 1 seed 42] epoch 19/20 | train CE 0.0250 | val CE 0.3844 | val macro-F1 0.9277\n"}
+,{"stream_name":"stdout","time":4551.80372551,"data":"[TII_LEVEL fold 1 seed 42] epoch 20/20 | train CE 0.0222 | val CE 0.4362 | val macro-F1 0.9197\n"}
+,{"stream_name":"stdout","time":4553.727984124,"data":"[run 06/24] TII_LEVEL fold 1 seed 42 done in 200 s\n"}
+,{"stream_name":"stdout","time":4553.945775794,"data":"[HOOK HARD] PASS — TII_LEVEL fold 2 seed 42: no test-day mission in training: TII days ['2021-12-22', '2021-12-31', '2022-01-05', '2022-01-10'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-04\n"}
+,{"stream_name":"stdout","time":4554.2336462,"data":"[TII_LEVEL fold 2 seed 42] init ec0302d13149 | 995,974 params | windows train 25135 / val 4235 | z-score 72ef9cbb33c9d5b6 | class weights [1.0789999961853027, 0.9300000071525574, 1.1260000467300415, 0.9390000104904175, 0.9580000042915344]\n"}
+,{"stream_name":"stdout","time":4567.67303328,"data":"[TII_LEVEL fold 2 seed 42] epoch 01/20 | train CE 0.6489 | val CE 0.4101 | val macro-F1 0.8164  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4580.94754015,"data":"[TII_LEVEL fold 2 seed 42] epoch 02/20 | train CE 0.3632 | val CE 0.2688 | val macro-F1 0.8766  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4594.163263823,"data":"[TII_LEVEL fold 2 seed 42] epoch 03/20 | train CE 0.2920 | val CE 0.2550 | val macro-F1 0.8964  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4607.204017651,"data":"[TII_LEVEL fold 2 seed 42] epoch 04/20 | train CE 0.2399 | val CE 0.2092 | val macro-F1 0.9135  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4620.516833701,"data":"[TII_LEVEL fold 2 seed 42] epoch 05/20 | train CE 0.2014 | val CE 0.1806 | val macro-F1 0.9178  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4633.724608917,"data":"[TII_LEVEL fold 2 seed 42] epoch 06/20 | train CE 0.1654 | val CE 0.1617 | val macro-F1 0.9331  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4646.908319154,"data":"[TII_LEVEL fold 2 seed 42] epoch 07/20 | train CE 0.1385 | val CE 0.1522 | val macro-F1 0.9447  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4660.35794789,"data":"[TII_LEVEL fold 2 seed 42] epoch 08/20 | train CE 0.1200 | val CE 0.1528 | val macro-F1 0.9451\n"}
+,{"stream_name":"stdout","time":4673.760392829,"data":"[TII_LEVEL fold 2 seed 42] epoch 09/20 | train CE 0.0985 | val CE 0.2244 | val macro-F1 0.9366\n"}
+,{"stream_name":"stdout","time":4687.175794723,"data":"[TII_LEVEL fold 2 seed 42] epoch 10/20 | train CE 0.0876 | val CE 0.2767 | val macro-F1 0.9297\n"}
+,{"stream_name":"stdout","time":4700.44915433,"data":"[TII_LEVEL fold 2 seed 42] epoch 11/20 | train CE 0.0698 | val CE 0.1926 | val macro-F1 0.9501\n"}
+,{"stream_name":"stdout","time":4713.785561456,"data":"[TII_LEVEL fold 2 seed 42] epoch 12/20 | train CE 0.0595 | val CE 0.2049 | val macro-F1 0.9535\n"}
+,{"stream_name":"stdout","time":4727.034973566,"data":"[TII_LEVEL fold 2 seed 42] epoch 13/20 | train CE 0.0493 | val CE 0.2485 | val macro-F1 0.9494\n"}
+,{"stream_name":"stdout","time":4740.369848131,"data":"[TII_LEVEL fold 2 seed 42] epoch 14/20 | train CE 0.0372 | val CE 0.2801 | val macro-F1 0.9496\n"}
+,{"stream_name":"stdout","time":4753.881890133,"data":"[TII_LEVEL fold 2 seed 42] epoch 15/20 | train CE 0.0268 | val CE 0.2935 | val macro-F1 0.9547\n"}
+,{"stream_name":"stdout","time":4767.308425929,"data":"[TII_LEVEL fold 2 seed 42] epoch 16/20 | train CE 0.0211 | val CE 0.2994 | val macro-F1 0.9530\n"}
+,{"stream_name":"stdout","time":4780.579222182,"data":"[TII_LEVEL fold 2 seed 42] epoch 17/20 | train CE 0.0142 | val CE 0.3728 | val macro-F1 0.9529\n"}
+,{"stream_name":"stdout","time":4793.914576539,"data":"[TII_LEVEL fold 2 seed 42] epoch 18/20 | train CE 0.0097 | val CE 0.3270 | val macro-F1 0.9582\n"}
+,{"stream_name":"stdout","time":4807.040479304,"data":"[TII_LEVEL fold 2 seed 42] epoch 19/20 | train CE 0.0067 | val CE 0.3501 | val macro-F1 0.9578\n"}
+,{"stream_name":"stdout","time":4820.713164552,"data":"[TII_LEVEL fold 2 seed 42] epoch 20/20 | train CE 0.0053 | val CE 0.3550 | val macro-F1 0.9569\n"}
+,{"stream_name":"stdout","time":4821.769826953,"data":"[run 07/24] TII_LEVEL fold 2 seed 42 done in 267 s\n"}
+,{"stream_name":"stdout","time":4821.988248205,"data":"[HOOK HARD] PASS — TII_LEVEL fold 3 seed 42: no test-day mission in training: TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-10'] only (69 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-05\n"}
+,{"stream_name":"stdout","time":4822.285536371,"data":"[TII_LEVEL fold 3 seed 42] init ec0302d13149 | 995,974 params | windows train 26200 / val 4070 | z-score 9da6529a0f1f4cd8 | class weights [1.097000002861023, 1.0199999809265137, 1.0010000467300415, 0.9129999876022339, 0.9860000014305115]\n"}
+,{"stream_name":"stdout","time":4835.989820677,"data":"[TII_LEVEL fold 3 seed 42] epoch 01/20 | train CE 0.6365 | val CE 0.7766 | val macro-F1 0.6870  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":4849.730790955,"data":"[TII_LEVEL fold 3 seed 42] epoch 02/20 | train CE 0.3773 | val CE 0.8128 | val macro-F1 0.6538\n"}
+,{"stream_name":"stdout","time":4863.928597103,"data":"[TII_LEVEL fold 3 seed 42] epoch 03/20 | train CE 0.2925 | val CE 1.5207 | val macro-F1 0.6233\n"}
+,{"stream_name":"stdout","time":4877.804969225,"data":"[TII_LEVEL fold 3 seed 42] epoch 04/20 | train CE 0.2459 | val CE 1.4700 | val macro-F1 0.6360\n"}
+,{"stream_name":"stdout","time":4891.551924637,"data":"[TII_LEVEL fold 3 seed 42] epoch 05/20 | train CE 0.2057 | val CE 1.7521 | val macro-F1 0.6440\n"}
+,{"stream_name":"stdout","time":4905.227186779,"data":"[TII_LEVEL fold 3 seed 42] epoch 06/20 | train CE 0.1749 | val CE 1.6496 | val macro-F1 0.6553\n"}
+,{"stream_name":"stdout","time":4918.657937144,"data":"[TII_LEVEL fold 3 seed 42] epoch 07/20 | train CE 0.1506 | val CE 3.0101 | val macro-F1 0.6627\n"}
+,{"stream_name":"stdout","time":4932.04369294,"data":"[TII_LEVEL fold 3 seed 42] epoch 08/20 | train CE 0.1287 | val CE 2.5088 | val macro-F1 0.6830\n"}
+,{"stream_name":"stdout","time":4945.278809822,"data":"[TII_LEVEL fold 3 seed 42] epoch 09/20 | train CE 0.1133 | val CE 2.5247 | val macro-F1 0.6696\n"}
+,{"stream_name":"stdout","time":4958.554656619,"data":"[TII_LEVEL fold 3 seed 42] epoch 10/20 | train CE 0.0981 | val CE 3.0322 | val macro-F1 0.6541\n"}
+,{"stream_name":"stdout","time":4971.994008844,"data":"[TII_LEVEL fold 3 seed 42] epoch 11/20 | train CE 0.0818 | val CE 3.1016 | val macro-F1 0.6822\n"}
+,{"stream_name":"stdout","time":4985.452585415,"data":"[TII_LEVEL fold 3 seed 42] epoch 12/20 | train CE 0.0693 | val CE 4.1285 | val macro-F1 0.6945\n"}
+,{"stream_name":"stdout","time":4998.716868206,"data":"[TII_LEVEL fold 3 seed 42] epoch 13/20 | train CE 0.0581 | val CE 4.4833 | val macro-F1 0.6796\n"}
+,{"stream_name":"stdout","time":5012.444215248,"data":"[TII_LEVEL fold 3 seed 42] epoch 14/20 | train CE 0.0451 | val CE 5.8856 | val macro-F1 0.6809\n"}
+,{"stream_name":"stdout","time":5026.269861246,"data":"[TII_LEVEL fold 3 seed 42] epoch 15/20 | train CE 0.0377 | val CE 5.9293 | val macro-F1 0.7009\n"}
+,{"stream_name":"stdout","time":5040.286356906,"data":"[TII_LEVEL fold 3 seed 42] epoch 16/20 | train CE 0.0292 | val CE 7.5540 | val macro-F1 0.6897\n"}
+,{"stream_name":"stdout","time":5054.042639181,"data":"[TII_LEVEL fold 3 seed 42] epoch 17/20 | train CE 0.0235 | val CE 7.0717 | val macro-F1 0.6970\n"}
+,{"stream_name":"stdout","time":5067.900452381,"data":"[TII_LEVEL fold 3 seed 42] epoch 18/20 | train CE 0.0175 | val CE 7.9251 | val macro-F1 0.6960\n"}
+,{"stream_name":"stdout","time":5081.927994769,"data":"[TII_LEVEL fold 3 seed 42] epoch 19/20 | train CE 0.0150 | val CE 8.0704 | val macro-F1 0.6923\n"}
+,{"stream_name":"stdout","time":5096.079779182,"data":"[TII_LEVEL fold 3 seed 42] epoch 20/20 | train CE 0.0131 | val CE 8.2106 | val macro-F1 0.6937\n"}
+,{"stream_name":"stdout","time":5097.007117589,"data":"[run 08/24] TII_LEVEL fold 3 seed 42 done in 274 s\n"}
+,{"stream_name":"stdout","time":5097.225218975,"data":"[HOOK HARD] PASS — TII_LEVEL fold 4 seed 42: no test-day mission in training: TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-05'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-10\n"}
+,{"stream_name":"stdout","time":5097.487676221,"data":"[TII_LEVEL fold 4 seed 42] init ec0302d13149 | 995,974 params | windows train 25055 / val 4205 | z-score 4e18ba023c4bd4a1 | class weights [1.0729999542236328, 0.9750000238418579, 1.152999997138977, 0.9380000233650208, 0.9010000228881836]\n"}
+,{"stream_name":"stdout","time":5110.8449492,"data":"[TII_LEVEL fold 4 seed 42] epoch 01/20 | train CE 0.6585 | val CE 0.5532 | val macro-F1 0.7721  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5124.160743894,"data":"[TII_LEVEL fold 4 seed 42] epoch 02/20 | train CE 0.3873 | val CE 0.4450 | val macro-F1 0.8011  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5137.462832485,"data":"[TII_LEVEL fold 4 seed 42] epoch 03/20 | train CE 0.3074 | val CE 0.3971 | val macro-F1 0.8399  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5150.76854728,"data":"[TII_LEVEL fold 4 seed 42] epoch 04/20 | train CE 0.2529 | val CE 0.3321 | val macro-F1 0.8851  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5164.037662114,"data":"[TII_LEVEL fold 4 seed 42] epoch 05/20 | train CE 0.2135 | val CE 0.3365 | val macro-F1 0.8737\n"}
+,{"stream_name":"stdout","time":5177.315238958,"data":"[TII_LEVEL fold 4 seed 42] epoch 06/20 | train CE 0.1854 | val CE 0.3739 | val macro-F1 0.8790\n"}
+,{"stream_name":"stdout","time":5190.558300223,"data":"[TII_LEVEL fold 4 seed 42] epoch 07/20 | train CE 0.1619 | val CE 0.4213 | val macro-F1 0.8619\n"}
+,{"stream_name":"stdout","time":5203.797943614,"data":"[TII_LEVEL fold 4 seed 42] epoch 08/20 | train CE 0.1346 | val CE 0.4715 | val macro-F1 0.8629\n"}
+,{"stream_name":"stdout","time":5217.195529999,"data":"[TII_LEVEL fold 4 seed 42] epoch 09/20 | train CE 0.1192 | val CE 0.3638 | val macro-F1 0.8889\n"}
+,{"stream_name":"stdout","time":5230.552712971,"data":"[TII_LEVEL fold 4 seed 42] epoch 10/20 | train CE 0.0982 | val CE 0.4082 | val macro-F1 0.8844\n"}
+,{"stream_name":"stdout","time":5243.743886062,"data":"[TII_LEVEL fold 4 seed 42] epoch 11/20 | train CE 0.0822 | val CE 0.3898 | val macro-F1 0.9067\n"}
+,{"stream_name":"stdout","time":5257.062421747,"data":"[TII_LEVEL fold 4 seed 42] epoch 12/20 | train CE 0.0731 | val CE 0.5177 | val macro-F1 0.8986\n"}
+,{"stream_name":"stdout","time":5270.332892174,"data":"[TII_LEVEL fold 4 seed 42] epoch 13/20 | train CE 0.0598 | val CE 0.5894 | val macro-F1 0.8896\n"}
+,{"stream_name":"stdout","time":5283.844192236,"data":"[TII_LEVEL fold 4 seed 42] epoch 14/20 | train CE 0.0441 | val CE 0.5800 | val macro-F1 0.9085\n"}
+,{"stream_name":"stdout","time":5297.252603798,"data":"[TII_LEVEL fold 4 seed 42] epoch 15/20 | train CE 0.0357 | val CE 0.7461 | val macro-F1 0.8928\n"}
+,{"stream_name":"stdout","time":5310.635031645,"data":"[TII_LEVEL fold 4 seed 42] epoch 16/20 | train CE 0.0269 | val CE 0.7994 | val macro-F1 0.9010\n"}
+,{"stream_name":"stdout","time":5324.061545798,"data":"[TII_LEVEL fold 4 seed 42] epoch 17/20 | train CE 0.0210 | val CE 0.8703 | val macro-F1 0.8964\n"}
+,{"stream_name":"stdout","time":5337.385956772,"data":"[TII_LEVEL fold 4 seed 42] epoch 18/20 | train CE 0.0160 | val CE 0.9456 | val macro-F1 0.8947\n"}
+,{"stream_name":"stdout","time":5350.624691955,"data":"[TII_LEVEL fold 4 seed 42] epoch 19/20 | train CE 0.0132 | val CE 0.9567 | val macro-F1 0.8961\n"}
+,{"stream_name":"stdout","time":5364.118432973,"data":"[TII_LEVEL fold 4 seed 42] epoch 20/20 | train CE 0.0119 | val CE 1.0005 | val macro-F1 0.8918\n"}
+,{"stream_name":"stdout","time":5365.19017772,"data":"[run 09/24] TII_LEVEL fold 4 seed 42 done in 267 s\n"}
+,{"stream_name":"stdout","time":5365.408331168,"data":"[HOOK HARD] PASS — TII_LEVEL fold 0 seed 123: no test-day mission in training: TII days ['2021-12-31', '2022-01-04', '2022-01-05', '2022-01-10'] only (72 train / 13 val missions, all 5 channels as separate samples); test day 2021-12-22\n"}
+,{"stream_name":"stdout","time":5365.724507492,"data":"[TII_LEVEL fold 0 seed 123] init 7cfacc243665 | 995,974 params | windows train 26760 / val 4815 | z-score a9b316d02c32061a | class weights [1.0509999990463257, 1.003999948501587, 1.0369999408721924, 0.9649999737739563, 0.949999988079071]\n"}
+,{"stream_name":"stdout","time":5379.978682295,"data":"[TII_LEVEL fold 0 seed 123] epoch 01/20 | train CE 0.6670 | val CE 0.5364 | val macro-F1 0.7692  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5394.189183714,"data":"[TII_LEVEL fold 0 seed 123] epoch 02/20 | train CE 0.3861 | val CE 0.4589 | val macro-F1 0.8204  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5408.464363279,"data":"[TII_LEVEL fold 0 seed 123] epoch 03/20 | train CE 0.3189 | val CE 0.4516 | val macro-F1 0.8236  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5422.812542032,"data":"[TII_LEVEL fold 0 seed 123] epoch 04/20 | train CE 0.2712 | val CE 0.5026 | val macro-F1 0.8245\n"}
+,{"stream_name":"stdout","time":5436.825665728,"data":"[TII_LEVEL fold 0 seed 123] epoch 05/20 | train CE 0.2222 | val CE 0.6499 | val macro-F1 0.7968\n"}
+,{"stream_name":"stdout","time":5451.015126347,"data":"[TII_LEVEL fold 0 seed 123] epoch 06/20 | train CE 0.1889 | val CE 0.4896 | val macro-F1 0.8388\n"}
+,{"stream_name":"stdout","time":5465.335602903,"data":"[TII_LEVEL fold 0 seed 123] epoch 07/20 | train CE 0.1610 | val CE 0.5566 | val macro-F1 0.8558\n"}
+,{"stream_name":"stdout","time":5479.505782462,"data":"[TII_LEVEL fold 0 seed 123] epoch 08/20 | train CE 0.1393 | val CE 0.4666 | val macro-F1 0.8527\n"}
+,{"stream_name":"stdout","time":5493.730942122,"data":"[TII_LEVEL fold 0 seed 123] epoch 09/20 | train CE 0.1181 | val CE 0.5360 | val macro-F1 0.8655\n"}
+,{"stream_name":"stdout","time":5507.966518352,"data":"[TII_LEVEL fold 0 seed 123] epoch 10/20 | train CE 0.1020 | val CE 0.7851 | val macro-F1 0.8462\n"}
+,{"stream_name":"stdout","time":5522.251332917,"data":"[TII_LEVEL fold 0 seed 123] epoch 11/20 | train CE 0.0869 | val CE 0.5279 | val macro-F1 0.8803\n"}
+,{"stream_name":"stdout","time":5536.361724425,"data":"[TII_LEVEL fold 0 seed 123] epoch 12/20 | train CE 0.0727 | val CE 0.7119 | val macro-F1 0.8717\n"}
+,{"stream_name":"stdout","time":5550.445959646,"data":"[TII_LEVEL fold 0 seed 123] epoch 13/20 | train CE 0.0574 | val CE 0.7779 | val macro-F1 0.8783\n"}
+,{"stream_name":"stdout","time":5564.548182056,"data":"[TII_LEVEL fold 0 seed 123] epoch 14/20 | train CE 0.0487 | val CE 0.8497 | val macro-F1 0.8764\n"}
+,{"stream_name":"stdout","time":5578.520386902,"data":"[TII_LEVEL fold 0 seed 123] epoch 15/20 | train CE 0.0407 | val CE 0.9849 | val macro-F1 0.8880\n"}
+,{"stream_name":"stdout","time":5592.450863258,"data":"[TII_LEVEL fold 0 seed 123] epoch 16/20 | train CE 0.0322 | val CE 1.1322 | val macro-F1 0.8809\n"}
+,{"stream_name":"stdout","time":5606.199191138,"data":"[TII_LEVEL fold 0 seed 123] epoch 17/20 | train CE 0.0240 | val CE 1.2821 | val macro-F1 0.8828\n"}
+,{"stream_name":"stdout","time":5619.991123015,"data":"[TII_LEVEL fold 0 seed 123] epoch 18/20 | train CE 0.0180 | val CE 1.3631 | val macro-F1 0.8820\n"}
+,{"stream_name":"stdout","time":5633.826694502,"data":"[TII_LEVEL fold 0 seed 123] epoch 19/20 | train CE 0.0150 | val CE 1.4347 | val macro-F1 0.8796\n"}
+,{"stream_name":"stdout","time":5647.906115942,"data":"[TII_LEVEL fold 0 seed 123] epoch 20/20 | train CE 0.0126 | val CE 1.3910 | val macro-F1 0.8834\n"}
+,{"stream_name":"stdout","time":5648.677398914,"data":"[run 10/24] TII_LEVEL fold 0 seed 123 done in 282 s\n"}
+,{"stream_name":"stdout","time":5648.899133308,"data":"[HOOK HARD] PASS — TII_LEVEL fold 1 seed 123: no test-day mission in training: TII days ['2021-12-22', '2022-01-04', '2022-01-05', '2022-01-10'] only (49 train / 10 val missions, all 5 channels as separate samples); test day 2021-12-31\n"}
+,{"stream_name":"stdout","time":5649.055028739,"data":"[TII_LEVEL fold 1 seed 123] init 7cfacc243665 | 995,974 params | windows train 18360 / val 3825 | z-score dd3a610b34bee309 | class weights [1.128000020980835, 0.9599999785423279, 0.9879999756813049, 0.9449999928474426, 0.9980000257492065]\n"}
+,{"stream_name":"stdout","time":5658.671592884,"data":"[TII_LEVEL fold 1 seed 123] epoch 01/20 | train CE 0.7270 | val CE 0.4568 | val macro-F1 0.7661  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5668.270848641,"data":"[TII_LEVEL fold 1 seed 123] epoch 02/20 | train CE 0.4454 | val CE 0.3658 | val macro-F1 0.8283  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5678.138338819,"data":"[TII_LEVEL fold 1 seed 123] epoch 03/20 | train CE 0.3431 | val CE 0.3376 | val macro-F1 0.8445  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5688.059865732,"data":"[TII_LEVEL fold 1 seed 123] epoch 04/20 | train CE 0.3012 | val CE 0.3741 | val macro-F1 0.8269\n"}
+,{"stream_name":"stdout","time":5698.094900921,"data":"[TII_LEVEL fold 1 seed 123] epoch 05/20 | train CE 0.2679 | val CE 0.2766 | val macro-F1 0.8798  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5708.16732259,"data":"[TII_LEVEL fold 1 seed 123] epoch 06/20 | train CE 0.2346 | val CE 0.2242 | val macro-F1 0.9040  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5718.161219386,"data":"[TII_LEVEL fold 1 seed 123] epoch 07/20 | train CE 0.2069 | val CE 0.2759 | val macro-F1 0.8840\n"}
+,{"stream_name":"stdout","time":5728.25244764,"data":"[TII_LEVEL fold 1 seed 123] epoch 08/20 | train CE 0.1811 | val CE 0.2327 | val macro-F1 0.9012\n"}
+,{"stream_name":"stdout","time":5738.213685443,"data":"[TII_LEVEL fold 1 seed 123] epoch 09/20 | train CE 0.1586 | val CE 0.2337 | val macro-F1 0.9049\n"}
+,{"stream_name":"stdout","time":5748.029682544,"data":"[TII_LEVEL fold 1 seed 123] epoch 10/20 | train CE 0.1423 | val CE 0.2646 | val macro-F1 0.8984\n"}
+,{"stream_name":"stdout","time":5758.065014902,"data":"[TII_LEVEL fold 1 seed 123] epoch 11/20 | train CE 0.1187 | val CE 0.2302 | val macro-F1 0.9252\n"}
+,{"stream_name":"stdout","time":5768.195835961,"data":"[TII_LEVEL fold 1 seed 123] epoch 12/20 | train CE 0.1061 | val CE 0.2667 | val macro-F1 0.9089\n"}
+,{"stream_name":"stdout","time":5778.113399101,"data":"[TII_LEVEL fold 1 seed 123] epoch 13/20 | train CE 0.0913 | val CE 0.3012 | val macro-F1 0.9126\n"}
+,{"stream_name":"stdout","time":5788.036996101,"data":"[TII_LEVEL fold 1 seed 123] epoch 14/20 | train CE 0.0794 | val CE 0.3261 | val macro-F1 0.9110\n"}
+,{"stream_name":"stdout","time":5798.076550115,"data":"[TII_LEVEL fold 1 seed 123] epoch 15/20 | train CE 0.0686 | val CE 0.3417 | val macro-F1 0.9137\n"}
+,{"stream_name":"stdout","time":5808.181109982,"data":"[TII_LEVEL fold 1 seed 123] epoch 16/20 | train CE 0.0542 | val CE 0.3483 | val macro-F1 0.9223\n"}
+,{"stream_name":"stdout","time":5818.204889302,"data":"[TII_LEVEL fold 1 seed 123] epoch 17/20 | train CE 0.0503 | val CE 0.4903 | val macro-F1 0.9136\n"}
+,{"stream_name":"stdout","time":5828.20909171,"data":"[TII_LEVEL fold 1 seed 123] epoch 18/20 | train CE 0.0432 | val CE 0.3902 | val macro-F1 0.9225\n"}
+,{"stream_name":"stdout","time":5838.153124456,"data":"[TII_LEVEL fold 1 seed 123] epoch 19/20 | train CE 0.0347 | val CE 0.4532 | val macro-F1 0.9191\n"}
+,{"stream_name":"stdout","time":5848.561709291,"data":"[TII_LEVEL fold 1 seed 123] epoch 20/20 | train CE 0.0333 | val CE 0.4650 | val macro-F1 0.9170\n"}
+,{"stream_name":"stdout","time":5850.458306091,"data":"[run 11/24] TII_LEVEL fold 1 seed 123 done in 199 s\n"}
+,{"stream_name":"stdout","time":5850.676148435,"data":"[HOOK HARD] PASS — TII_LEVEL fold 2 seed 123: no test-day mission in training: TII days ['2021-12-22', '2021-12-31', '2022-01-05', '2022-01-10'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-04\n"}
+,{"stream_name":"stdout","time":5850.95952479,"data":"[TII_LEVEL fold 2 seed 123] init 7cfacc243665 | 995,974 params | windows train 25135 / val 4235 | z-score 72ef9cbb33c9d5b6 | class weights [1.0789999961853027, 0.9300000071525574, 1.1260000467300415, 0.9390000104904175, 0.9580000042915344]\n"}
+,{"stream_name":"stdout","time":5864.335143575,"data":"[TII_LEVEL fold 2 seed 123] epoch 01/20 | train CE 0.6655 | val CE 0.5165 | val macro-F1 0.7258  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5877.67317859,"data":"[TII_LEVEL fold 2 seed 123] epoch 02/20 | train CE 0.3911 | val CE 0.3365 | val macro-F1 0.8484  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5891.149090368,"data":"[TII_LEVEL fold 2 seed 123] epoch 03/20 | train CE 0.3034 | val CE 0.2620 | val macro-F1 0.8890  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5904.571481552,"data":"[TII_LEVEL fold 2 seed 123] epoch 04/20 | train CE 0.2499 | val CE 0.2482 | val macro-F1 0.9047  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5917.824535227,"data":"[TII_LEVEL fold 2 seed 123] epoch 05/20 | train CE 0.2087 | val CE 0.1729 | val macro-F1 0.9300  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":5931.163051941,"data":"[TII_LEVEL fold 2 seed 123] epoch 06/20 | train CE 0.1796 | val CE 0.2348 | val macro-F1 0.8996\n"}
+,{"stream_name":"stdout","time":5944.572085088,"data":"[TII_LEVEL fold 2 seed 123] epoch 07/20 | train CE 0.1465 | val CE 0.4362 | val macro-F1 0.8699\n"}
+,{"stream_name":"stdout","time":5957.907668097,"data":"[TII_LEVEL fold 2 seed 123] epoch 08/20 | train CE 0.1278 | val CE 0.1773 | val macro-F1 0.9311\n"}
+,{"stream_name":"stdout","time":5971.318087037,"data":"[TII_LEVEL fold 2 seed 123] epoch 09/20 | train CE 0.1050 | val CE 0.1766 | val macro-F1 0.9462\n"}
+,{"stream_name":"stdout","time":5984.673963793,"data":"[TII_LEVEL fold 2 seed 123] epoch 10/20 | train CE 0.0870 | val CE 0.2000 | val macro-F1 0.9353\n"}
+,{"stream_name":"stdout","time":5997.990189298,"data":"[TII_LEVEL fold 2 seed 123] epoch 11/20 | train CE 0.0728 | val CE 0.2433 | val macro-F1 0.9445\n"}
+,{"stream_name":"stdout","time":6011.216799882,"data":"[TII_LEVEL fold 2 seed 123] epoch 12/20 | train CE 0.0640 | val CE 0.3739 | val macro-F1 0.9364\n"}
+,{"stream_name":"stdout","time":6024.615514698,"data":"[TII_LEVEL fold 2 seed 123] epoch 13/20 | train CE 0.0538 | val CE 0.2455 | val macro-F1 0.9489\n"}
+,{"stream_name":"stdout","time":6038.107965545,"data":"[TII_LEVEL fold 2 seed 123] epoch 14/20 | train CE 0.0437 | val CE 0.3902 | val macro-F1 0.9369\n"}
+,{"stream_name":"stdout","time":6051.346223824,"data":"[TII_LEVEL fold 2 seed 123] epoch 15/20 | train CE 0.0316 | val CE 0.3246 | val macro-F1 0.9451\n"}
+,{"stream_name":"stdout","time":6064.781300245,"data":"[TII_LEVEL fold 2 seed 123] epoch 16/20 | train CE 0.0242 | val CE 0.4306 | val macro-F1 0.9440\n"}
+,{"stream_name":"stdout","time":6078.19031505,"data":"[TII_LEVEL fold 2 seed 123] epoch 17/20 | train CE 0.0169 | val CE 0.4181 | val macro-F1 0.9472\n"}
+,{"stream_name":"stdout","time":6091.448002268,"data":"[TII_LEVEL fold 2 seed 123] epoch 18/20 | train CE 0.0136 | val CE 0.4289 | val macro-F1 0.9466\n"}
+,{"stream_name":"stdout","time":6104.693141985,"data":"[TII_LEVEL fold 2 seed 123] epoch 19/20 | train CE 0.0101 | val CE 0.4321 | val macro-F1 0.9466\n"}
+,{"stream_name":"stdout","time":6118.36747788,"data":"[TII_LEVEL fold 2 seed 123] epoch 20/20 | train CE 0.0085 | val CE 0.4434 | val macro-F1 0.9458\n"}
+,{"stream_name":"stdout","time":6119.421076391,"data":"[run 12/24] TII_LEVEL fold 2 seed 123 done in 268 s\n"}
+,{"stream_name":"stdout","time":6119.641949015,"data":"[HOOK HARD] PASS — TII_LEVEL fold 3 seed 123: no test-day mission in training: TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-10'] only (69 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-05\n"}
+,{"stream_name":"stdout","time":6119.939249337,"data":"[TII_LEVEL fold 3 seed 123] init 7cfacc243665 | 995,974 params | windows train 26200 / val 4070 | z-score 9da6529a0f1f4cd8 | class weights [1.097000002861023, 1.0199999809265137, 1.0010000467300415, 0.9129999876022339, 0.9860000014305115]\n"}
+,{"stream_name":"stdout","time":6133.642864828,"data":"[TII_LEVEL fold 3 seed 123] epoch 01/20 | train CE 0.6589 | val CE 1.3066 | val macro-F1 0.6013  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":6147.59212753,"data":"[TII_LEVEL fold 3 seed 123] epoch 02/20 | train CE 0.3756 | val CE 0.9997 | val macro-F1 0.6362  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":6161.390872085,"data":"[TII_LEVEL fold 3 seed 123] epoch 03/20 | train CE 0.3004 | val CE 1.3800 | val macro-F1 0.6231\n"}
+,{"stream_name":"stdout","time":6175.228681184,"data":"[TII_LEVEL fold 3 seed 123] epoch 04/20 | train CE 0.2424 | val CE 1.5095 | val macro-F1 0.6285\n"}
+,{"stream_name":"stdout","time":6188.925868153,"data":"[TII_LEVEL fold 3 seed 123] epoch 05/20 | train CE 0.2071 | val CE 1.5271 | val macro-F1 0.6268\n"}
+,{"stream_name":"stdout","time":6202.74050221,"data":"[TII_LEVEL fold 3 seed 123] epoch 06/20 | train CE 0.1763 | val CE 1.7324 | val macro-F1 0.6631\n"}
+,{"stream_name":"stdout","time":6216.297296344,"data":"[TII_LEVEL fold 3 seed 123] epoch 07/20 | train CE 0.1538 | val CE 1.5192 | val macro-F1 0.6573\n"}
+,{"stream_name":"stdout","time":6230.313880389,"data":"[TII_LEVEL fold 3 seed 123] epoch 08/20 | train CE 0.1336 | val CE 1.5695 | val macro-F1 0.6611\n"}
+,{"stream_name":"stdout","time":6244.172223299,"data":"[TII_LEVEL fold 3 seed 123] epoch 09/20 | train CE 0.1187 | val CE 1.7167 | val macro-F1 0.6798\n"}
+,{"stream_name":"stdout","time":6257.402510095,"data":"[TII_LEVEL fold 3 seed 123] epoch 10/20 | train CE 0.0989 | val CE 2.0859 | val macro-F1 0.6818\n"}
+,{"stream_name":"stdout","time":6270.614364561,"data":"[TII_LEVEL fold 3 seed 123] epoch 11/20 | train CE 0.0852 | val CE 2.3947 | val macro-F1 0.6977\n"}
+,{"stream_name":"stdout","time":6283.999097126,"data":"[TII_LEVEL fold 3 seed 123] epoch 12/20 | train CE 0.0742 | val CE 2.1866 | val macro-F1 0.6985\n"}
+,{"stream_name":"stdout","time":6297.336762525,"data":"[TII_LEVEL fold 3 seed 123] epoch 13/20 | train CE 0.0620 | val CE 3.2741 | val macro-F1 0.6930\n"}
+,{"stream_name":"stdout","time":6310.689011351,"data":"[TII_LEVEL fold 3 seed 123] epoch 14/20 | train CE 0.0532 | val CE 3.1337 | val macro-F1 0.7068\n"}
+,{"stream_name":"stdout","time":6323.984442096,"data":"[TII_LEVEL fold 3 seed 123] epoch 15/20 | train CE 0.0423 | val CE 4.3923 | val macro-F1 0.7003\n"}
+,{"stream_name":"stdout","time":6337.308511387,"data":"[TII_LEVEL fold 3 seed 123] epoch 16/20 | train CE 0.0326 | val CE 5.0311 | val macro-F1 0.7127\n"}
+,{"stream_name":"stdout","time":6351.051646194,"data":"[TII_LEVEL fold 3 seed 123] epoch 17/20 | train CE 0.0251 | val CE 5.1812 | val macro-F1 0.7094\n"}
+,{"stream_name":"stdout","time":6364.93265268,"data":"[TII_LEVEL fold 3 seed 123] epoch 18/20 | train CE 0.0212 | val CE 5.3449 | val macro-F1 0.7198\n"}
+,{"stream_name":"stdout","time":6378.78677809,"data":"[TII_LEVEL fold 3 seed 123] epoch 19/20 | train CE 0.0174 | val CE 5.5324 | val macro-F1 0.7196\n"}
+,{"stream_name":"stdout","time":6392.840758738,"data":"[TII_LEVEL fold 3 seed 123] epoch 20/20 | train CE 0.0145 | val CE 5.7284 | val macro-F1 0.7157\n"}
+,{"stream_name":"stdout","time":6393.780903199,"data":"[run 13/24] TII_LEVEL fold 3 seed 123 done in 273 s\n"}
+,{"stream_name":"stdout","time":6393.998729483,"data":"[HOOK HARD] PASS — TII_LEVEL fold 4 seed 123: no test-day mission in training: TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-05'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-10\n"}
+,{"stream_name":"stdout","time":6394.262160634,"data":"[TII_LEVEL fold 4 seed 123] init 7cfacc243665 | 995,974 params | windows train 25055 / val 4205 | z-score 4e18ba023c4bd4a1 | class weights [1.0729999542236328, 0.9750000238418579, 1.152999997138977, 0.9380000233650208, 0.9010000228881836]\n"}
+,{"stream_name":"stdout","time":6407.438110172,"data":"[TII_LEVEL fold 4 seed 123] epoch 01/20 | train CE 0.6747 | val CE 0.5500 | val macro-F1 0.7693  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":6420.770808167,"data":"[TII_LEVEL fold 4 seed 123] epoch 02/20 | train CE 0.3963 | val CE 0.4995 | val macro-F1 0.7944  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":6434.020332905,"data":"[TII_LEVEL fold 4 seed 123] epoch 03/20 | train CE 0.3000 | val CE 0.3284 | val macro-F1 0.8693  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":6447.341954251,"data":"[TII_LEVEL fold 4 seed 123] epoch 04/20 | train CE 0.2466 | val CE 0.3009 | val macro-F1 0.8868  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":6460.738934611,"data":"[TII_LEVEL fold 4 seed 123] epoch 05/20 | train CE 0.2089 | val CE 0.5655 | val macro-F1 0.7936\n"}
+,{"stream_name":"stdout","time":6474.040163883,"data":"[TII_LEVEL fold 4 seed 123] epoch 06/20 | train CE 0.1774 | val CE 0.4323 | val macro-F1 0.8308\n"}
+,{"stream_name":"stdout","time":6487.270438006,"data":"[TII_LEVEL fold 4 seed 123] epoch 07/20 | train CE 0.1514 | val CE 0.2564 | val macro-F1 0.9116  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":6500.50777163,"data":"[TII_LEVEL fold 4 seed 123] epoch 08/20 | train CE 0.1309 | val CE 0.3679 | val macro-F1 0.8739\n"}
+,{"stream_name":"stdout","time":6513.918837378,"data":"[TII_LEVEL fold 4 seed 123] epoch 09/20 | train CE 0.1113 | val CE 0.4050 | val macro-F1 0.8733\n"}
+,{"stream_name":"stdout","time":6527.205871241,"data":"[TII_LEVEL fold 4 seed 123] epoch 10/20 | train CE 0.0985 | val CE 0.4183 | val macro-F1 0.8853\n"}
+,{"stream_name":"stdout","time":6540.663732213,"data":"[TII_LEVEL fold 4 seed 123] epoch 11/20 | train CE 0.0825 | val CE 0.3861 | val macro-F1 0.9064\n"}
+,{"stream_name":"stdout","time":6553.894844182,"data":"[TII_LEVEL fold 4 seed 123] epoch 12/20 | train CE 0.0687 | val CE 0.4496 | val macro-F1 0.8984\n"}
+,{"stream_name":"stdout","time":6567.316791118,"data":"[TII_LEVEL fold 4 seed 123] epoch 13/20 | train CE 0.0582 | val CE 0.5080 | val macro-F1 0.8969\n"}
+,{"stream_name":"stdout","time":6580.591870824,"data":"[TII_LEVEL fold 4 seed 123] epoch 14/20 | train CE 0.0475 | val CE 0.5429 | val macro-F1 0.9050\n"}
+,{"stream_name":"stdout","time":6593.734960764,"data":"[TII_LEVEL fold 4 seed 123] epoch 15/20 | train CE 0.0390 | val CE 0.5741 | val macro-F1 0.9101\n"}
+,{"stream_name":"stdout","time":6606.911156959,"data":"[TII_LEVEL fold 4 seed 123] epoch 16/20 | train CE 0.0292 | val CE 0.6734 | val macro-F1 0.9070\n"}
+,{"stream_name":"stdout","time":6620.125028995,"data":"[TII_LEVEL fold 4 seed 123] epoch 17/20 | train CE 0.0225 | val CE 0.7238 | val macro-F1 0.9129\n"}
+,{"stream_name":"stdout","time":6633.64244925,"data":"[TII_LEVEL fold 4 seed 123] epoch 18/20 | train CE 0.0189 | val CE 0.7436 | val macro-F1 0.9141\n"}
+,{"stream_name":"stdout","time":6647.071437109,"data":"[TII_LEVEL fold 4 seed 123] epoch 19/20 | train CE 0.0141 | val CE 0.7770 | val macro-F1 0.9136\n"}
+,{"stream_name":"stdout","time":6660.998347081,"data":"[TII_LEVEL fold 4 seed 123] epoch 20/20 | train CE 0.0123 | val CE 0.7749 | val macro-F1 0.9151\n"}
+,{"stream_name":"stdout","time":6662.052644501,"data":"[run 14/24] TII_LEVEL fold 4 seed 123 done in 267 s\n"}
+,{"stream_name":"stdout","time":6664.713621818,"data":"[HOOK HARD] PASS — TII_SHAPE fold 0 seed 42: no test-day mission in training: TII days ['2021-12-31', '2022-01-04', '2022-01-05', '2022-01-10'] only (72 train / 13 val missions, all 5 channels as separate samples); test day 2021-12-22\n"}
+,{"stream_name":"stdout","time":6665.070987814,"data":"[TII_SHAPE fold 0 seed 42] init ec0302d13149 | 995,974 params | windows train 26760 / val 4815 | z-score 30e19f976c2418b9 | class weights [1.0509999990463257, 1.003999948501587, 1.0369999408721924, 0.9649999737739563, 0.949999988079071]\n"}
+,{"stream_name":"stdout","time":6679.151950568,"data":"[TII_SHAPE fold 0 seed 42] epoch 01/20 | train CE 0.6507 | val CE 0.5457 | val macro-F1 0.7596  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":6693.406593466,"data":"[TII_SHAPE fold 0 seed 42] epoch 02/20 | train CE 0.4233 | val CE 0.5351 | val macro-F1 0.7782  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":6707.576304567,"data":"[TII_SHAPE fold 0 seed 42] epoch 03/20 | train CE 0.3528 | val CE 0.5141 | val macro-F1 0.7821  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":6721.855476305,"data":"[TII_SHAPE fold 0 seed 42] epoch 04/20 | train CE 0.2940 | val CE 0.5523 | val macro-F1 0.7726\n"}
+,{"stream_name":"stdout","time":6736.001042256,"data":"[TII_SHAPE fold 0 seed 42] epoch 05/20 | train CE 0.2448 | val CE 0.5493 | val macro-F1 0.8020\n"}
+,{"stream_name":"stdout","time":6750.072296502,"data":"[TII_SHAPE fold 0 seed 42] epoch 06/20 | train CE 0.2068 | val CE 0.5871 | val macro-F1 0.8267\n"}
+,{"stream_name":"stdout","time":6764.516038888,"data":"[TII_SHAPE fold 0 seed 42] epoch 07/20 | train CE 0.1716 | val CE 0.5520 | val macro-F1 0.8220\n"}
+,{"stream_name":"stdout","time":6779.034761342,"data":"[TII_SHAPE fold 0 seed 42] epoch 08/20 | train CE 0.1473 | val CE 0.5880 | val macro-F1 0.8473\n"}
+,{"stream_name":"stdout","time":6793.514710833,"data":"[TII_SHAPE fold 0 seed 42] epoch 09/20 | train CE 0.1214 | val CE 0.7012 | val macro-F1 0.8413\n"}
+,{"stream_name":"stdout","time":6807.999083582,"data":"[TII_SHAPE fold 0 seed 42] epoch 10/20 | train CE 0.1055 | val CE 0.6615 | val macro-F1 0.8424\n"}
+,{"stream_name":"stdout","time":6822.400996379,"data":"[TII_SHAPE fold 0 seed 42] epoch 11/20 | train CE 0.0865 | val CE 0.7918 | val macro-F1 0.8420\n"}
+,{"stream_name":"stdout","time":6836.909161434,"data":"[TII_SHAPE fold 0 seed 42] epoch 12/20 | train CE 0.0693 | val CE 0.9152 | val macro-F1 0.8403\n"}
+,{"stream_name":"stdout","time":6851.549265258,"data":"[TII_SHAPE fold 0 seed 42] epoch 13/20 | train CE 0.0526 | val CE 1.2302 | val macro-F1 0.8468\n"}
+,{"stream_name":"stdout","time":6866.164466395,"data":"[TII_SHAPE fold 0 seed 42] epoch 14/20 | train CE 0.0403 | val CE 1.5878 | val macro-F1 0.8384\n"}
+,{"stream_name":"stdout","time":6880.765988304,"data":"[TII_SHAPE fold 0 seed 42] epoch 15/20 | train CE 0.0282 | val CE 1.6696 | val macro-F1 0.8497\n"}
+,{"stream_name":"stdout","time":6895.296158244,"data":"[TII_SHAPE fold 0 seed 42] epoch 16/20 | train CE 0.0202 | val CE 1.8358 | val macro-F1 0.8398\n"}
+,{"stream_name":"stdout","time":6909.946375742,"data":"[TII_SHAPE fold 0 seed 42] epoch 17/20 | train CE 0.0121 | val CE 2.0328 | val macro-F1 0.8426\n"}
+,{"stream_name":"stdout","time":6923.896966741,"data":"[TII_SHAPE fold 0 seed 42] epoch 18/20 | train CE 0.0076 | val CE 2.2375 | val macro-F1 0.8447\n"}
+,{"stream_name":"stdout","time":6937.905647766,"data":"[TII_SHAPE fold 0 seed 42] epoch 19/20 | train CE 0.0049 | val CE 2.2584 | val macro-F1 0.8445\n"}
+,{"stream_name":"stdout","time":6951.985098344,"data":"[TII_SHAPE fold 0 seed 42] epoch 20/20 | train CE 0.0036 | val CE 2.2982 | val macro-F1 0.8426\n"}
+,{"stream_name":"stdout","time":6952.733196276,"data":"[run 15/24] TII_SHAPE fold 0 seed 42 done in 287 s\n"}
+,{"stream_name":"stdout","time":6952.95022099,"data":"[HOOK HARD] PASS — TII_SHAPE fold 1 seed 42: no test-day mission in training: TII days ['2021-12-22', '2022-01-04', '2022-01-05', '2022-01-10'] only (49 train / 10 val missions, all 5 channels as separate samples); test day 2021-12-31\n"}
+,{"stream_name":"stdout","time":6953.107154799,"data":"[TII_SHAPE fold 1 seed 42] init ec0302d13149 | 995,974 params | windows train 18360 / val 3825 | z-score 35d6abbe5395be31 | class weights [1.128000020980835, 0.9599999785423279, 0.9879999756813049, 0.9449999928474426, 0.9980000257492065]\n"}
+,{"stream_name":"stdout","time":6962.76286212,"data":"[TII_SHAPE fold 1 seed 42] epoch 01/20 | train CE 0.6988 | val CE 0.5196 | val macro-F1 0.7699  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":6972.351695907,"data":"[TII_SHAPE fold 1 seed 42] epoch 02/20 | train CE 0.4478 | val CE 0.5042 | val macro-F1 0.7703  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":6981.895654251,"data":"[TII_SHAPE fold 1 seed 42] epoch 03/20 | train CE 0.3766 | val CE 0.4926 | val macro-F1 0.7811  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":6991.665493914,"data":"[TII_SHAPE fold 1 seed 42] epoch 04/20 | train CE 0.3266 | val CE 0.3999 | val macro-F1 0.8192  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7001.221414916,"data":"[TII_SHAPE fold 1 seed 42] epoch 05/20 | train CE 0.2729 | val CE 0.4389 | val macro-F1 0.8109\n"}
+,{"stream_name":"stdout","time":7010.791977479,"data":"[TII_SHAPE fold 1 seed 42] epoch 06/20 | train CE 0.2301 | val CE 0.3635 | val macro-F1 0.8551  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7020.729784111,"data":"[TII_SHAPE fold 1 seed 42] epoch 07/20 | train CE 0.2061 | val CE 0.2813 | val macro-F1 0.8805  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7030.824178756,"data":"[TII_SHAPE fold 1 seed 42] epoch 08/20 | train CE 0.1749 | val CE 0.2654 | val macro-F1 0.9001  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7040.665500635,"data":"[TII_SHAPE fold 1 seed 42] epoch 09/20 | train CE 0.1488 | val CE 0.3020 | val macro-F1 0.8940\n"}
+,{"stream_name":"stdout","time":7050.629556633,"data":"[TII_SHAPE fold 1 seed 42] epoch 10/20 | train CE 0.1258 | val CE 0.2602 | val macro-F1 0.9083  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7060.607420473,"data":"[TII_SHAPE fold 1 seed 42] epoch 11/20 | train CE 0.1045 | val CE 0.3606 | val macro-F1 0.8991\n"}
+,{"stream_name":"stdout","time":7070.56715884,"data":"[TII_SHAPE fold 1 seed 42] epoch 12/20 | train CE 0.0901 | val CE 0.3909 | val macro-F1 0.8952\n"}
+,{"stream_name":"stdout","time":7080.523329422,"data":"[TII_SHAPE fold 1 seed 42] epoch 13/20 | train CE 0.0717 | val CE 0.4390 | val macro-F1 0.9010\n"}
+,{"stream_name":"stdout","time":7090.423599665,"data":"[TII_SHAPE fold 1 seed 42] epoch 14/20 | train CE 0.0596 | val CE 0.4285 | val macro-F1 0.9043\n"}
+,{"stream_name":"stdout","time":7100.457092218,"data":"[TII_SHAPE fold 1 seed 42] epoch 15/20 | train CE 0.0461 | val CE 0.5519 | val macro-F1 0.8980\n"}
+,{"stream_name":"stdout","time":7110.256323131,"data":"[TII_SHAPE fold 1 seed 42] epoch 16/20 | train CE 0.0304 | val CE 0.5526 | val macro-F1 0.9065\n"}
+,{"stream_name":"stdout","time":7120.276007776,"data":"[TII_SHAPE fold 1 seed 42] epoch 17/20 | train CE 0.0229 | val CE 0.7077 | val macro-F1 0.9004\n"}
+,{"stream_name":"stdout","time":7130.290021237,"data":"[TII_SHAPE fold 1 seed 42] epoch 18/20 | train CE 0.0171 | val CE 0.7503 | val macro-F1 0.8982\n"}
+,{"stream_name":"stdout","time":7140.375953463,"data":"[TII_SHAPE fold 1 seed 42] epoch 19/20 | train CE 0.0127 | val CE 0.7130 | val macro-F1 0.9030\n"}
+,{"stream_name":"stdout","time":7151.026033146,"data":"[TII_SHAPE fold 1 seed 42] epoch 20/20 | train CE 0.0122 | val CE 0.7209 | val macro-F1 0.9020\n"}
+,{"stream_name":"stdout","time":7152.948683928,"data":"[run 16/24] TII_SHAPE fold 1 seed 42 done in 198 s\n"}
+,{"stream_name":"stdout","time":7153.167274775,"data":"[HOOK HARD] PASS — TII_SHAPE fold 2 seed 42: no test-day mission in training: TII days ['2021-12-22', '2021-12-31', '2022-01-05', '2022-01-10'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-04\n"}
+,{"stream_name":"stdout","time":7153.450539313,"data":"[TII_SHAPE fold 2 seed 42] init ec0302d13149 | 995,974 params | windows train 25135 / val 4235 | z-score e1e58b1264a7529f | class weights [1.0789999961853027, 0.9300000071525574, 1.1260000467300415, 0.9390000104904175, 0.9580000042915344]\n"}
+,{"stream_name":"stdout","time":7166.812309885,"data":"[TII_SHAPE fold 2 seed 42] epoch 01/20 | train CE 0.6819 | val CE 0.5009 | val macro-F1 0.7702  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7180.209369529,"data":"[TII_SHAPE fold 2 seed 42] epoch 02/20 | train CE 0.4432 | val CE 0.4192 | val macro-F1 0.8142  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7193.811200886,"data":"[TII_SHAPE fold 2 seed 42] epoch 03/20 | train CE 0.3457 | val CE 0.3081 | val macro-F1 0.8726  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7206.99513298,"data":"[TII_SHAPE fold 2 seed 42] epoch 04/20 | train CE 0.2676 | val CE 0.2876 | val macro-F1 0.8783  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7220.309951043,"data":"[TII_SHAPE fold 2 seed 42] epoch 05/20 | train CE 0.2279 | val CE 0.2626 | val macro-F1 0.8929  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7233.689375715,"data":"[TII_SHAPE fold 2 seed 42] epoch 06/20 | train CE 0.1893 | val CE 0.2172 | val macro-F1 0.9254  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7247.036054164,"data":"[TII_SHAPE fold 2 seed 42] epoch 07/20 | train CE 0.1581 | val CE 0.2356 | val macro-F1 0.9255\n"}
+,{"stream_name":"stdout","time":7260.479859904,"data":"[TII_SHAPE fold 2 seed 42] epoch 08/20 | train CE 0.1362 | val CE 0.2258 | val macro-F1 0.9326\n"}
+,{"stream_name":"stdout","time":7273.893808699,"data":"[TII_SHAPE fold 2 seed 42] epoch 09/20 | train CE 0.1148 | val CE 0.2193 | val macro-F1 0.9338\n"}
+,{"stream_name":"stdout","time":7287.12876457,"data":"[TII_SHAPE fold 2 seed 42] epoch 10/20 | train CE 0.0915 | val CE 0.2912 | val macro-F1 0.9297\n"}
+,{"stream_name":"stdout","time":7300.375052635,"data":"[TII_SHAPE fold 2 seed 42] epoch 11/20 | train CE 0.0805 | val CE 0.2636 | val macro-F1 0.9291\n"}
+,{"stream_name":"stdout","time":7313.590382388,"data":"[TII_SHAPE fold 2 seed 42] epoch 12/20 | train CE 0.0627 | val CE 0.2782 | val macro-F1 0.9403\n"}
+,{"stream_name":"stdout","time":7326.867624187,"data":"[TII_SHAPE fold 2 seed 42] epoch 13/20 | train CE 0.0464 | val CE 0.3355 | val macro-F1 0.9343\n"}
+,{"stream_name":"stdout","time":7340.133467392,"data":"[TII_SHAPE fold 2 seed 42] epoch 14/20 | train CE 0.0366 | val CE 0.3968 | val macro-F1 0.9340\n"}
+,{"stream_name":"stdout","time":7353.471996121,"data":"[TII_SHAPE fold 2 seed 42] epoch 15/20 | train CE 0.0255 | val CE 0.5073 | val macro-F1 0.9343\n"}
+,{"stream_name":"stdout","time":7366.790026786,"data":"[TII_SHAPE fold 2 seed 42] epoch 16/20 | train CE 0.0169 | val CE 0.5017 | val macro-F1 0.9368\n"}
+,{"stream_name":"stdout","time":7380.093929234,"data":"[TII_SHAPE fold 2 seed 42] epoch 17/20 | train CE 0.0100 | val CE 0.5303 | val macro-F1 0.9380\n"}
+,{"stream_name":"stdout","time":7393.329945528,"data":"[TII_SHAPE fold 2 seed 42] epoch 18/20 | train CE 0.0069 | val CE 0.5548 | val macro-F1 0.9354\n"}
+,{"stream_name":"stdout","time":7406.472893521,"data":"[TII_SHAPE fold 2 seed 42] epoch 19/20 | train CE 0.0055 | val CE 0.5552 | val macro-F1 0.9358\n"}
+,{"stream_name":"stdout","time":7420.232489259,"data":"[TII_SHAPE fold 2 seed 42] epoch 20/20 | train CE 0.0034 | val CE 0.5716 | val macro-F1 0.9369\n"}
+,{"stream_name":"stdout","time":7421.269798598,"data":"[run 17/24] TII_SHAPE fold 2 seed 42 done in 267 s\n"}
+,{"stream_name":"stdout","time":7421.48658469,"data":"[HOOK HARD] PASS — TII_SHAPE fold 3 seed 42: no test-day mission in training: TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-10'] only (69 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-05\n"}
+,{"stream_name":"stdout","time":7421.783896571,"data":"[TII_SHAPE fold 3 seed 42] init ec0302d13149 | 995,974 params | windows train 26200 / val 4070 | z-score 1a99f95400b2065f | class weights [1.097000002861023, 1.0199999809265137, 1.0010000467300415, 0.9129999876022339, 0.9860000014305115]\n"}
+,{"stream_name":"stdout","time":7435.604796698,"data":"[TII_SHAPE fold 3 seed 42] epoch 01/20 | train CE 0.6513 | val CE 0.9679 | val macro-F1 0.6041  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7449.435920258,"data":"[TII_SHAPE fold 3 seed 42] epoch 02/20 | train CE 0.4102 | val CE 1.1834 | val macro-F1 0.6151\n"}
+,{"stream_name":"stdout","time":7463.40254789,"data":"[TII_SHAPE fold 3 seed 42] epoch 03/20 | train CE 0.3222 | val CE 1.4093 | val macro-F1 0.5731\n"}
+,{"stream_name":"stdout","time":7477.150353467,"data":"[TII_SHAPE fold 3 seed 42] epoch 04/20 | train CE 0.2726 | val CE 1.5797 | val macro-F1 0.6201\n"}
+,{"stream_name":"stdout","time":7490.816724119,"data":"[TII_SHAPE fold 3 seed 42] epoch 05/20 | train CE 0.2359 | val CE 1.4323 | val macro-F1 0.6166\n"}
+,{"stream_name":"stdout","time":7504.604839987,"data":"[TII_SHAPE fold 3 seed 42] epoch 06/20 | train CE 0.1989 | val CE 1.2783 | val macro-F1 0.6588\n"}
+,{"stream_name":"stdout","time":7518.300313648,"data":"[TII_SHAPE fold 3 seed 42] epoch 07/20 | train CE 0.1731 | val CE 1.6734 | val macro-F1 0.6660\n"}
+,{"stream_name":"stdout","time":7532.151555483,"data":"[TII_SHAPE fold 3 seed 42] epoch 08/20 | train CE 0.1472 | val CE 1.5227 | val macro-F1 0.6717\n"}
+,{"stream_name":"stdout","time":7546.077889939,"data":"[TII_SHAPE fold 3 seed 42] epoch 09/20 | train CE 0.1286 | val CE 1.9513 | val macro-F1 0.6578\n"}
+,{"stream_name":"stdout","time":7559.777332333,"data":"[TII_SHAPE fold 3 seed 42] epoch 10/20 | train CE 0.1100 | val CE 1.7669 | val macro-F1 0.6655\n"}
+,{"stream_name":"stdout","time":7573.684567816,"data":"[TII_SHAPE fold 3 seed 42] epoch 11/20 | train CE 0.0865 | val CE 2.4128 | val macro-F1 0.6614\n"}
+,{"stream_name":"stdout","time":7587.518706509,"data":"[TII_SHAPE fold 3 seed 42] epoch 12/20 | train CE 0.0704 | val CE 2.4685 | val macro-F1 0.6733\n"}
+,{"stream_name":"stdout","time":7600.670113877,"data":"[TII_SHAPE fold 3 seed 42] epoch 13/20 | train CE 0.0532 | val CE 2.6088 | val macro-F1 0.6784\n"}
+,{"stream_name":"stdout","time":7613.952807691,"data":"[TII_SHAPE fold 3 seed 42] epoch 14/20 | train CE 0.0435 | val CE 3.4100 | val macro-F1 0.6794\n"}
+,{"stream_name":"stdout","time":7627.317750182,"data":"[TII_SHAPE fold 3 seed 42] epoch 15/20 | train CE 0.0312 | val CE 3.7432 | val macro-F1 0.6769\n"}
+,{"stream_name":"stdout","time":7640.586542389,"data":"[TII_SHAPE fold 3 seed 42] epoch 16/20 | train CE 0.0204 | val CE 4.0643 | val macro-F1 0.6865\n"}
+,{"stream_name":"stdout","time":7653.919618986,"data":"[TII_SHAPE fold 3 seed 42] epoch 17/20 | train CE 0.0129 | val CE 4.3332 | val macro-F1 0.6865\n"}
+,{"stream_name":"stdout","time":7667.131764955,"data":"[TII_SHAPE fold 3 seed 42] epoch 18/20 | train CE 0.0084 | val CE 4.4271 | val macro-F1 0.6874\n"}
+,{"stream_name":"stdout","time":7680.350675095,"data":"[TII_SHAPE fold 3 seed 42] epoch 19/20 | train CE 0.0065 | val CE 4.7362 | val macro-F1 0.6828\n"}
+,{"stream_name":"stdout","time":7694.270903492,"data":"[TII_SHAPE fold 3 seed 42] epoch 20/20 | train CE 0.0055 | val CE 4.6956 | val macro-F1 0.6854\n"}
+,{"stream_name":"stdout","time":7695.203817643,"data":"[run 18/24] TII_SHAPE fold 3 seed 42 done in 273 s\n"}
+,{"stream_name":"stdout","time":7695.422107971,"data":"[HOOK HARD] PASS — TII_SHAPE fold 4 seed 42: no test-day mission in training: TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-05'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-10\n"}
+,{"stream_name":"stdout","time":7695.69374877,"data":"[TII_SHAPE fold 4 seed 42] init ec0302d13149 | 995,974 params | windows train 25055 / val 4205 | z-score 947714ee2ad65066 | class weights [1.0729999542236328, 0.9750000238418579, 1.152999997138977, 0.9380000233650208, 0.9010000228881836]\n"}
+,{"stream_name":"stdout","time":7709.008371112,"data":"[TII_SHAPE fold 4 seed 42] epoch 01/20 | train CE 0.6613 | val CE 0.5435 | val macro-F1 0.7507  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7722.113131087,"data":"[TII_SHAPE fold 4 seed 42] epoch 02/20 | train CE 0.4124 | val CE 0.4916 | val macro-F1 0.7795  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7735.382180919,"data":"[TII_SHAPE fold 4 seed 42] epoch 03/20 | train CE 0.3311 | val CE 0.4112 | val macro-F1 0.8184  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7748.855002779,"data":"[TII_SHAPE fold 4 seed 42] epoch 04/20 | train CE 0.2726 | val CE 0.3767 | val macro-F1 0.8365  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7762.061131384,"data":"[TII_SHAPE fold 4 seed 42] epoch 05/20 | train CE 0.2344 | val CE 0.3315 | val macro-F1 0.8677  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7775.652315601,"data":"[TII_SHAPE fold 4 seed 42] epoch 06/20 | train CE 0.2027 | val CE 0.3865 | val macro-F1 0.8537\n"}
+,{"stream_name":"stdout","time":7788.813403931,"data":"[TII_SHAPE fold 4 seed 42] epoch 07/20 | train CE 0.1758 | val CE 0.3994 | val macro-F1 0.8458\n"}
+,{"stream_name":"stdout","time":7802.190610484,"data":"[TII_SHAPE fold 4 seed 42] epoch 08/20 | train CE 0.1504 | val CE 0.4054 | val macro-F1 0.8599\n"}
+,{"stream_name":"stdout","time":7815.385007639,"data":"[TII_SHAPE fold 4 seed 42] epoch 09/20 | train CE 0.1319 | val CE 0.3172 | val macro-F1 0.8934  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7828.788658865,"data":"[TII_SHAPE fold 4 seed 42] epoch 10/20 | train CE 0.1085 | val CE 0.4318 | val macro-F1 0.8681\n"}
+,{"stream_name":"stdout","time":7841.844722082,"data":"[TII_SHAPE fold 4 seed 42] epoch 11/20 | train CE 0.0884 | val CE 0.5068 | val macro-F1 0.8770\n"}
+,{"stream_name":"stdout","time":7855.065114936,"data":"[TII_SHAPE fold 4 seed 42] epoch 12/20 | train CE 0.0740 | val CE 0.4091 | val macro-F1 0.8952\n"}
+,{"stream_name":"stdout","time":7868.274550032,"data":"[TII_SHAPE fold 4 seed 42] epoch 13/20 | train CE 0.0567 | val CE 0.5525 | val macro-F1 0.8897\n"}
+,{"stream_name":"stdout","time":7881.333083755,"data":"[TII_SHAPE fold 4 seed 42] epoch 14/20 | train CE 0.0433 | val CE 0.5393 | val macro-F1 0.8947\n"}
+,{"stream_name":"stdout","time":7894.632963718,"data":"[TII_SHAPE fold 4 seed 42] epoch 15/20 | train CE 0.0300 | val CE 0.6737 | val macro-F1 0.8925\n"}
+,{"stream_name":"stdout","time":7907.809357432,"data":"[TII_SHAPE fold 4 seed 42] epoch 16/20 | train CE 0.0199 | val CE 0.8427 | val macro-F1 0.8810\n"}
+,{"stream_name":"stdout","time":7920.969099872,"data":"[TII_SHAPE fold 4 seed 42] epoch 17/20 | train CE 0.0149 | val CE 0.9384 | val macro-F1 0.8809\n"}
+,{"stream_name":"stdout","time":7934.274877304,"data":"[TII_SHAPE fold 4 seed 42] epoch 18/20 | train CE 0.0097 | val CE 0.9690 | val macro-F1 0.8793\n"}
+,{"stream_name":"stdout","time":7947.406475052,"data":"[TII_SHAPE fold 4 seed 42] epoch 19/20 | train CE 0.0071 | val CE 0.9629 | val macro-F1 0.8873\n"}
+,{"stream_name":"stdout","time":7960.996432266,"data":"[TII_SHAPE fold 4 seed 42] epoch 20/20 | train CE 0.0054 | val CE 0.9766 | val macro-F1 0.8858\n"}
+,{"stream_name":"stdout","time":7962.063019497,"data":"[run 19/24] TII_SHAPE fold 4 seed 42 done in 265 s\n"}
+,{"stream_name":"stdout","time":7962.279215554,"data":"[HOOK HARD] PASS — TII_SHAPE fold 0 seed 123: no test-day mission in training: TII days ['2021-12-31', '2022-01-04', '2022-01-05', '2022-01-10'] only (72 train / 13 val missions, all 5 channels as separate samples); test day 2021-12-22\n"}
+,{"stream_name":"stdout","time":7962.611107177,"data":"[TII_SHAPE fold 0 seed 123] init 7cfacc243665 | 995,974 params | windows train 26760 / val 4815 | z-score 30e19f976c2418b9 | class weights [1.0509999990463257, 1.003999948501587, 1.0369999408721924, 0.9649999737739563, 0.949999988079071]\n"}
+,{"stream_name":"stdout","time":7976.772687093,"data":"[TII_SHAPE fold 0 seed 123] epoch 01/20 | train CE 0.6489 | val CE 0.5590 | val macro-F1 0.7635  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":7991.046879366,"data":"[TII_SHAPE fold 0 seed 123] epoch 02/20 | train CE 0.4209 | val CE 0.5754 | val macro-F1 0.7719\n"}
+,{"stream_name":"stdout","time":8005.460110461,"data":"[TII_SHAPE fold 0 seed 123] epoch 03/20 | train CE 0.3529 | val CE 0.5121 | val macro-F1 0.7825  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8019.64767118,"data":"[TII_SHAPE fold 0 seed 123] epoch 04/20 | train CE 0.2961 | val CE 0.5837 | val macro-F1 0.8169\n"}
+,{"stream_name":"stdout","time":8033.872330895,"data":"[TII_SHAPE fold 0 seed 123] epoch 05/20 | train CE 0.2473 | val CE 0.5564 | val macro-F1 0.7945\n"}
+,{"stream_name":"stdout","time":8048.096040407,"data":"[TII_SHAPE fold 0 seed 123] epoch 06/20 | train CE 0.2106 | val CE 0.5425 | val macro-F1 0.8092\n"}
+,{"stream_name":"stdout","time":8062.433275861,"data":"[TII_SHAPE fold 0 seed 123] epoch 07/20 | train CE 0.1776 | val CE 0.5809 | val macro-F1 0.8337\n"}
+,{"stream_name":"stdout","time":8076.700909862,"data":"[TII_SHAPE fold 0 seed 123] epoch 08/20 | train CE 0.1498 | val CE 0.5966 | val macro-F1 0.8284\n"}
+,{"stream_name":"stdout","time":8091.012160949,"data":"[TII_SHAPE fold 0 seed 123] epoch 09/20 | train CE 0.1306 | val CE 0.6331 | val macro-F1 0.8399\n"}
+,{"stream_name":"stdout","time":8105.321224888,"data":"[TII_SHAPE fold 0 seed 123] epoch 10/20 | train CE 0.1102 | val CE 0.7726 | val macro-F1 0.8375\n"}
+,{"stream_name":"stdout","time":8119.531634917,"data":"[TII_SHAPE fold 0 seed 123] epoch 11/20 | train CE 0.0928 | val CE 0.8120 | val macro-F1 0.8322\n"}
+,{"stream_name":"stdout","time":8133.71918752,"data":"[TII_SHAPE fold 0 seed 123] epoch 12/20 | train CE 0.0793 | val CE 0.8482 | val macro-F1 0.8477\n"}
+,{"stream_name":"stdout","time":8147.953437314,"data":"[TII_SHAPE fold 0 seed 123] epoch 13/20 | train CE 0.0647 | val CE 1.0666 | val macro-F1 0.8457\n"}
+,{"stream_name":"stdout","time":8162.110526909,"data":"[TII_SHAPE fold 0 seed 123] epoch 14/20 | train CE 0.0510 | val CE 1.3912 | val macro-F1 0.8434\n"}
+,{"stream_name":"stdout","time":8176.354583191,"data":"[TII_SHAPE fold 0 seed 123] epoch 15/20 | train CE 0.0393 | val CE 1.5536 | val macro-F1 0.8448\n"}
+,{"stream_name":"stdout","time":8190.542965624,"data":"[TII_SHAPE fold 0 seed 123] epoch 16/20 | train CE 0.0299 | val CE 1.7382 | val macro-F1 0.8478\n"}
+,{"stream_name":"stdout","time":8204.992794537,"data":"[TII_SHAPE fold 0 seed 123] epoch 17/20 | train CE 0.0230 | val CE 1.7785 | val macro-F1 0.8457\n"}
+,{"stream_name":"stdout","time":8219.318249257,"data":"[TII_SHAPE fold 0 seed 123] epoch 18/20 | train CE 0.0180 | val CE 1.9517 | val macro-F1 0.8480\n"}
+,{"stream_name":"stdout","time":8233.47602343,"data":"[TII_SHAPE fold 0 seed 123] epoch 19/20 | train CE 0.0127 | val CE 2.0333 | val macro-F1 0.8485\n"}
+,{"stream_name":"stdout","time":8247.846952291,"data":"[TII_SHAPE fold 0 seed 123] epoch 20/20 | train CE 0.0116 | val CE 2.0445 | val macro-F1 0.8476\n"}
+,{"stream_name":"stdout","time":8248.610842609,"data":"[run 20/24] TII_SHAPE fold 0 seed 123 done in 285 s\n"}
+,{"stream_name":"stdout","time":8248.827567876,"data":"[HOOK HARD] PASS — TII_SHAPE fold 1 seed 123: no test-day mission in training: TII days ['2021-12-22', '2022-01-04', '2022-01-05', '2022-01-10'] only (49 train / 10 val missions, all 5 channels as separate samples); test day 2021-12-31\n"}
+,{"stream_name":"stdout","time":8248.987316333,"data":"[TII_SHAPE fold 1 seed 123] init 7cfacc243665 | 995,974 params | windows train 18360 / val 3825 | z-score 35d6abbe5395be31 | class weights [1.128000020980835, 0.9599999785423279, 0.9879999756813049, 0.9449999928474426, 0.9980000257492065]\n"}
+,{"stream_name":"stdout","time":8259.085917491,"data":"[TII_SHAPE fold 1 seed 123] epoch 01/20 | train CE 0.7052 | val CE 0.6774 | val macro-F1 0.6396  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8268.673230204,"data":"[TII_SHAPE fold 1 seed 123] epoch 02/20 | train CE 0.4577 | val CE 0.3849 | val macro-F1 0.8289  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8278.312364746,"data":"[TII_SHAPE fold 1 seed 123] epoch 03/20 | train CE 0.3747 | val CE 0.4479 | val macro-F1 0.7945\n"}
+,{"stream_name":"stdout","time":8287.917752073,"data":"[TII_SHAPE fold 1 seed 123] epoch 04/20 | train CE 0.3257 | val CE 0.2980 | val macro-F1 0.8728  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8297.595888,"data":"[TII_SHAPE fold 1 seed 123] epoch 05/20 | train CE 0.2826 | val CE 0.3437 | val macro-F1 0.8538\n"}
+,{"stream_name":"stdout","time":8307.140610063,"data":"[TII_SHAPE fold 1 seed 123] epoch 06/20 | train CE 0.2380 | val CE 0.3261 | val macro-F1 0.8700\n"}
+,{"stream_name":"stdout","time":8316.84273853,"data":"[TII_SHAPE fold 1 seed 123] epoch 07/20 | train CE 0.2059 | val CE 0.3852 | val macro-F1 0.8562\n"}
+,{"stream_name":"stdout","time":8326.326569456,"data":"[TII_SHAPE fold 1 seed 123] epoch 08/20 | train CE 0.1737 | val CE 0.2496 | val macro-F1 0.8982  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8336.007765788,"data":"[TII_SHAPE fold 1 seed 123] epoch 09/20 | train CE 0.1480 | val CE 0.2523 | val macro-F1 0.9032\n"}
+,{"stream_name":"stdout","time":8345.657154885,"data":"[TII_SHAPE fold 1 seed 123] epoch 10/20 | train CE 0.1267 | val CE 0.2969 | val macro-F1 0.9105\n"}
+,{"stream_name":"stdout","time":8355.379926955,"data":"[TII_SHAPE fold 1 seed 123] epoch 11/20 | train CE 0.1056 | val CE 0.2570 | val macro-F1 0.9204\n"}
+,{"stream_name":"stdout","time":8365.139341845,"data":"[TII_SHAPE fold 1 seed 123] epoch 12/20 | train CE 0.0891 | val CE 0.3456 | val macro-F1 0.9077\n"}
+,{"stream_name":"stdout","time":8375.067935602,"data":"[TII_SHAPE fold 1 seed 123] epoch 13/20 | train CE 0.0763 | val CE 0.3645 | val macro-F1 0.9094\n"}
+,{"stream_name":"stdout","time":8385.305399442,"data":"[TII_SHAPE fold 1 seed 123] epoch 14/20 | train CE 0.0610 | val CE 0.4147 | val macro-F1 0.9154\n"}
+,{"stream_name":"stdout","time":8395.278576977,"data":"[TII_SHAPE fold 1 seed 123] epoch 15/20 | train CE 0.0481 | val CE 0.4922 | val macro-F1 0.9067\n"}
+,{"stream_name":"stdout","time":8405.248906868,"data":"[TII_SHAPE fold 1 seed 123] epoch 16/20 | train CE 0.0400 | val CE 0.6108 | val macro-F1 0.9066\n"}
+,{"stream_name":"stdout","time":8415.165484507,"data":"[TII_SHAPE fold 1 seed 123] epoch 17/20 | train CE 0.0267 | val CE 0.6703 | val macro-F1 0.9080\n"}
+,{"stream_name":"stdout","time":8425.104079189,"data":"[TII_SHAPE fold 1 seed 123] epoch 18/20 | train CE 0.0211 | val CE 0.6889 | val macro-F1 0.9112\n"}
+,{"stream_name":"stdout","time":8435.263113514,"data":"[TII_SHAPE fold 1 seed 123] epoch 19/20 | train CE 0.0149 | val CE 0.7194 | val macro-F1 0.9103\n"}
+,{"stream_name":"stdout","time":8445.684217744,"data":"[TII_SHAPE fold 1 seed 123] epoch 20/20 | train CE 0.0133 | val CE 0.7531 | val macro-F1 0.9089\n"}
+,{"stream_name":"stdout","time":8447.594530151,"data":"[run 21/24] TII_SHAPE fold 1 seed 123 done in 197 s\n"}
+,{"stream_name":"stdout","time":8447.812457088,"data":"[HOOK HARD] PASS — TII_SHAPE fold 2 seed 123: no test-day mission in training: TII days ['2021-12-22', '2021-12-31', '2022-01-05', '2022-01-10'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-04\n"}
+,{"stream_name":"stdout","time":8448.089931319,"data":"[TII_SHAPE fold 2 seed 123] init 7cfacc243665 | 995,974 params | windows train 25135 / val 4235 | z-score e1e58b1264a7529f | class weights [1.0789999961853027, 0.9300000071525574, 1.1260000467300415, 0.9390000104904175, 0.9580000042915344]\n"}
+,{"stream_name":"stdout","time":8461.377746311,"data":"[TII_SHAPE fold 2 seed 123] epoch 01/20 | train CE 0.6831 | val CE 0.4690 | val macro-F1 0.7802  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8474.672997353,"data":"[TII_SHAPE fold 2 seed 123] epoch 02/20 | train CE 0.4424 | val CE 0.4589 | val macro-F1 0.7922  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8487.777630814,"data":"[TII_SHAPE fold 2 seed 123] epoch 03/20 | train CE 0.3572 | val CE 0.3199 | val macro-F1 0.8541  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8501.108309858,"data":"[TII_SHAPE fold 2 seed 123] epoch 04/20 | train CE 0.2945 | val CE 0.2895 | val macro-F1 0.8777  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8514.579839339,"data":"[TII_SHAPE fold 2 seed 123] epoch 05/20 | train CE 0.2462 | val CE 0.2756 | val macro-F1 0.8956  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8527.842351445,"data":"[TII_SHAPE fold 2 seed 123] epoch 06/20 | train CE 0.2034 | val CE 0.2473 | val macro-F1 0.9024  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8541.011961125,"data":"[TII_SHAPE fold 2 seed 123] epoch 07/20 | train CE 0.1719 | val CE 0.3270 | val macro-F1 0.8944\n"}
+,{"stream_name":"stdout","time":8554.371555358,"data":"[TII_SHAPE fold 2 seed 123] epoch 08/20 | train CE 0.1484 | val CE 0.1959 | val macro-F1 0.9257  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8567.643620604,"data":"[TII_SHAPE fold 2 seed 123] epoch 09/20 | train CE 0.1277 | val CE 0.2356 | val macro-F1 0.9170\n"}
+,{"stream_name":"stdout","time":8580.952817016,"data":"[TII_SHAPE fold 2 seed 123] epoch 10/20 | train CE 0.1031 | val CE 0.2976 | val macro-F1 0.9157\n"}
+,{"stream_name":"stdout","time":8594.214737795,"data":"[TII_SHAPE fold 2 seed 123] epoch 11/20 | train CE 0.0880 | val CE 0.2631 | val macro-F1 0.9268\n"}
+,{"stream_name":"stdout","time":8607.521411003,"data":"[TII_SHAPE fold 2 seed 123] epoch 12/20 | train CE 0.0723 | val CE 0.3377 | val macro-F1 0.9281\n"}
+,{"stream_name":"stdout","time":8620.924239215,"data":"[TII_SHAPE fold 2 seed 123] epoch 13/20 | train CE 0.0591 | val CE 0.3716 | val macro-F1 0.9222\n"}
+,{"stream_name":"stdout","time":8634.205087335,"data":"[TII_SHAPE fold 2 seed 123] epoch 14/20 | train CE 0.0474 | val CE 0.3994 | val macro-F1 0.9342\n"}
+,{"stream_name":"stdout","time":8647.534279791,"data":"[TII_SHAPE fold 2 seed 123] epoch 15/20 | train CE 0.0340 | val CE 0.4825 | val macro-F1 0.9315\n"}
+,{"stream_name":"stdout","time":8660.665441556,"data":"[TII_SHAPE fold 2 seed 123] epoch 16/20 | train CE 0.0240 | val CE 0.5504 | val macro-F1 0.9311\n"}
+,{"stream_name":"stdout","time":8673.974768838,"data":"[TII_SHAPE fold 2 seed 123] epoch 17/20 | train CE 0.0173 | val CE 0.6055 | val macro-F1 0.9297\n"}
+,{"stream_name":"stdout","time":8687.353215323,"data":"[TII_SHAPE fold 2 seed 123] epoch 18/20 | train CE 0.0115 | val CE 0.6379 | val macro-F1 0.9282\n"}
+,{"stream_name":"stdout","time":8700.8279977,"data":"[TII_SHAPE fold 2 seed 123] epoch 19/20 | train CE 0.0082 | val CE 0.6395 | val macro-F1 0.9317\n"}
+,{"stream_name":"stdout","time":8714.781081392,"data":"[TII_SHAPE fold 2 seed 123] epoch 20/20 | train CE 0.0067 | val CE 0.6550 | val macro-F1 0.9304\n"}
+,{"stream_name":"stdout","time":8715.793092605,"data":"[run 22/24] TII_SHAPE fold 2 seed 123 done in 267 s\n"}
+,{"stream_name":"stdout","time":8716.010715925,"data":"[HOOK HARD] PASS — TII_SHAPE fold 3 seed 123: no test-day mission in training: TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-10'] only (69 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-05\n"}
+,{"stream_name":"stdout","time":8716.303490381,"data":"[TII_SHAPE fold 3 seed 123] init 7cfacc243665 | 995,974 params | windows train 26200 / val 4070 | z-score 1a99f95400b2065f | class weights [1.097000002861023, 1.0199999809265137, 1.0010000467300415, 0.9129999876022339, 0.9860000014305115]\n"}
+,{"stream_name":"stdout","time":8729.90291438,"data":"[TII_SHAPE fold 3 seed 123] epoch 01/20 | train CE 0.6620 | val CE 1.4118 | val macro-F1 0.5731  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8743.650533821,"data":"[TII_SHAPE fold 3 seed 123] epoch 02/20 | train CE 0.4162 | val CE 1.2310 | val macro-F1 0.6073  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":8757.50300828,"data":"[TII_SHAPE fold 3 seed 123] epoch 03/20 | train CE 0.3315 | val CE 1.4000 | val macro-F1 0.6169\n"}
+,{"stream_name":"stdout","time":8771.237119841,"data":"[TII_SHAPE fold 3 seed 123] epoch 04/20 | train CE 0.2764 | val CE 1.8445 | val macro-F1 0.6338\n"}
+,{"stream_name":"stdout","time":8785.042924916,"data":"[TII_SHAPE fold 3 seed 123] epoch 05/20 | train CE 0.2340 | val CE 2.1097 | val macro-F1 0.6242\n"}
+,{"stream_name":"stdout","time":8798.840591442,"data":"[TII_SHAPE fold 3 seed 123] epoch 06/20 | train CE 0.2000 | val CE 2.0528 | val macro-F1 0.6450\n"}
+,{"stream_name":"stdout","time":8812.654319029,"data":"[TII_SHAPE fold 3 seed 123] epoch 07/20 | train CE 0.1690 | val CE 1.9609 | val macro-F1 0.6426\n"}
+,{"stream_name":"stdout","time":8826.306174341,"data":"[TII_SHAPE fold 3 seed 123] epoch 08/20 | train CE 0.1506 | val CE 2.4394 | val macro-F1 0.6322\n"}
+,{"stream_name":"stdout","time":8840.029390587,"data":"[TII_SHAPE fold 3 seed 123] epoch 09/20 | train CE 0.1273 | val CE 2.7237 | val macro-F1 0.6380\n"}
+,{"stream_name":"stdout","time":8853.894210728,"data":"[TII_SHAPE fold 3 seed 123] epoch 10/20 | train CE 0.1059 | val CE 3.2718 | val macro-F1 0.6554\n"}
+,{"stream_name":"stdout","time":8867.571575843,"data":"[TII_SHAPE fold 3 seed 123] epoch 11/20 | train CE 0.0921 | val CE 3.3970 | val macro-F1 0.6593\n"}
+,{"stream_name":"stdout","time":8881.424017872,"data":"[TII_SHAPE fold 3 seed 123] epoch 12/20 | train CE 0.0755 | val CE 4.0009 | val macro-F1 0.6570\n"}
+,{"stream_name":"stdout","time":8895.464657771,"data":"[TII_SHAPE fold 3 seed 123] epoch 13/20 | train CE 0.0612 | val CE 4.8292 | val macro-F1 0.6518\n"}
+,{"stream_name":"stdout","time":8909.086190882,"data":"[TII_SHAPE fold 3 seed 123] epoch 14/20 | train CE 0.0488 | val CE 5.8155 | val macro-F1 0.6614\n"}
+,{"stream_name":"stdout","time":8922.977831753,"data":"[TII_SHAPE fold 3 seed 123] epoch 15/20 | train CE 0.0396 | val CE 6.8621 | val macro-F1 0.6641\n"}
+,{"stream_name":"stdout","time":8936.432772361,"data":"[TII_SHAPE fold 3 seed 123] epoch 16/20 | train CE 0.0286 | val CE 7.4755 | val macro-F1 0.6615\n"}
+,{"stream_name":"stdout","time":8949.613824955,"data":"[TII_SHAPE fold 3 seed 123] epoch 17/20 | train CE 0.0230 | val CE 8.4088 | val macro-F1 0.6658\n"}
+,{"stream_name":"stdout","time":8962.837934479,"data":"[TII_SHAPE fold 3 seed 123] epoch 18/20 | train CE 0.0154 | val CE 8.3552 | val macro-F1 0.6632\n"}
+,{"stream_name":"stdout","time":8976.040379134,"data":"[TII_SHAPE fold 3 seed 123] epoch 19/20 | train CE 0.0118 | val CE 8.8244 | val macro-F1 0.6646\n"}
+,{"stream_name":"stdout","time":8989.563939004,"data":"[TII_SHAPE fold 3 seed 123] epoch 20/20 | train CE 0.0098 | val CE 9.0824 | val macro-F1 0.6655\n"}
+,{"stream_name":"stdout","time":8990.479957996,"data":"[run 23/24] TII_SHAPE fold 3 seed 123 done in 273 s\n"}
+,{"stream_name":"stdout","time":8990.697670525,"data":"[HOOK HARD] PASS — TII_SHAPE fold 4 seed 123: no test-day mission in training: TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-05'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-10\n"}
+,{"stream_name":"stdout","time":8990.975596096,"data":"[TII_SHAPE fold 4 seed 123] init 7cfacc243665 | 995,974 params | windows train 25055 / val 4205 | z-score 947714ee2ad65066 | class weights [1.0729999542236328, 0.9750000238418579, 1.152999997138977, 0.9380000233650208, 0.9010000228881836]\n"}
+,{"stream_name":"stdout","time":9003.86215697,"data":"[TII_SHAPE fold 4 seed 123] epoch 01/20 | train CE 0.6609 | val CE 0.5500 | val macro-F1 0.7707  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":9016.786612061,"data":"[TII_SHAPE fold 4 seed 123] epoch 02/20 | train CE 0.4253 | val CE 0.4754 | val macro-F1 0.8069  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":9029.604491617,"data":"[TII_SHAPE fold 4 seed 123] epoch 03/20 | train CE 0.3388 | val CE 0.3226 | val macro-F1 0.8566  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":9042.869387568,"data":"[TII_SHAPE fold 4 seed 123] epoch 04/20 | train CE 0.2880 | val CE 0.5037 | val macro-F1 0.7862\n"}
+,{"stream_name":"stdout","time":9056.301467625,"data":"[TII_SHAPE fold 4 seed 123] epoch 05/20 | train CE 0.2407 | val CE 0.4373 | val macro-F1 0.8239\n"}
+,{"stream_name":"stdout","time":9069.744267503,"data":"[TII_SHAPE fold 4 seed 123] epoch 06/20 | train CE 0.2061 | val CE 0.4761 | val macro-F1 0.8275\n"}
+,{"stream_name":"stdout","time":9083.186652358,"data":"[TII_SHAPE fold 4 seed 123] epoch 07/20 | train CE 0.1809 | val CE 0.2641 | val macro-F1 0.8907  * best (lowest val loss)\n"}
+,{"stream_name":"stdout","time":9096.515177195,"data":"[TII_SHAPE fold 4 seed 123] epoch 08/20 | train CE 0.1557 | val CE 0.3830 | val macro-F1 0.8434\n"}
+,{"stream_name":"stdout","time":9109.807916441,"data":"[TII_SHAPE fold 4 seed 123] epoch 09/20 | train CE 0.1324 | val CE 0.3462 | val macro-F1 0.8756\n"}
+,{"stream_name":"stdout","time":9123.091371747,"data":"[TII_SHAPE fold 4 seed 123] epoch 10/20 | train CE 0.1127 | val CE 0.3439 | val macro-F1 0.8892\n"}
+,{"stream_name":"stdout","time":9136.312326887,"data":"[TII_SHAPE fold 4 seed 123] epoch 11/20 | train CE 0.0941 | val CE 0.3938 | val macro-F1 0.8870\n"}
+,{"stream_name":"stdout","time":9149.58067997,"data":"[TII_SHAPE fold 4 seed 123] epoch 12/20 | train CE 0.0785 | val CE 0.5096 | val macro-F1 0.8780\n"}
+,{"stream_name":"stdout","time":9162.759733364,"data":"[TII_SHAPE fold 4 seed 123] epoch 13/20 | train CE 0.0642 | val CE 0.4800 | val macro-F1 0.8908\n"}
+,{"stream_name":"stdout","time":9175.900466087,"data":"[TII_SHAPE fold 4 seed 123] epoch 14/20 | train CE 0.0503 | val CE 0.6490 | val macro-F1 0.8777\n"}
+,{"stream_name":"stdout","time":9189.325865086,"data":"[TII_SHAPE fold 4 seed 123] epoch 15/20 | train CE 0.0400 | val CE 0.6517 | val macro-F1 0.8979\n"}
+,{"stream_name":"stdout","time":9202.633993254,"data":"[TII_SHAPE fold 4 seed 123] epoch 16/20 | train CE 0.0301 | val CE 0.8065 | val macro-F1 0.8874\n"}
+,{"stream_name":"stdout","time":9215.827841013,"data":"[TII_SHAPE fold 4 seed 123] epoch 17/20 | train CE 0.0239 | val CE 0.9492 | val macro-F1 0.8894\n"}
+,{"stream_name":"stdout","time":9228.960177115,"data":"[TII_SHAPE fold 4 seed 123] epoch 18/20 | train CE 0.0148 | val CE 0.9687 | val macro-F1 0.8898\n"}
+,{"stream_name":"stdout","time":9242.371723347,"data":"[TII_SHAPE fold 4 seed 123] epoch 19/20 | train CE 0.0116 | val CE 1.0462 | val macro-F1 0.8889\n"}
+,{"stream_name":"stdout","time":9255.843917406,"data":"[TII_SHAPE fold 4 seed 123] epoch 20/20 | train CE 0.0092 | val CE 1.0129 | val macro-F1 0.8913\n"}
+,{"stream_name":"stdout","time":9256.908165075,"data":"[run 24/24] TII_SHAPE fold 4 seed 123 done in 265 s\n"}
+,{"stream_name":"stdout","time":9256.943624994,"data":"\n"}
+,{"stream_name":"stdout","time":9256.943670614,"data":"All 24 runs available. Training time this session: 96.2 min\n"}
+,{"stream_name":"stdout","time":9256.943676913,"data":"\n"}
+,{"stream_name":"stdout","time":9256.943681124,"data":"Data sources of every trained model:\n"}
+,{"stream_name":"stdout","time":9256.9436853,"data":"  EXT_LEVEL  fold -1 seed 42   external .wav windows only (230 train / 63 val recordings); no TII data\n"}
+,{"stream_name":"stdout","time":9256.943689827,"data":"  EXT_LEVEL  fold -1 seed 123  external .wav windows only (230 train / 63 val recordings); no TII data\n"}
+,{"stream_name":"stdout","time":9256.943710389,"data":"  EXT_SHAPE  fold -1 seed 42   external .wav windows only (230 train / 63 val recordings); no TII data\n"}
+,{"stream_name":"stdout","time":9256.943714529,"data":"  EXT_SHAPE  fold -1 seed 123  external .wav windows only (230 train / 63 val recordings); no TII data\n"}
+,{"stream_name":"stdout","time":9256.943718787,"data":"  TII_LEVEL  fold  0 seed 42   TII days ['2021-12-31', '2022-01-04', '2022-01-05', '2022-01-10'] only (72 train / 13 val missions, all 5 channels as separate samples); test day 2021-12-22\n"}
+,{"stream_name":"stdout","time":9256.943723517,"data":"  TII_LEVEL  fold  1 seed 42   TII days ['2021-12-22', '2022-01-04', '2022-01-05', '2022-01-10'] only (49 train / 10 val missions, all 5 channels as separate samples); test day 2021-12-31\n"}
+,{"stream_name":"stdout","time":9256.943727579,"data":"  TII_LEVEL  fold  2 seed 42   TII days ['2021-12-22', '2021-12-31', '2022-01-05', '2022-01-10'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-04\n"}
+,{"stream_name":"stdout","time":9256.943732057,"data":"  TII_LEVEL  fold  3 seed 42   TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-10'] only (69 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-05\n"}
+,{"stream_name":"stdout","time":9256.94373571,"data":"  TII_LEVEL  fold  4 seed 42   TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-05'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-10\n"}
+,{"stream_name":"stdout","time":9256.943739372,"data":"  TII_LEVEL  fold  0 seed 123  TII days ['2021-12-31', '2022-01-04', '2022-01-05', '2022-01-10'] only (72 train / 13 val missions, all 5 channels as separate samples); test day 2021-12-22\n"}
+,{"stream_name":"stdout","time":9256.943742927,"data":"  TII_LEVEL  fold  1 seed 123  TII days ['2021-12-22', '2022-01-04', '2022-01-05', '2022-01-10'] only (49 train / 10 val missions, all 5 channels as separate samples); test day 2021-12-31\n"}
+,{"stream_name":"stdout","time":9256.943746629,"data":"  TII_LEVEL  fold  2 seed 123  TII days ['2021-12-22', '2021-12-31', '2022-01-05', '2022-01-10'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-04\n"}
+,{"stream_name":"stdout","time":9256.94375306,"data":"  TII_LEVEL  fold  3 seed 123  TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-10'] only (69 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-05\n"}
+,{"stream_name":"stdout","time":9256.94375703,"data":"  TII_LEVEL  fold  4 seed 123  TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-05'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-10\n"}
+,{"stream_name":"stdout","time":9256.943760705,"data":"  TII_SHAPE  fold  0 seed 42   TII days ['2021-12-31', '2022-01-04', '2022-01-05', '2022-01-10'] only (72 train / 13 val missions, all 5 channels as separate samples); test day 2021-12-22\n"}
+,{"stream_name":"stdout","time":9256.943764169,"data":"  TII_SHAPE  fold  1 seed 42   TII days ['2021-12-22', '2022-01-04', '2022-01-05', '2022-01-10'] only (49 train / 10 val missions, all 5 channels as separate samples); test day 2021-12-31\n"}
+,{"stream_name":"stdout","time":9256.943767805,"data":"  TII_SHAPE  fold  2 seed 42   TII days ['2021-12-22', '2021-12-31', '2022-01-05', '2022-01-10'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-04\n"}
+,{"stream_name":"stdout","time":9256.943771226,"data":"  TII_SHAPE  fold  3 seed 42   TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-10'] only (69 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-05\n"}
+,{"stream_name":"stdout","time":9256.94377501,"data":"  TII_SHAPE  fold  4 seed 42   TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-05'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-10\n"}
+,{"stream_name":"stdout","time":9256.943783414,"data":"  TII_SHAPE  fold  0 seed 123  TII days ['2021-12-31', '2022-01-04', '2022-01-05', '2022-01-10'] only (72 train / 13 val missions, all 5 channels as separate samples); test day 2021-12-22\n"}
+,{"stream_name":"stdout","time":9256.943787092,"data":"  TII_SHAPE  fold  1 seed 123  TII days ['2021-12-22', '2022-01-04', '2022-01-05', '2022-01-10'] only (49 train / 10 val missions, all 5 channels as separate samples); test day 2021-12-31\n"}
+,{"stream_name":"stdout","time":9256.94379112,"data":"  TII_SHAPE  fold  2 seed 123  TII days ['2021-12-22', '2021-12-31', '2022-01-05', '2022-01-10'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-04\n"}
+,{"stream_name":"stdout","time":9256.943795399,"data":"  TII_SHAPE  fold  3 seed 123  TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-10'] only (69 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-05\n"}
+,{"stream_name":"stdout","time":9256.943800037,"data":"  TII_SHAPE  fold  4 seed 123  TII days ['2021-12-22', '2021-12-31', '2022-01-04', '2022-01-05'] only (67 train / 11 val missions, all 5 channels as separate samples); test day 2022-01-10\n"}
+,{"stream_name":"stdout","time":9256.943804405,"data":"\n"}
+,{"stream_name":"stdout","time":9256.943808094,"data":"EXT validation (within-external, held-out configurations):\n"}
+,{"stream_name":"stdout","time":9256.943811257,"data":"      arm  seed  best_epoch  best_val_loss  best_val_macro_f1_window  val_macro_f1_recording                                                                                                   held_out_val_groups\n"}
+,{"stream_name":"stdout","time":9256.943814971,"data":"EXT_LEVEL    42           2       0.316961                  0.864290                0.959596 {\"0 normal\": [\"cw_f8\"], \"1 broken\": [\"1000\"], \"2 broken\": [\"1010\"], \"3 broken\": [\"1110\"], \"4 broken\": [\"ccw_square\"]}\n"}
+,{"stream_name":"stdout","time":9256.943819556,"data":"EXT_LEVEL   123           1       0.591251                  0.723374                0.842676 {\"0 normal\": [\"ccw_f8\"], \"1 broken\": [\"0001\"], \"2 broken\": [\"0101\"], \"3 broken\": [\"1011\"], \"4 broken\": [\"cw_square\"]}\n"}
+,{"stream_name":"stdout","time":9256.943824384,"data":"EXT_SHAPE    42           1       0.797379                  0.623432                0.550000 {\"0 normal\": [\"cw_f8\"], \"1 broken\": [\"1000\"], \"2 broken\": [\"1010\"], \"3 broken\": [\"1110\"], \"4 broken\": [\"ccw_square\"]}\n"}
+,{"stream_name":"stdout","time":9256.943828165,"data":"EXT_SHAPE   123           5       1.791150                  0.608133                0.676984 {\"0 normal\": [\"ccw_f8\"], \"1 broken\": [\"0001\"], \"2 broken\": [\"0101\"], \"3 broken\": [\"1011\"], \"4 broken\": [\"cw_square\"]}\n"}
+,{"stream_name":"stdout","time":9257.076324885,"data":"Bootstrap: 2000 resamples of missions within class (seed 2028); the same draws are used for every arm, so differences are paired.\n"}
+,{"stream_name":"stdout","time":9261.627653358,"data":"  zero-shot EXT_LEVEL seed 42 RAW assumed16k: 7133 windows x 5 channels\n"}
+,{"stream_name":"stdout","time":9268.440291455,"data":"  zero-shot EXT_LEVEL seed 42 NORMCAL assumed16k: 7133 windows x 5 channels\n"}
+,{"stream_name":"stdout","time":9272.727882091,"data":"  zero-shot EXT_LEVEL seed 123 RAW assumed16k: 7133 windows x 5 channels\n"}
+,{"stream_name":"stdout","time":9276.976167033,"data":"  zero-shot EXT_LEVEL seed 123 NORMCAL assumed16k: 7133 windows x 5 channels\n"}
+,{"stream_name":"stdout","time":9281.362463904,"data":"  zero-shot EXT_SHAPE seed 42 NONE assumed16k: 7133 windows x 5 channels\n"}
+,{"stream_name":"stdout","time":9285.808341417,"data":"  zero-shot EXT_SHAPE seed 123 NONE assumed16k: 7133 windows x 5 channels\n"}
+,{"stream_name":"stdout","time":9285.808391794,"data":"Predictions ready: 15 (model, gain, rate, seed) combinations | 29 s\n"}
+,{"stream_name":"stdout","time":9286.815526156,"data":"External class centroids of log steady RMS: 0 normal 74, 1 broken 199, 2 broken 354, 3 broken 411, 4 broken 477\n"}
+,{"stream_name":"stdout","time":9286.815568958,"data":"Saved /kaggle/working/audio_zeroshot_eval.csv (92 rows: every arm x seed, plus seed-averaged 'avg' and the baselines)\n"}
+,{"stream_name":"stdout","time":9286.815573837,"data":"\n"}
+,{"stream_name":"stdout","time":9286.815577511,"data":"======================================================================================================================================================\n"}
+,{"stream_name":"stdout","time":9286.815581719,"data":"MAIN TABLE — 95 TII missions, mission level, seed-averaged probabilities (MEAN5 / median over channels)\n"}
+,{"stream_name":"stdout","time":9286.815586829,"data":"======================================================================================================================================================\n"}
+,{"stream_name":"stdout","time":9286.815590911,"data":"                  role                                arm mission macro-F1 [95% CI]  mission_accuracy  mission_balanced_accuracy  adjacent_error_share  window_macro_f1 Δ vs TII scratch [95% CI]\n"}
+,{"stream_name":"stdout","time":9286.815595308,"data":"              HEADLINE EXT_LEVEL|NORMCAL|MEAN5|assumed16k      0.276 [0.248, 0.296]             0.368                      0.379                 0.400            0.280   -0.591 [-0.659, -0.522]\n"}
+,{"stream_name":"stdout","time":9286.815598981,"data":" reference (in-domain)     TII_LEVEL|RAW|MEAN5|assumed16k      0.866 [0.802, 0.928]             0.863                      0.862                 1.000            0.818                          \n"}
+,{"stream_name":"stdout","time":9286.815603079,"data":" reference (in-domain)    TII_SHAPE|NONE|MEAN5|assumed16k      0.856 [0.785, 0.917]             0.853                      0.853                 1.000            0.808                          \n"}
+,{"stream_name":"stdout","time":9286.815607326,"data":"baseline (no training)   RMS_CENTROID|NORMCAL|median5|n/a      0.223 [0.191, 0.255]             0.316                      0.326                 0.385              NaN                          \n"}
+,{"stream_name":"stdout","time":9286.815611664,"data":"baseline (no training)       RMS_CENTROID|RAW|median5|n/a      0.293 [0.250, 0.334]             0.379                      0.391                 0.441              NaN                          \n"}
+,{"stream_name":"stdout","time":9286.815616281,"data":"diagnostic (zero-shot)     EXT_LEVEL|RAW|MEAN5|assumed16k      0.286 [0.282, 0.292]             0.389                      0.400                 0.345            0.298   -0.580 [-0.643, -0.514]\n"}
+,{"stream_name":"stdout","time":9286.815622663,"data":"diagnostic (zero-shot)    EXT_SHAPE|NONE|MEAN5|assumed16k      0.279 [0.279, 0.279]             0.389                      0.400                 0.310            0.271   -0.577 [-0.638, -0.506]\n"}
+,{"stream_name":"stdout","time":9286.815626839,"data":"Chance macro-F1 ≈ 0.20.\n"}
+,{"stream_name":"stdout","time":9287.103274204,"data":"Per channel — mission macro-F1 (seed-averaged). Diagnostics only: no channel is selected on TII.\n"}
+,{"stream_name":"stdout","time":9287.103321689,"data":"col       EXT_LEVEL NORMCAL assumed16k  EXT_LEVEL RAW assumed16k  EXT_SHAPE NONE assumed16k  TII_LEVEL RAW assumed16k  TII_SHAPE NONE assumed16k\n"}
+,{"stream_name":"stdout","time":9287.103328919,"data":"channels                                                                                                                                        \n"}
+,{"stream_name":"stdout","time":9287.103334152,"data":"c1                               0.084                     0.193                      0.279                     0.827                      0.868\n"}
+,{"stream_name":"stdout","time":9287.10335543,"data":"c2                               0.525                     0.559                      0.279                     0.767                      0.799\n"}
+,{"stream_name":"stdout","time":9287.103359275,"data":"c3                               0.247                     0.377                      0.206                     0.863                      0.861\n"}
+,{"stream_name":"stdout","time":9287.10336288,"data":"c4                               0.292                     0.280                      0.279                     0.876                      0.855\n"}
+,{"stream_name":"stdout","time":9287.10336664,"data":"c5                               0.277                     0.231                      0.279                     0.812                      0.774\n"}
+,{"stream_name":"stdout","time":9287.103370916,"data":"MEAN5                            0.276                     0.286                      0.279                     0.866                      0.856\n"}
+,{"stream_name":"stdout","time":9287.103375162,"data":"\n"}
+,{"stream_name":"stdout","time":9287.10337818,"data":"Per day — mission macro-F1 / accuracy (seed-averaged). Each day has only 2–8 missions per class:\n"}
+,{"stream_name":"stdout","time":9287.103382505,"data":"                                   2021-12-22 (SMALL, 10)     2021-12-31     2022-01-04     2022-01-05     2022-01-10\n"}
+,{"stream_name":"stdout","time":9287.103386114,"data":"arm                                                                                                                  \n"}
+,{"stream_name":"stdout","time":9287.103389556,"data":"EXT_LEVEL|NORMCAL|MEAN5|assumed16k          0.280 / 0.400  0.304 / 0.389  0.262 / 0.294  0.323 / 0.467  0.200 / 0.294\n"}
+,{"stream_name":"stdout","time":9287.103393022,"data":"TII_LEVEL|RAW|MEAN5|assumed16k              1.000 / 1.000  0.806 / 0.806  0.793 / 0.765  1.000 / 1.000  0.893 / 0.882\n"}
+,{"stream_name":"stdout","time":9287.103396463,"data":"RMS_CENTROID|NORMCAL|median5|n/a            0.133 / 0.200  0.259 / 0.361  0.250 / 0.294  0.207 / 0.333  0.200 / 0.294\n"}
+,{"stream_name":"stdout","time":9287.103401128,"data":"RMS_CENTROID|RAW|median5|n/a                0.204 / 0.300  0.359 / 0.444  0.262 / 0.294  0.345 / 0.467  0.203 / 0.294\n"}
+,{"stream_name":"stdout","time":9287.103404735,"data":"\n"}
+,{"stream_name":"stdout","time":9287.103408369,"data":"Per-class mission recall (seed-averaged):\n"}
+,{"stream_name":"stdout","time":9287.103412201,"data":"                               arm  recall_c0  recall_c1  recall_c2  recall_c3  recall_c4  faulty_missions_called_normal\n"}
+,{"stream_name":"stdout","time":9287.103416732,"data":"EXT_LEVEL|NORMCAL|MEAN5|assumed16k       1.00       0.89       0.00       0.00       0.00                           0.03\n"}
+,{"stream_name":"stdout","time":9287.103421073,"data":"    TII_LEVEL|RAW|MEAN5|assumed16k       1.00       0.89       0.67       0.90       0.85                           0.00\n"}
+,{"stream_name":"stdout","time":9287.103425332,"data":"   TII_SHAPE|NONE|MEAN5|assumed16k       1.00       0.89       0.72       0.75       0.90                           0.00\n"}
+,{"stream_name":"stdout","time":9287.103429605,"data":"  RMS_CENTROID|NORMCAL|median5|n/a       1.00       0.63       0.00       0.00       0.00                           0.09\n"}
+,{"stream_name":"stdout","time":9287.103433274,"data":"      RMS_CENTROID|RAW|median5|n/a       1.00       0.84       0.11       0.00       0.00                           0.04\n"}
+,{"stream_name":"stdout","time":9287.10343661,"data":"    EXT_LEVEL|RAW|MEAN5|assumed16k       1.00       1.00       0.00       0.00       0.00                           0.00\n"}
+,{"stream_name":"stdout","time":9287.103443892,"data":"   EXT_SHAPE|NONE|MEAN5|assumed16k       1.00       1.00       0.00       0.00       0.00                           0.00\n"}
+,{"stream_name":"stdout","time":9287.103447592,"data":"\n"}
+,{"stream_name":"stdout","time":9287.103451295,"data":"Per seed (headline and reference):\n"}
+,{"stream_name":"stdout","time":9287.103454562,"data":"                               arm seed  mission_macro_f1  mission_macro_f1_ci_lo  mission_macro_f1_ci_hi  window_macro_f1\n"}
+,{"stream_name":"stdout","time":9287.103457885,"data":"EXT_LEVEL|NORMCAL|MEAN5|assumed16k   42             0.259                   0.232                   0.285            0.257\n"}
+,{"stream_name":"stdout","time":9287.103461348,"data":"EXT_LEVEL|NORMCAL|MEAN5|assumed16k  123             0.318                   0.301                   0.340            0.322\n"}
+,{"stream_name":"stdout","time":9287.103464672,"data":"    TII_LEVEL|RAW|MEAN5|assumed16k   42             0.855                   0.788                   0.916            0.800\n"}
+,{"stream_name":"stdout","time":9287.103467785,"data":"    TII_LEVEL|RAW|MEAN5|assumed16k  123             0.837                   0.767                   0.904            0.810\n"}
+,{"stream_name":"stdout","time":9287.103471298,"data":"EXT_LEVEL|NORMCAL|MEAN5|assumed16k  avg             0.276                   0.248                   0.296            0.280\n"}
+,{"stream_name":"stdout","time":9287.103474633,"data":"    TII_LEVEL|RAW|MEAN5|assumed16k  avg             0.866                   0.802                   0.928            0.818\n"}
+,{"stream_name":"stdout","time":9288.157550343,"data":"  saved /kaggle/working/figures/6d_confusion_matrices.png\n"}
+,{"stream_name":"stdout","time":9289.164446171,"data":"  saved /kaggle/working/figures/6d_per_channel.png\n"}
+,{"stream_name":"stdout","time":9289.164486914,"data":"\n"}
+,{"stream_name":"stdout","time":9289.164491893,"data":"CONTEXT ONLY — earlier runs, different front end, not for paired comparison:\n"}
+,{"stream_name":"stdout","time":9289.164496719,"data":"  Revised audio notebook, A1 (5 channels x 16 bins, day-out): window macro-F1 0.807 [0.754, 0.859], mission macro-F1 0.845 [0.772, 0.915]\n"}
+,{"stream_name":"stdout","time":9289.164501106,"data":"  v28 A1 (day-out): window macro-F1 0.741 [0.689, 0.791]\n"}
+,{"stream_name":"stdout","time":9289.300227431,"data":"==============================================================================================================\n"}
+,{"stream_name":"stdout","time":9289.300278069,"data":"VERDICT (pre-registered rules, headline arm EXT_LEVEL + NORMCAL + MEAN5 + assumed 16 kHz, seed-averaged)\n"}
+,{"stream_name":"stdout","time":9289.30028418,"data":"==============================================================================================================\n"}
+,{"stream_name":"stdout","time":9289.300288091,"data":"Headline mission macro-F1 0.276 [95% CI 0.248, 0.296] on 95 TII missions (chance ~0.20).\n"}
+,{"stream_name":"stdout","time":9289.30029198,"data":"TII scratch (LEVEL, MEAN5, day-out) 0.866 [0.802, 0.928]; paired difference headline − scratch -0.591 [-0.659, -0.522].\n"}
+,{"stream_name":"stdout","time":9289.30029778,"data":"TIER: NOT COMPATIBLE\n"}
+,{"stream_name":"stdout","time":9289.300301551,"data":"GATE: DOES NOT PASS — do not run the pretraining notebook on this basis.\n"}
+,{"stream_name":"stdout","time":9289.300305456,"data":"Neural zero-shot vs RMS-CENTROID (NORMCAL): paired difference +0.053 [+0.023, +0.085] -\u003e the neural model CLEARLY beats the loudness-only baseline.\n"}
+,{"stream_name":"stdout","time":9289.300310896,"data":"Caveats: NORMCAL is a semi-supervised gain calibration (TII Normal loudness from other days); the TII sample rate is assumed (16000 Hz; scan result: inconclusive); this tests compatibility, not whether pretraining improves final TII results.\n"}
+,{"stream_name":"stdout","time":9289.366727149,"data":"==============================================================================================================\n"}
+,{"stream_name":"stdout","time":9289.366764389,"data":"VERIFICATION HOOKS\n"}
+,{"stream_name":"stdout","time":9289.36676976,"data":"==============================================================================================================\n"}
+,{"stream_name":"stdout","time":9289.36677392,"data":"  PASS  [hard] external: file count + class counts\n"}
+,{"stream_name":"stdout","time":9289.36677774,"data":"  PASS  [hard] external: formats mono / 16 kHz / 16-bit, every file decoded\n"}
+,{"stream_name":"stdout","time":9289.366781626,"data":"  PASS  [soft] external: configuration bits match the class (number of 1s = broken propellers)\n"}
+,{"stream_name":"stdout","time":9289.366785345,"data":"  PASS  [soft] external: total duration\n"}
+,{"stream_name":"stdout","time":9289.366789204,"data":"  PASS  [soft] external: duration range and median\n"}
+,{"stream_name":"stdout","time":9289.366794336,"data":"  PASS  [soft] external: no duplicate files (sha1 of the audio bytes)\n"}
+,{"stream_name":"stdout","time":9289.366799115,"data":"  PASS  [soft] external: no clipping, no dead files, |DC| \u003c= 0.6 LSB, \u003c= 0.8% exact-zero samples\n"}
+,{"stream_name":"stdout","time":9289.366804069,"data":"  PASS  [soft] external: already trimmed (quiet lead-in median ~1 s / max ~6 s; tail median ~2 s / max ~9 s)\n"}
+,{"stream_name":"stdout","time":9289.366808216,"data":"  PASS  [soft] external: class median steady RMS within 10% of the earlier audit\n"}
+,{"stream_name":"stdout","time":9289.36681238,"data":"  PASS  [soft] external: per-configuration median steady RMS within 10% of the earlier audit\n"}
+,{"stream_name":"stdout","time":9289.366816117,"data":"  PASS  [soft] external: loudness overlap facts\n"}
+,{"stream_name":"stdout","time":9289.366820131,"data":"  PASS  [hard] TII: 95 missions, class counts, exclusion set\n"}
+,{"stream_name":"stdout","time":9289.366823642,"data":"  PASS  [hard] TII: day counts\n"}
+,{"stream_name":"stdout","time":9289.366827202,"data":"  PASS  [hard] TII: slot index 5 identically zero\n"}
+,{"stream_name":"stdout","time":9289.366830734,"data":"  PASS  [soft] TII: slot 0 has the largest std (earlier: 94/95)\n"}
+,{"stream_name":"stdout","time":9289.366834488,"data":"  PASS  [hard] external seed 42: no validation group (or recording) also in training\n"}
+,{"stream_name":"stdout","time":9289.366838263,"data":"  PASS  [hard] external seed 123: no validation group (or recording) also in training\n"}
+,{"stream_name":"stdout","time":9289.366842191,"data":"  PASS  [hard] TII: every mission has \u003e= 1 window inside its trimmed span\n"}
+,{"stream_name":"stdout","time":9289.366846544,"data":"  PASS  [hard] NORMCAL gains use other-day Normal missions only\n"}
+,{"stream_name":"stdout","time":9289.366851202,"data":"  PASS  [hard] TII scratch: no test-day mission in any fold's training/validation; test days partition the 95 missions\n"}
+,{"stream_name":"stdout","time":9289.366855412,"data":"  PASS  [hard] real mamba_ssm model\n"}
+,{"stream_name":"stdout","time":9289.366858878,"data":"  PASS  [soft] v28 A1 hyperparameters printed\n"}
+,{"stream_name":"stdout","time":9289.366862361,"data":"  PASS  [hard] EXT_LEVEL seed 42: model trained without TII data\n"}
+,{"stream_name":"stdout","time":9289.366866262,"data":"  PASS  [hard] EXT_LEVEL seed 123: model trained without TII data\n"}
+,{"stream_name":"stdout","time":9289.366870075,"data":"  PASS  [hard] EXT_SHAPE seed 42: model trained without TII data\n"}
+,{"stream_name":"stdout","time":9289.36687416,"data":"  PASS  [hard] EXT_SHAPE seed 123: model trained without TII data\n"}
+,{"stream_name":"stdout","time":9289.366902789,"data":"  PASS  [hard] TII_LEVEL fold 0 seed 42: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366907392,"data":"  PASS  [hard] TII_LEVEL fold 1 seed 42: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366911474,"data":"  PASS  [hard] TII_LEVEL fold 2 seed 42: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366915255,"data":"  PASS  [hard] TII_LEVEL fold 3 seed 42: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366919004,"data":"  PASS  [hard] TII_LEVEL fold 4 seed 42: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366922896,"data":"  PASS  [hard] TII_LEVEL fold 0 seed 123: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366927259,"data":"  PASS  [hard] TII_LEVEL fold 1 seed 123: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366930986,"data":"  PASS  [hard] TII_LEVEL fold 2 seed 123: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366934788,"data":"  PASS  [hard] TII_LEVEL fold 3 seed 123: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366938463,"data":"  PASS  [hard] TII_LEVEL fold 4 seed 123: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366942195,"data":"  PASS  [hard] TII_SHAPE fold 0 seed 42: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.36694598,"data":"  PASS  [hard] TII_SHAPE fold 1 seed 42: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366949778,"data":"  PASS  [hard] TII_SHAPE fold 2 seed 42: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366953749,"data":"  PASS  [hard] TII_SHAPE fold 3 seed 42: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366957899,"data":"  PASS  [hard] TII_SHAPE fold 4 seed 42: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366961831,"data":"  PASS  [hard] TII_SHAPE fold 0 seed 123: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366965677,"data":"  PASS  [hard] TII_SHAPE fold 1 seed 123: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366970207,"data":"  PASS  [hard] TII_SHAPE fold 2 seed 123: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366974443,"data":"  PASS  [hard] TII_SHAPE fold 3 seed 123: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366978524,"data":"  PASS  [hard] TII_SHAPE fold 4 seed 123: no test-day mission in training\n"}
+,{"stream_name":"stdout","time":9289.366982345,"data":"46 hooks: 46 PASS, 0 FLAG (soft deviations, listed above)\n"}
+,{"stream_name":"stdout","time":9289.3669859,"data":"\n"}
+,{"stream_name":"stdout","time":9289.366989794,"data":"COMPATIBILITY FINDINGS\n"}
+,{"stream_name":"stdout","time":9289.366993991,"data":"- Loudness pattern: external is monotone and saturating; TII channels with the same pattern: ['TII c3', 'TII c4', 'TII c5'].\n"}
+,{"stream_name":"stdout","time":9289.36699766,"data":"- Sample-rate scan (exploratory): RATE_EST = inconclusive; rate variants used: [16000].\n"}
+,{"stream_name":"stdout","time":9289.367001477,"data":"- Channel ranking (most to least similar to external ch1): ['c2', 'c5', 'c3', 'c4', 'c1'].\n"}
+,{"stream_name":"stdout","time":9289.367005165,"data":"- Overlap screen: median max r vs external 0.345 (baseline vs other TII 0.850); 0 TII-external pairs above 0.98 (soft screen).\n"}
+,{"stream_name":"stdout","time":9289.367012388,"data":"\n"}
+,{"stream_name":"stdout","time":9289.367017576,"data":"==============================================================================================================\n"}
+,{"stream_name":"stdout","time":9289.367027516,"data":"VERDICT (pre-registered rules, headline arm EXT_LEVEL + NORMCAL + MEAN5 + assumed 16 kHz, seed-averaged)\n"}
+,{"stream_name":"stdout","time":9289.367031793,"data":"==============================================================================================================\n"}
+,{"stream_name":"stdout","time":9289.367035832,"data":"Headline mission macro-F1 0.276 [95% CI 0.248, 0.296] on 95 TII missions (chance ~0.20).\n"}
+,{"stream_name":"stdout","time":9289.367040355,"data":"TII scratch (LEVEL, MEAN5, day-out) 0.866 [0.802, 0.928]; paired difference headline − scratch -0.591 [-0.659, -0.522].\n"}
+,{"stream_name":"stdout","time":9289.367044643,"data":"TIER: NOT COMPATIBLE\n"}
+,{"stream_name":"stdout","time":9289.367048333,"data":"GATE: DOES NOT PASS — do not run the pretraining notebook on this basis.\n"}
+,{"stream_name":"stdout","time":9289.367052267,"data":"Neural zero-shot vs RMS-CENTROID (NORMCAL): paired difference +0.053 [+0.023, +0.085] -\u003e the neural model CLEARLY beats the loudness-only baseline.\n"}
+,{"stream_name":"stdout","time":9289.367056789,"data":"Caveats: NORMCAL is a semi-supervised gain calibration (TII Normal loudness from other days); the TII sample rate is assumed (16000 Hz; scan result: inconclusive); this tests compatibility, not whether pretraining improves final TII results.\n"}
+,{"stream_name":"stdout","time":9289.367081917,"data":"\n"}
+,{"stream_name":"stdout","time":9289.367086622,"data":"Runtime: total notebook 154.7 min this session (training 96.2 min; runs already logged were skipped).\n"}
+,{"stream_name":"stdout","time":9289.367091105,"data":"Outputs in /kaggle/working: external_metadata.csv, tii_audio_missions.csv, compat_rate_scan.csv, compat_overlap_screen.csv, audio_zeroshot_runs.csv, audio_zeroshot_eval.csv, audio_zeroshot_probs/, audio_zeroshot_checkpoints/, figures/ (6 figures).\n"}
+,{"stream_name":"stdout","time":9289.367095353,"data":"\n"}
+,{"stream_name":"stdout","time":9289.367098854,"data":"💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾\n"}
+,{"stream_name":"stdout","time":9289.367103605,"data":"💾  DONE. To keep /kaggle/working (CSVs, probabilities, checkpoints, figures), click\n"}
+,{"stream_name":"stdout","time":9289.367107313,"data":"💾      \"Save Version\"  -\u003e  \"Save \u0026 Run All (Commit)\"\n"}
+,{"stream_name":"stdout","time":9289.367111784,"data":"💾  Otherwise everything in /kaggle/working is LOST when this session ends.\n"}
+,{"stream_name":"stdout","time":9289.367115644,"data":"💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾💾\n"}
+,{"stream_name":"stderr","time":9294.237011751,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":9294.237055784,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":9294.401650874,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":9294.40170542,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":9295.149383338,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":9295.329865403,"data":"[NbConvertApp] Writing 735120 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":9297.93314203,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":9298.934854929,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":9298.934898462,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":9298.935203379,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":9298.935596251,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":9298.935875738,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":9298.936099532,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":9298.936330875,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":9298.936662246,"data":"[NbConvertApp] Writing 934623 bytes to __results__.html\n"}
+]
