@@ -1,0 +1,9 @@
+rep,role,D,delta window F1 (pooled),99% CI,folds positive (of 5),seeds positive (of 3),delta mission F1,verdict
+R1,candidate,320,0.0134,"[-0.0108, +0.0382]",3,1,-0.0201,NOT CREDITED
+R2,candidate,640,-0.0146,"[-0.0450, +0.0122]",1,0,-0.0227,NOT CREDITED
+R3,candidate,80,-0.0182,"[-0.0582, +0.0201]",2,0,-0.029,NOT CREDITED
+R4,candidate,80,-0.0359,"[-0.0752, +0.0014]",1,0,-0.0473,NOT CREDITED
+R5,candidate,272,-0.0043,"[-0.0205, +0.0112]",2,1,0.0,NOT CREDITED
+R7,candidate,160,0.0035,"[-0.0200, +0.0248]",1,2,-0.0211,NOT CREDITED
+R6a,diagnostic,16,-0.0818,"[-0.1324, -0.0330]",0,0,-0.0343,(diagnostic: WORSE)
+R6b,diagnostic,64,-0.0077,"[-0.0396, +0.0180]",2,2,-0.0118,(diagnostic: NOT CREDITED)

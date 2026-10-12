@@ -1,0 +1,18 @@
+COMPATIBILITY FINDINGS
+- Loudness pattern: external is monotone and saturating; TII channels with the same pattern: ['TII c3', 'TII c4', 'TII c5'].
+- Sample-rate scan (exploratory): RATE_EST = inconclusive; rate variants used: [16000].
+- Channel ranking (most to least similar to external ch1): ['c2', 'c5', 'c3', 'c4', 'c1'].
+- Overlap screen: median max r vs external 0.345 (baseline vs other TII 0.850); 0 TII-external pairs above 0.98 (soft screen).
+
+==============================================================================================================
+VERDICT (pre-registered rules, headline arm EXT_LEVEL + NORMCAL + MEAN5 + assumed 16 kHz, seed-averaged)
+==============================================================================================================
+Headline mission macro-F1 0.276 [95% CI 0.248, 0.296] on 95 TII missions (chance ~0.20).
+TII scratch (LEVEL, MEAN5, day-out) 0.866 [0.802, 0.928]; paired difference headline − scratch -0.591 [-0.659, -0.522].
+TIER: NOT COMPATIBLE
+GATE: DOES NOT PASS — do not run the pretraining notebook on this basis.
+Neural zero-shot vs RMS-CENTROID (NORMCAL): paired difference +0.053 [+0.023, +0.085] -> the neural model CLEARLY beats the loudness-only baseline.
+Caveats: NORMCAL is a semi-supervised gain calibration (TII Normal loudness from other days); the TII sample rate is assumed (16000 Hz; scan result: inconclusive); this tests compatibility, not whether pretraining improves final TII results.
+
+Runtime: total notebook 154.7 min this session (training 96.2 min; runs already logged were skipped).
+Outputs in /kaggle/working: external_metadata.csv, tii_audio_missions.csv, compat_rate_scan.csv, compat_overlap_screen.csv, audio_zeroshot_runs.csv, audio_zeroshot_eval.csv, audio_zeroshot_probs/, audio_zeroshot_checkpoints/, figures/ (6 figures).
