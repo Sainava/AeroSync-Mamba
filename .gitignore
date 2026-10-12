@@ -8,3 +8,5 @@ ExternalAudio/audio_zeroshot_cache
 ExternalAudio/audio_zeroshot_checkpoints
 ExternalAudio/audio_zeroshot_probs
 tii
+*.pt
+
