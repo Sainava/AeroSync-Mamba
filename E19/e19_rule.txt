@@ -1,0 +1,15 @@
+PRE-REGISTERED DECISION RULE (E19; fixed before any E19 result; applied in code)
+Primary metric: pooled out-of-fold WINDOW macro-F1 from seed-averaged probabilities (95 missions, day-out).
+Secondary: mission-level macro-F1 (argmax of the mean window probability), per-fold F1, worst-day F1.
+Comparisons are made within ONE modality (IMU or audio-R0) and never pooled across modalities.
+Candidates: A1 AUG, A2 CORAL, A3 DAYVAL, A4 COMBO (K = 4), each against A0 BASE of the same modality.
+An arm is CREDITED for a modality only if ALL hold vs A0:
+  1. pooled paired delta window macro-F1 >= +0.02 (seed noise floor ~0.016);
+  2. the 99% paired mission-cluster bootstrap CI of the delta excludes 0 (2000 resamples of missions within class,
+     seed 2028, the SAME resampled missions for both arms; 99% because K = 4);
+  3. delta > 0 in >= 4 of 5 folds (seed-averaged, per held-out day);
+  4. delta > 0 for all 3 seeds (each seed's own pooled out-of-fold F1);
+  5. worst-day F1 does not regress: min over folds of the arm's seed-averaged fold F1 >= A0's.
+WORSE (mirror): delta <= -0.02, the 99% CI lies entirely below 0, and delta < 0 in >= 4 of 5 folds.
+Otherwise: NOT CREDITED. Every arm is reported whatever the outcome; a null result is a valid outcome.
+Day gap closed (reported, not part of the rule): (arm - A0) / (random-split reference - A0), per modality.
