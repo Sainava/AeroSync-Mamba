@@ -1,0 +1,21 @@
+PRE-REGISTERED DECISION RULE (E18b; fixed before any E18b result; applied in code; never edited after results)
+Primary metric: pooled out-of-fold WINDOW macro-F1 from seed-averaged probabilities on the paired test windows
+(95 missions, day-out, fresh seeds 11/21/31/41/51). Secondary: mission F1, per-fold F1, worst-day F1, Class-4 recall,
+"faulty called Normal" rate, Normal-class recall, per-class recalls.
+PRIMARY CONTRASTS (both must pass): R1 vs C1 and R1 vs C2. R1 gets "AUDIO-ATTRIBUTABLE GAIN CONFIRMED" only if,
+for BOTH contrasts, ALL hold:
+  1. pooled paired delta window macro-F1 >= +0.02;
+  2. the 99% paired mission-cluster bootstrap CI (2000 resamples of missions within class, seed 2028, the SAME
+     resampled missions for both arms) excludes 0;
+  3. delta > 0 in >= 4 of 5 folds (seed-averaged, per held-out day);
+  4. delta > 0 in >= 4 of 5 seeds (each seed's own pooled out-of-fold F1);
+  5. worst-day F1 of R1 not below the control's;
+  6. NO-HARM: R1's Class-4 recall not more than 0.05 below the control's, and its "faulty called Normal" rate not
+     more than 0.02 above the control's.
+If only one contrast passes: "PARTIAL: <which>". If neither: "NOT CONFIRMED".
+WORSE (mirror, per contrast): delta <= -0.02, the 99% CI entirely below 0, and delta < 0 in >= 4 of 5 folds.
+SECONDARY CONTRAST (reported, not part of the confirmation): R1 vs B1c (late fusion of C1 and AUDIO-ONLY on the same
+head) with conditions 1-5 -> "BEATS LATE FUSION ON THE SAME HEAD" or "DOES NOT BEAT LATE FUSION ON THE SAME HEAD".
+REPLICATION CHECKS (reported only): C1 vs B0, C2 vs B0, R1 vs B0 deltas, each stated as >= +0.02 (as in E18) or not.
+Mission-level R1 vs C1 / C2 deltas are printed without a rule.
+Every arm is reported whatever the outcome; a null result is a valid outcome.

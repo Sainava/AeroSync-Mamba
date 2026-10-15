@@ -1,0 +1,25 @@
+WHAT E18b TELLS US (confirmatory test of R1 vs the controls, fresh seeds [11, 21, 31, 41, 51])
+
+B0 IMU-ONLY (anchor): window F1 0.8400 [0.7946, 0.8812], mission F1 0.8856 [0.8208, 0.9385], worst day 2022-01-04 (0.7043), Class-4 recall 0.968, Normal recall 1.000, faulty called Normal 0.0271
+AUD AUDIO-ONLY (reference): window F1 0.8019 [0.7458, 0.8555], mission F1 0.8650 [0.7935, 0.9282], worst day 2022-01-04 (0.7557), Class-4 recall 0.796, Normal recall 1.000, faulty called Normal 0.0005
+R1 RESIDUAL (frozen anchor): window F1 0.9059 [0.8668, 0.9389], mission F1 0.9472 [0.8950, 0.9892], worst day 2022-01-04 (0.7967), Class-4 recall 0.979, Normal recall 1.000, faulty called Normal 0.0000
+C1 CONTROL R1-IMUONLY: window F1 0.8844 [0.8458, 0.9187], mission F1 0.9472 [0.8950, 0.9892], worst day 2022-01-04 (0.7731), Class-4 recall 0.962, Normal recall 1.000, faulty called Normal 0.0262
+C2 CONTROL R1-SHUFFLED: window F1 0.8854 [0.8462, 0.9197], mission F1 0.9472 [0.8950, 0.9892], worst day 2022-01-04 (0.7678), Class-4 recall 0.959, Normal recall 1.000, faulty called Normal 0.0262
+B1c LATE FUSION ON THE SAME HEAD (C1 + AUD): window F1 0.8751 [0.8288, 0.9183], mission F1 0.9162 [0.8598, 0.9684], worst day 2022-01-04 (0.7717), Class-4 recall 0.927, Normal recall 1.000, faulty called Normal 0.0049, w chosen on validation: mean 0.58
+
+PRIMARY VERDICT (both R1 vs C1 and R1 vs C2 must pass all 6 conditions): AUDIO-ATTRIBUTABLE GAIN CONFIRMED
+- R1 vs C1: delta +0.0215 [+0.0137, +0.0300] (99% paired CI), folds+ 5/5, seeds+ 5/5, worst day 0.7967 vs 0.7731, Class-4 recall 0.979 vs 0.962, faulty called Normal 0.0000 vs 0.0262 -> PASS
+- R1 vs C2: delta +0.0205 [+0.0140, +0.0274] (99% paired CI), folds+ 5/5, seeds+ 5/5, worst day 0.7967 vs 0.7678, Class-4 recall 0.979 vs 0.959, faulty called Normal 0.0000 vs 0.0262 -> PASS
+- R1 vs B1c: delta +0.0308 [-0.0021, +0.0718] (99% paired CI), folds+ 4/5, seeds+ 4/5, worst day 0.7967 vs 0.7717, Class-4 recall 0.979 vs 0.927, faulty called Normal 0.0000 vs 0.0049 -> DOES NOT BEAT LATE FUSION ON THE SAME HEAD
+- C1 vs B0: delta +0.0444 [+0.0228, +0.0666] (99% paired CI), folds+ 5/5, seeds+ 5/5, worst day 0.7731 vs 0.7043, Class-4 recall 0.962 vs 0.968, faulty called Normal 0.0262 vs 0.0271 -> replicates E18 (delta >= +0.02)
+- C2 vs B0: delta +0.0454 [+0.0255, +0.0677] (99% paired CI), folds+ 5/5, seeds+ 5/5, worst day 0.7678 vs 0.7043, Class-4 recall 0.959 vs 0.968, faulty called Normal 0.0262 vs 0.0271 -> replicates E18 (delta >= +0.02)
+- R1 vs B0: delta +0.0659 [+0.0430, +0.0907] (99% paired CI), folds+ 5/5, seeds+ 5/5, worst day 0.7967 vs 0.7043, Class-4 recall 0.979 vs 0.968, faulty called Normal 0.0000 vs 0.0271 -> replicates E18 (delta >= +0.02)
+Mission-level: R1 vs C1 delta +0.0000 (no rule)
+Mission-level: R1 vs C2 delta +0.0000 (no rule)
+Audio-attributable share of R1's net corrections (R1 net - mean(C1, C2 net)) / R1 net: 0.335
+
+Limits
+- Same 95 missions and 5 recording days as E18 (one day, 2021-12-22, has only 10 missions): the seeds are fresh but the data are not, so E18b tests training randomness, not generalisation to new data.
+- The pairing (v29 paired_windows, v24 CORRECTED_ALIGNMENT) keeps ~77% of the IMU grid; B0 here is therefore weaker than the full-grid IMU model.
+- Fixed hyperparameters (LAMBDA_R = 0.01, ALPHA_MAX = 1.0, R_HIDDEN = 128, w grid [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]); nothing was tuned.
+- mamba-ssm CUDA kernels are not bit-deterministic; B0 vs E18's B0 is only a soft check.
