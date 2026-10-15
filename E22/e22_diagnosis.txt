@@ -1,0 +1,20 @@
+E22 DIAGNOSIS (Part A; no training)
+
+A1. Normal (class 0) missions per day and the reference flight
+- 2021-12-22: 2 Normal missions; reference = rosbag2_2021_12_22-09_14_31
+- 2021-12-31: 7 Normal missions; reference = rosbag2_2021_12_31-10_25_06
+- 2022-01-04: 3 Normal missions; reference = rosbag2_2022_01_04-11_05_45
+- 2022-01-05: 3 Normal missions; reference = rosbag2_2022_01_05-09_29_43
+- 2022-01-10: 3 Normal missions; reference = rosbag2_2022_01_10-08_55_08
+- windows dropped with the reference flights: 273 of 5238
+
+A2. Per-day Normal log-spectra -> e22_diag_day_spectra.csv, figures/e22_A2_day_spectra.png
+A3. Between-day variance shares: gain 62.3%, tilt 8.3%, band-specific 29.4% -> reading: mostly gain-like (rule: the largest share > 50%, otherwise 'mixed')
+
+A4. Telemetry topics found: AudioBuffer, Imu, MagneticField, SensorCombined
+    containing rpm/motor/esc/actuator/thrust: none (not used)
+
+A5. Linear probes (e22_probe.csv):
+- N0: day decodability (Normal windows, balanced acc.) 0.421 (chance 0.20); day-out class macro-F1 0.733
+- N1: day decodability (Normal windows, balanced acc.) 0.568 (chance 0.20); day-out class macro-F1 0.700
+- N2: day decodability (Normal windows, balanced acc.) 0.598 (chance 0.20); day-out class macro-F1 0.748

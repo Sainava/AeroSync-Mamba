@@ -1,0 +1,35 @@
+WHAT E22 TELLS US (per-day normalisation of the audio input; seeds [11, 21, 31, 41, 51])
+
+Diagnosis (A3): between-day variance of Normal-flight log-spectra = gain 62.3%, tilt 8.3%, band-specific 29.4% -> mostly gain-like.
+Linear probes (A5): N0: day decodability 0.421 (chance 0.20), day-out class F1 0.733; N1: day decodability 0.568 (chance 0.20), day-out class F1 0.700; N2: day decodability 0.598 (chance 0.20), day-out class F1 0.748.
+Reference flights (removed from every arm): 2021-12-22 rosbag2_2021_12_22-09_14_31, 2021-12-31 rosbag2_2021_12_31-10_25_06, 2022-01-04 rosbag2_2022_01_04-11_05_45, 2022-01-05 rosbag2_2022_01_05-09_29_43, 2022-01-10 rosbag2_2022_01_10-08_55_08; windows dropped 273 of 5238.
+Deployment assumptions: N1 assumes one known-healthy flight per day (a pre-flight check); N2 assumes access to unlabelled data from the new day. Neither is available in a pure 'unseen day' setting; the comparison is conditional on these assumptions.
+
+B0 (IMU-ONLY (anchor)): window F1 0.9042 [0.8794, 0.9268], mission F1 0.9794, worst day 2022-01-05 (0.8661), Class-4 recall 0.934, faulty called Normal 0.0264
+C1 (IMU-ONLY CORRECTION HEAD (reference)): window F1 0.8981 [0.8664, 0.9249], mission F1 0.9687, worst day 2022-01-04 (0.8313), Class-4 recall 0.954, faulty called Normal 0.0264
+AUD-N0 (AUDIO-ONLY, N0 current features): window F1 0.8117 [0.7527, 0.8604], mission F1 0.8613, worst day 2022-01-10 (0.7558), Class-4 recall 0.843, faulty called Normal 0.0002, day-out gap vs random split +0.0783
+AUD-N1 (AUDIO-ONLY, N1 healthy-reference calibration): window F1 0.7801 [0.7281, 0.8293], mission F1 0.7956, worst day 2022-01-10 (0.7295), Class-4 recall 0.718, faulty called Normal 0.0002, day-out gap vs random split +0.1099
+AUD-N2 (AUDIO-ONLY, N2 unsupervised per-day normalisation): window F1 0.8135 [0.7628, 0.8599], mission F1 0.8763, worst day 2022-01-04 (0.7230), Class-4 recall 0.761, faulty called Normal 0.0002, day-out gap vs random split +0.0765
+R1-N0 (RESIDUAL R1, audio N0): window F1 0.9193 [0.8877, 0.9454], mission F1 0.9687, worst day 2022-01-04 (0.8696), Class-4 recall 0.970, faulty called Normal 0.0002
+R1-N1 (RESIDUAL R1, audio N1): window F1 0.9202 [0.8910, 0.9464], mission F1 0.9687, worst day 2022-01-04 (0.8828), Class-4 recall 0.965, faulty called Normal 0.0002
+R1-N2 (RESIDUAL R1, audio N2): window F1 0.9250 [0.8990, 0.9477], mission F1 0.9794, worst day 2022-01-05 (0.8976), Class-4 recall 0.966, faulty called Normal 0.0000
+
+PRIMARY (K = 2, all 6 conditions):
+- AUD-N1 vs AUD-N0: delta -0.0316 [-0.0712, +0.0115] (99% paired CI), folds+ 1/5, seeds+ 0/5, worst day 0.7295 vs 0.7558, Class-4 recall 0.718 vs 0.843 -> NOT CREDITED
+- AUD-N2 vs AUD-N0: delta +0.0018 [-0.0764, +0.0772] (99% paired CI), folds+ 3/5, seeds+ 2/5, worst day 0.7230 vs 0.7558, Class-4 recall 0.761 vs 0.843 -> NOT CREDITED
+
+SECONDARY (conditions 1-5, no multiplicity claim) and reference:
+- R1-N1 vs R1-N0: delta +0.0009 [-0.0044, +0.0067], folds+ 2/5, seeds+ 3/5 -> DOES NOT MEET CONDITIONS 1-5
+- R1-N2 vs R1-N0: delta +0.0057 [-0.0033, +0.0202], folds+ 3/5, seeds+ 4/5 -> DOES NOT MEET CONDITIONS 1-5
+- R1-N1 vs C1: delta +0.0221 [+0.0135, +0.0313], folds+ 5/5, seeds+ 5/5 -> MEETS CONDITIONS 1-5
+- R1-N2 vs C1: delta +0.0269 [+0.0162, +0.0436], folds+ 5/5, seeds+ 5/5 -> MEETS CONDITIONS 1-5
+- R1-N0 vs C1: delta +0.0212 [+0.0158, +0.0281], folds+ 5/5, seeds+ 5/5 -> MEETS CONDITIONS 1-5
+-> No input version is credited by the pre-registered rule.
+
+Limits
+- 95 missions minus the 5 reference flights = 90 evaluation missions; 5 recording days; the 10-mission day 2021-12-22 has 9 after removal.
+- Same seeds as E18b (11/21/31/41/51); E22 numbers are comparable only between E22 arms (different windows).
+- N1 and N2 rely on the stated deployment assumptions (a known-healthy flight per day; unlabelled new-day data).
+- Calibration may remove real fault information if a reference flight is not representative of its day.
+- Audio uses v29's paired windows (64 chunks picked by index from each 2.56 s span) with R0 per-chunk features.
+- mamba-ssm CUDA kernels are not bit-deterministic; AUD-N0 vs E18b's AUD is only a soft check.
