@@ -1,0 +1,19 @@
+PRE-REGISTERED DECISION RULE (E22; fixed before any E22 result; applied in code; never edited after results)
+Primary metric: pooled out-of-fold WINDOW macro-F1 from seed-averaged probabilities on the identical windows
+(95 missions minus the 5 day-reference flights, day-out, seeds 11/21/31/41/51).
+PRIMARY CONTRASTS (K = 2): AUD-N1 vs AUD-N0 and AUD-N2 vs AUD-N0. An input version is CREDITED only if ALL hold:
+  1. pooled paired delta window macro-F1 >= +0.02;
+  2. the 99% paired mission-cluster bootstrap CI (2000 resamples of missions within class, seed 2028, the SAME
+     resampled missions for both arms) excludes 0;
+  3. delta > 0 in >= 4 of 5 folds (seed-averaged, per held-out day);
+  4. delta > 0 in >= 4 of 5 seeds (each seed's own pooled out-of-fold F1);
+  5. worst-day F1 not below N0's;
+  6. NO-HARM: Class-4 recall not more than 0.05 below N0's, and "faulty called Normal" not more than 0.02 above N0's.
+WORSE (mirror): delta <= -0.02, the 99% CI entirely below 0, and delta < 0 in >= 4 of 5 folds. Otherwise NOT CREDITED.
+SECONDARY (reported, conditions 1-5, no multiplicity claim): R1-N1 vs R1-N0 and R1-N2 vs R1-N0; R1-N1 and R1-N2 vs C1
+(is the audio contribution still above the IMU-only correction head?).
+Also reported: per-day F1 for all arms, the audio-only day-out gap per input version, the A5 linear probes next to the
+deep-model results. Every arm is reported whatever the outcome; a null result is a valid outcome.
+DEPLOYMENT ASSUMPTIONS: N1 assumes one known-healthy flight per day (a pre-flight check); N2 assumes access to
+unlabelled data from the new day. Neither is available in a pure "unseen day" setting; the comparison is conditional
+on these assumptions.

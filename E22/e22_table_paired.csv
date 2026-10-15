@@ -1,0 +1,8 @@
+contrast,kind,delta,CI_lo_99,CI_hi_99,folds_positive,seeds_positive,worst_day_F1,worst_day_F1_ref,class4_recall,class4_recall_ref,faulty_called_normal,faulty_called_normal_ref,delta_mission_F1,c1_delta,c2_ci,c3_folds,c4_seeds,c5_worst_day,c6_no_harm,worse_mirror,verdict
+AUD-N1 vs AUD-N0,PRIMARY,-0.0316,-0.0712,0.0115,1,0,0.7295,0.7558,0.7177,0.8433,0.0002,0.0002,-0.0657,False,False,False,False,False,False,False,NOT CREDITED
+AUD-N2 vs AUD-N0,PRIMARY,0.0018,-0.0764,0.0772,3,2,0.723,0.7558,0.7608,0.8433,0.0002,0.0002,0.015,False,False,False,False,False,False,False,NOT CREDITED
+R1-N1 vs R1-N0,SECONDARY,0.0009,-0.0044,0.0067,2,3,0.8828,0.8696,0.9652,0.9698,0.0002,0.0002,0.0,False,False,False,False,True,True,False,DOES NOT MEET CONDITIONS 1-5
+R1-N2 vs R1-N0,SECONDARY,0.0057,-0.0033,0.0202,3,4,0.8976,0.8696,0.9661,0.9698,0.0,0.0002,0.0107,False,False,False,True,True,True,False,DOES NOT MEET CONDITIONS 1-5
+R1-N1 vs C1,SECONDARY,0.0221,0.0135,0.0313,5,5,0.8828,0.8313,0.9652,0.9542,0.0002,0.0264,0.0,True,True,True,True,True,True,False,MEETS CONDITIONS 1-5
+R1-N2 vs C1,SECONDARY,0.0269,0.0162,0.0436,5,5,0.8976,0.8313,0.9661,0.9542,0.0,0.0264,0.0107,True,True,True,True,True,True,False,MEETS CONDITIONS 1-5
+R1-N0 vs C1,REFERENCE,0.0212,0.0158,0.0281,5,5,0.8696,0.8313,0.9698,0.9542,0.0002,0.0264,0.0,True,True,True,True,True,True,False,MEETS CONDITIONS 1-5
