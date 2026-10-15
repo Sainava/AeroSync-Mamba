@@ -9,4 +9,11 @@ ExternalAudio/audio_zeroshot_checkpoints
 ExternalAudio/audio_zeroshot_probs
 tii
 *.pt
-
+e19_audio_cache
+e19_imu_cache
+e19_probs
+e18b_probs
+e18b_checkpoints
+e18_audio_cache
+e18_checkpoints
+e18_probs

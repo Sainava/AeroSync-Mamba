@@ -1,0 +1,22 @@
+PRE-REGISTERED DECISION RULE (E18; fixed before any E18 result; applied in code; adapted from E19)
+Primary metric: pooled out-of-fold WINDOW macro-F1 from seed-averaged probabilities on the PAIRED test windows
+(95 missions, day-out, 5 seeds). Secondary: mission-level macro-F1, per-fold F1, worst-day F1, Class-4 recall,
+"faulty called Normal" rate. Every arm is evaluated on exactly the same paired test windows and missions.
+Candidates: B1 WEIGHTED, B2 JOINT, R1 RESIDUAL (frozen anchor), R2 RESIDUAL (joint fine-tune) (K = 4),
+each against B0 IMU-ONLY retrained on the same paired windows.
+An arm is CREDITED only if ALL hold vs B0:
+  1. pooled paired delta window macro-F1 >= +0.02;
+  2. the 99% paired mission-cluster bootstrap CI of the delta excludes 0 (2000 resamples of missions within class,
+     seed 2028, the SAME resampled missions for both arms);
+  3. delta > 0 in >= 4 of 5 folds (seed-averaged, per held-out day);
+  4. delta > 0 in >= 4 of 5 seeds (each seed's own pooled out-of-fold F1);
+  5. worst-day F1 not below B0's (min over folds of the seed-averaged fold F1);
+  6. NO-HARM: Class-4 recall not more than 0.05 below B0's, and the "faulty called Normal" rate not more than 0.02
+     above B0's (pooled, seed-averaged, window level).
+WORSE (mirror): delta <= -0.02, the 99% CI entirely below 0, and delta < 0 in >= 4 of 5 folds.
+Otherwise: NOT CREDITED.
+Confirmatory contrast (not part of K): R1 and R2 vs B1 with conditions 1-5 -> "BEATS WEIGHTED FUSION" or
+"DOES NOT BEAT WEIGHTED FUSION". A residual arm credited vs B0 that does not beat B1 is reported as exactly that.
+Control read-out: if C1 (R1-IMUONLY) or C2 (R1-SHUFFLED) reaches conditions 1-3 vs B0, "GAIN NOT ATTRIBUTABLE TO AUDIO"
+is printed next to the R1/R2 verdicts. C1, C2 and AUDIO-ONLY are reported, never rated.
+Every arm is reported whatever the outcome; a null result is a valid outcome.

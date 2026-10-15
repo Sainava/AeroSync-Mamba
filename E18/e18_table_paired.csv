@@ -1,0 +1,10 @@
+arm,name,vs,delta,CI_lo_99,CI_hi_99,folds_positive,seeds_positive,worst_day_F1,worst_day_F1_B0,class4_recall,class4_recall_B0,faulty_called_normal,faulty_called_normal_B0,delta_mission_F1,c1_delta,c2_ci,c3_folds,c4_seeds,c5_worst_day,c6_no_harm,verdict,worst_day_F1_B1,class4_recall_B1,faulty_called_normal_B1
+B1,WEIGHTED LATE FUSION,B0,0.0285,-0.0209,0.0806,4,5,0.745,0.6465,0.9166,0.9688,0.0056,0.0269,0.009,True,False,True,True,True,False,NOT CREDITED,,,
+B2,JOINT FUSION,B0,0.0204,-0.0388,0.0864,4,5,0.7354,0.6465,0.9349,0.9688,0.0,0.0269,-0.0396,True,False,True,True,True,True,NOT CREDITED,,,
+R1,RESIDUAL (frozen anchor),B0,0.0715,0.0446,0.101,5,5,0.7709,0.6465,0.9808,0.9688,0.0002,0.0269,0.0724,True,True,True,True,True,True,CREDITED | GAIN NOT ATTRIBUTABLE TO AUDIO,,,
+R2,RESIDUAL (joint fine-tune),B0,0.0717,0.045,0.1014,5,5,0.7709,0.6465,0.9808,0.9688,0.0002,0.0269,0.0724,True,True,True,True,True,True,CREDITED | GAIN NOT ATTRIBUTABLE TO AUDIO,,,
+C1,CONTROL R1-IMUONLY,B0,0.0457,0.0221,0.0722,5,5,0.7468,0.6465,0.9569,0.9688,0.0271,0.0269,0.0724,True,True,True,True,True,True,control / reference (not rated),,,
+C2,CONTROL R1-SHUFFLED,B0,0.0484,0.0246,0.075,4,5,0.7445,0.6465,0.9597,0.9688,0.0271,0.0269,0.0724,True,True,True,True,True,True,control / reference (not rated),,,
+AUD,AUDIO-ONLY (reference),B0,-0.0074,-0.0766,0.0643,2,1,0.7563,0.6465,0.8231,0.9688,0.0002,0.0269,-0.0206,False,False,False,False,True,False,control / reference (not rated),,,
+R1,RESIDUAL (frozen anchor),B1,0.043,0.0054,0.0873,4,5,0.7709,,0.9808,,0.0002,,0.0633,True,True,True,True,True,True,BEATS WEIGHTED FUSION,0.745,0.9166,0.0056
+R2,RESIDUAL (joint fine-tune),B1,0.0431,0.0055,0.0873,4,5,0.7709,,0.9808,,0.0002,,0.0633,True,True,True,True,True,True,BEATS WEIGHTED FUSION,0.745,0.9166,0.0056
