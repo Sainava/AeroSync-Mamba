@@ -1,0 +1,40 @@
+WHAT E23 TELLS US (dual-path cross-attention + wavelet scattering; full v29 windows; seeds [11, 21, 31, 41, 51])
+
+Scattering backend: kymatio 0.3.0 Scattering1D(J=6, Q=2, max_order=2, T=2^6), averaged over time; 42 paths -> token size 210. Scattering frequencies are normalised (cycles/sample), not Hz: the audio sample rate is unverified.
+Trainable parameters per arm: B0 977,350, C1 33,798, R1 1,079,180, D1 192,010, D1r 192,010, D2 200,330, D1sh 192,010, D2sh 200,330.
+
+B0 (IMU-ONLY (anchor)): window F1 0.8400 [0.7946, 0.8812], mission F1 0.8856, worst day 2022-01-04 (0.7043), Class-4 recall 0.968, faulty called Normal 0.0271
+C1 (IMU-only correction head (reference)): window F1 0.8844 [0.8458, 0.9187], mission F1 0.9472, worst day 2022-01-04 (0.7731), Class-4 recall 0.962, faulty called Normal 0.0262
+R1 (single-path residual, AudioMamba on R0 (reference arm)): window F1 0.9059 [0.8670, 0.9389], mission F1 0.9472, worst day 2022-01-04 (0.7976), Class-4 recall 0.980, faulty called Normal 0.0000
+D1 (DUAL-PATH, FFT tokens, energy split): window F1 0.8942 [0.8557, 0.9281], mission F1 0.9364, worst day 2022-01-04 (0.7940), Class-4 recall 0.969, faulty called Normal 0.0002
+D1r (DUAL-PATH, FFT tokens, RANDOM split): window F1 0.8944 [0.8559, 0.9281], mission F1 0.9364, worst day 2022-01-04 (0.7911), Class-4 recall 0.969, faulty called Normal 0.0002
+D2 (DUAL-PATH, scattering tokens, energy split): window F1 0.8972 [0.8580, 0.9304], mission F1 0.9472, worst day 2022-01-04 (0.7908), Class-4 recall 0.971, faulty called Normal 0.0016
+D1sh (D1 with shuffled audio): window F1 0.8834 [0.8435, 0.9184], mission F1 0.9472, worst day 2022-01-04 (0.7768), Class-4 recall 0.961, faulty called Normal 0.0241
+D2sh (D2 with shuffled audio): window F1 0.8846 [0.8455, 0.9186], mission F1 0.9472, worst day 2022-01-04 (0.7804), Class-4 recall 0.962, faulty called Normal 0.0236
+
+PRIMARY (K = 2; conditions 1-6 at +0.01 vs R1, condition 7 = beats its own shuffled control by +0.02):
+- D1 vs R1: delta -0.0117 [-0.0198, -0.0042] (99% paired CI), folds+ 0/5, seeds+ 0/5, attribution vs D1sh: False, +0.02 line: not met -> WORSE
+- D2 vs R1: delta -0.0087 [-0.0162, -0.0020] (99% paired CI), folds+ 0/5, seeds+ 0/5, attribution vs D2sh: False, +0.02 line: not met -> NOT CREDITED
+
+ATTRIBUTION and SECONDARY (conditions 1-5, no multiplicity claim):
+- D1 vs D1sh: delta +0.0108 [+0.0068, +0.0155], folds+ 5/5, seeds+ 5/5 (< +0.02) -> MEETS CONDITIONS 1-5
+- D2 vs D2sh: delta +0.0126 [+0.0081, +0.0179], folds+ 5/5, seeds+ 5/5 (< +0.02) -> MEETS CONDITIONS 1-5
+- D2 vs D1: delta +0.0029 [-0.0013, +0.0080], folds+ 3/5, seeds+ 3/5 (< +0.02) -> DOES NOT MEET CONDITIONS 1-5
+- D1 vs D1r: delta -0.0002 [-0.0020, +0.0015], folds+ 1/5, seeds+ 3/5 (< +0.02) -> DOES NOT MEET CONDITIONS 1-5
+- R1 vs C1: delta +0.0215 [+0.0139, +0.0297], folds+ 5/5, seeds+ 5/5 (>= +0.02) -> MEETS CONDITIONS 1-5
+- D1 vs C1: delta +0.0098 [+0.0034, +0.0159], folds+ 4/5, seeds+ 5/5 (< +0.02) -> DOES NOT MEET CONDITIONS 1-5
+- D2 vs C1: delta +0.0128 [+0.0079, +0.0183], folds+ 5/5, seeds+ 5/5 (< +0.02) -> MEETS CONDITIONS 1-5
+- D1sh vs C1: delta -0.0010 [-0.0060, +0.0035], folds+ 2/5, seeds+ 2/5 (< +0.02) -> DOES NOT MEET CONDITIONS 1-5
+- D2sh vs C1: delta +0.0002 [-0.0027, +0.0036], folds+ 2/5, seeds+ 1/5 (< +0.02) -> DOES NOT MEET CONDITIONS 1-5
+-> No dual-path candidate is credited by the pre-registered rule.
+
+Path ablation (diagnostic): D1: zeroing strong +0.0088, zeroing weak +0.0062 -> both paths contribute; D2: zeroing strong +0.0114, zeroing weak +0.0076 -> both paths contribute; D1r: zeroing strong +0.0073, zeroing weak +0.0072 -> both paths contribute; D1sh: zeroing strong +0.0017, zeroing weak +0.0013 -> neither path alone is needed (drops < 0.005); D2sh: zeroing strong +0.0024, zeroing weak +0.0028 -> neither path alone is needed (drops < 0.005)
+Residual corrections (sum over folds x seeds): C1: corrected 1214, broken 161, net +1053, mean alpha 0.564; D1: corrected 1435, broken 138, net +1297, mean alpha 0.506; D1r: corrected 1444, broken 145, net +1299, mean alpha 0.544; D1sh: corrected 1204, broken 183, net +1021, mean alpha 0.537; D2: corrected 1471, broken 152, net +1319, mean alpha 0.586; D2sh: corrected 1200, broken 172, net +1028, mean alpha 0.621; R1: corrected 1757, broken 166, net +1591, mean alpha 0.571
+
+Limits
+- Same 95 missions and 5 recording days as E18b (one day, 2021-12-22, has only 10 missions): the seeds test training randomness, not new data.
+- Scattering frequencies are normalised (cycles/sample), not Hz; the audio sample rate is unverified.
+- The D arms differ in capacity from R1 (parameter counts above); they are therefore also judged against their own shuffled-audio controls (condition 7).
+- Only one attention layer per path and one strong/weak split rule (top half by fit-window energy) were tried; nothing was tuned on any fold.
+- mamba-ssm CUDA kernels are not bit-deterministic; B0/R1 vs E18b is only a soft check.
+- The +0.01 threshold for condition 1 was chosen before the run because the audio-specific ceiling of R1 is about +0.02; each contrast is also reported against +0.02.
