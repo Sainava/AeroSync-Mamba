@@ -1,0 +1,22 @@
+PRE-REGISTERED DECISION RULE (E23; fixed before any E23 result; applied in code; never edited after results)
+Primary metric: pooled out-of-fold WINDOW macro-F1 from seed-averaged probabilities on identical windows (the full v29
+paired window set, 95 missions, day-out, seeds 11/21/31/41/51 — comparable with E18b).
+PRIMARY CONTRASTS (K = 2): D1 vs R1 and D2 vs R1. A candidate is CREDITED only if ALL hold:
+  1. pooled paired delta vs R1 >= +0.01 (the audio-specific part of R1 is only ~+0.02; each contrast is also reported
+     against the stricter +0.02 line, descriptively);
+  2. the 99% paired mission-cluster bootstrap CI (2000 resamples of missions within class, seed 2028, the SAME
+     resampled missions for both arms) excludes 0;
+  3. delta > 0 in >= 4 of 5 folds (seed-averaged, per held-out day);
+  4. delta > 0 in >= 4 of 5 seeds (each seed's own pooled out-of-fold F1);
+  5. worst-day F1 not below R1's;
+  6. NO-HARM: Class-4 recall not more than 0.05 below R1's, and "faulty called Normal" not more than 0.02 above R1's;
+  7. AUDIO ATTRIBUTION: the candidate beats its OWN shuffled control (D1 vs D1sh, D2 vs D2sh) by >= +0.02 with the
+     99% CI excluding 0, >= 4/5 folds and >= 4/5 seeds.
+WORSE (mirror): delta <= -0.01, the 99% CI entirely below 0, and delta < 0 in >= 4 of 5 folds. Otherwise NOT CREDITED.
+SECONDARY (reported, conditions 1-5, no multiplicity claim): D2 vs D1 (scattering vs FFT); D1 vs D1r (energy split vs
+random split); R1 vs C1, D1 vs C1, D2 vs C1, D1sh vs C1, D2sh vs C1 (capacity of the new head by itself; does R1
+still replicate +0.02 over C1).
+Also reported: per-day F1 for all arms, per-class recall, residual diagnostics (corrected / broken / net, mean alpha),
+and the eval-time PATH ABLATION for D1 and D2 (zero the strong-path output, then the weak-path output; F1 change) as a
+diagnostic of which path carries the signal. Every arm is reported whatever the outcome; a null result is valid.
+No deployment assumptions: audio is always the plain N0 version.
